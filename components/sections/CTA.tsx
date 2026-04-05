@@ -24,13 +24,13 @@ export default function CTA() {
 
           <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="#"
+              href="/tools/seo"
               className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-white text-slate-900 font-bold text-lg flex items-center justify-center gap-3 hover:bg-slate-100 transition-all shadow-xl hover:scale-105"
             >
               Explore Tools <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="#"
+              href="/docs"
               className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-transparent border border-white/20 text-white font-bold text-lg hover:bg-white/10 transition-all"
             >
               View Documentation

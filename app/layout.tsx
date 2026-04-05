@@ -46,6 +46,10 @@ export const metadata: Metadata = {
     description: "Professional tools for developers, traders, and creators.",
     creator: "@sm_developers",
   },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   robots: {
     index: true,
     follow: true,

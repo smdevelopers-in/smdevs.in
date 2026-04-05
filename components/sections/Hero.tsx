@@ -33,14 +33,14 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
-            href="#"
+            href="/tools/seo"
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-xl shadow-primary/20 group"
           >
             Explore Tools
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link
-            href="#"
+            href="/docs"
             className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-background border border-border font-semibold flex items-center justify-center gap-2 hover:bg-muted transition-all"
           >
             <Play className="w-4 h-4 fill-current" />

@@ -1,0 +1,33 @@
+# SM Developers (SMD)
+
+SM Developers is a professional SaaS utilities platform providing high-performance, free tools for developers, traders, and SEO specialists. Our mission is to democratize access to premium-grade technical utilities without the friction of subscriptions or data tracking.
+
+## Core Services
+
+### SEO Utilities
+- **Schema Validator & Generator**: Create and validate JSON-LD structured data for Google compatibility.
+- **SERP Preview**: Real-time simulation of website appearance in search results.
+- **On-Page SEO Checker**: Full audit of metadata, heading hierarchy, and technical SEO signals.
+- **AI Content Intelligence**: Detect machine-generated text and humanize robotic phrasing using heuristic linguistic engines.
+- **Keyword Intelligence**: Suggestion and volume estimation for long-tail search opportunities.
+
+### Trading Calculators
+- **Market Pivots**: Standard, Woodie, and Camarilla support/resistance calculations.
+- **Risk Management**: Scientific position sizing and risk/reward ratio calculators.
+- **Profit/Loss Analysis**: Instant net profit calculation including edge costs like break-even points.
+
+### Content & Learning
+- **Sitemap & Robots.txt**: Clean generation of indexing instructions for search engines.
+- **JSON Formatter**: High-speed, secure formatting of raw data structures.
+
+## Technical Philosophy
+- **Privacy First**: Zero data tracking. We do not store user inputs or personal identifiers.
+- **Zero Friction**: No registration or login required for core utilities.
+- **High Performance**: Edge-optimized functions for low-latency results worldwide.
+- **Always Free**: Our core suite of professional tools is committed to remaining free forever.
+
+## Contact & Links
+- Website: https://smdevelopers.xyz
+- Documentation: https://smdevelopers.xyz/docs
+- Privacy Policy: https://smdevelopers.xyz/privacy
+- Support: support@smdevelopers.io
