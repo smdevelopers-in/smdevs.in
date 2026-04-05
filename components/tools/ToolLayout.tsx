@@ -1,0 +1,148 @@
+import { ChevronRight, Home, HelpCircle, Lightbulb, Info, MessageSquarePlus } from "lucide-react";
+import Breadcrumbs from "./Breadcrumbs";
+
+interface ToolLayoutProps {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+  howToUse?: string[];
+  tips?: string[];
+  explanation?: React.ReactNode;
+  toolType?: "SEO" | "Trading" | "AI" | "Developer";
+}
+
+export default function ToolLayout({
+  title,
+  description,
+  children,
+  howToUse,
+  tips,
+  explanation,
+  toolType = "SEO"
+}: ToolLayoutProps) {
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+      {/* Tool Header (Banner) */}
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-6 py-12 md:py-20 lg:py-24">
+          <div className="space-y-6">
+            <Breadcrumbs 
+              items={[
+                { label: "Web Tools", href: "/#web-tools" },
+                { label: `${toolType} Tools`, href: `/tools/${toolType.toLowerCase()}` },
+                { label: title }
+              ]} 
+            />
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+                {title}
+              </h1>
+              <p className="text-slate-600 dark:text-slate-400 font-medium max-w-2xl leading-relaxed text-lg lg:text-xl">
+                {description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <main className="max-w-6xl mx-auto px-6 py-12 lg:py-20">
+        <div className="space-y-16">
+          {/* Tool Logic / Children */}
+          <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-sm min-h-[400px]">
+            {children}
+          </div>
+
+          {/* Tips Section (Moved to Bottom) */}
+          {tips && tips.length > 0 && (
+            <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden group">
+              <Lightbulb className="absolute -bottom-6 -right-6 w-32 h-32 text-white/5 group-hover:rotate-12 transition-transform duration-700" />
+              <div className="flex items-center gap-4 mb-8 relative">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500 flex items-center justify-center text-white">
+                  <Lightbulb className="w-6 h-6" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-black italic">Expert Tips</h2>
+                  <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest mt-1">Get the most out of this tool</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                {tips.map((tip, index) => (
+                  <div key={index} className="flex gap-4 p-4 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                    <span className="text-amber-500 font-black">#0{index + 1}</span>
+                    <p className="text-sm font-medium text-slate-300 leading-relaxed italic">
+                      {tip}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Explanation Section (Moved to Bottom) */}
+          {explanation && (
+            <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                  <Info className="w-6 h-6" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-black text-slate-900 dark:text-white">Why use this tool?</h2>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">In-depth Analysis & Guidance</p>
+                </div>
+              </div>
+              <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                {explanation}
+              </div>
+            </div>
+          )}
+
+          {/* Help Us Improve (New Feedback Section) */}
+          <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-500">
+                <MessageSquarePlus className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white">Help Us Improve This Tool</h2>
+                <p className="text-slate-500 dark:text-slate-400 font-medium text-sm">Your feedback helps us improve accuracy and usability.</p>
+              </div>
+            </div>
+
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Name</label>
+                <input 
+                  type="text"
+                  placeholder="John Doe"
+                  className="w-full px-5 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 font-medium transition-all text-slate-900 dark:text-white"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email</label>
+                <input 
+                  type="email"
+                  placeholder="john@example.com"
+                  className="w-full px-5 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 font-medium transition-all text-slate-900 dark:text-white"
+                />
+              </div>
+              <div className="md:col-span-2 space-y-2">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Feedback Message</label>
+                <textarea 
+                  rows={4}
+                  placeholder="Tell us what's on your mind..."
+                  className="w-full px-5 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 font-medium transition-all text-slate-900 dark:text-white resize-none"
+                />
+              </div>
+              <div className="md:col-span-2">
+                <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98]">
+                  Submit Feedback
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
