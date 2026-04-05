@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GlobalInteractions from "@/components/ui/GlobalInteractions";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,9 @@ export const metadata: Metadata = {
     icon: "/icon.png",
     apple: "/icon.png",
   },
+  verification: {
+    google: "UPgypRsBjhL-EVs2vv9VWyK-0Kn7bOK8Jct-m_xqBik",
+  },
   robots: {
     index: true,
     follow: true,
@@ -79,6 +83,21 @@ export default function RootLayout({
         </main>
         <Footer />
         <GlobalInteractions />
+        
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SBE50TJMJT"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SBE50TJMJT');
+          `}
+        </Script>
       </body>
     </html>
   );
