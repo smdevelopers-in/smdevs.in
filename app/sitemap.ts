@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
+import { sql } from '@vercel/postgres';
 import fs from 'fs';
-import path from 'path';
+import path from "path";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://smdevelopers.xyz';
@@ -56,21 +57,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Error reading trading tools for sitemap:", e);
   }
 
-  // 4. Dynamic Blog Routes
+  // 4. Dynamic Blog Routes from Postgres
   let blogRoutes: any[] = [];
   try {
-    const blogsPath = path.join(process.cwd(), 'data/blogs.json');
-    if (fs.existsSync(blogsPath)) {
-      const blogs = JSON.parse(fs.readFileSync(blogsPath, 'utf8'));
-      blogRoutes = blogs.map((blog: any) => ({
-        url: `${baseUrl}/resources/blogs/${blog.slug}`,
-        lastModified: new Date(blog.publishDate || blog.createdAt || new Date()),
-        changeFrequency: 'monthly' as const,
-        priority: 0.6,
-      }));
-    }
+    const { rows } = await sql`SELECT slug, publish_date, created_at FROM blog_posts WHERE status = 'published'`;
+    blogRoutes = rows.map((blog: any) => ({
+      url: `${baseUrl}/resources/blogs/${blog.slug}`,
+      lastModified: new Date(blog.publish_date || blog.created_at || new Date()),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }));
   } catch (e) {
-    console.error("Error reading blogs for sitemap:", e);
+    console.error("Error reading blogs for database sitemap:", e);
   }
 
   return [
