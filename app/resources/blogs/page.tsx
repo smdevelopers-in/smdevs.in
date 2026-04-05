@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Search, Calendar, User, ArrowRight, Tag, BookOpen, Clock, Plus } from "lucide-react";
 import Link from "next/link";
 import { BlogPost } from "@/types/blog";
+import Breadcrumbs from "@/components/tools/Breadcrumbs";
 
 export default function BlogListingPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,6 +46,9 @@ export default function BlogListingPage() {
               <p className="text-lg text-slate-500 dark:text-slate-400 font-medium max-w-xl">
                 Expert articles on SEO, Trading, and Web Development to help you grow your digital presence.
               </p>
+              <div className="pt-6">
+                <Breadcrumbs items={[{ label: "Resources", href: "/resources/blogs" }, { label: "Blogs" }]} />
+              </div>
            </div>
            
            <div className="relative w-full md:w-96 group">

@@ -155,19 +155,19 @@ export default function SEOToolsDirectory() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Directory Header */}
-      <div className="bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-6">
+      <div className="bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 pb-16">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 space-y-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
             Powerful <span className="gradient-text">SEO Tools</span> for Everyone
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
             Boost your website's visibility with our suite of free, production-ready SEO utilities. No login, no tracking, just tools.
           </p>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-8">
-        <Breadcrumbs items={[{ label: "Web Tools", href: "/#web-tools" }, { label: "SEO Tools" }]} />
+        <div className="max-w-7xl mx-auto px-6">
+          <Breadcrumbs items={[{ label: "Web Tools", href: "/#web-tools" }, { label: "SEO Tools" }]} />
+        </div>
       </div>
 
       {/* Tools Grid Area */}

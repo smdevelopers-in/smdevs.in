@@ -25,8 +25,7 @@ const FOOTER_LINKS = [
     links: [
       { name: "About Us", href: "#" },
       { name: "Premium Plans", href: "#" },
-      { name: "Terms of Service", href: "/privacy" },
-      { name: "Privacy Policy", href: "/privacy" },
+      { name: "Privacy & Terms", href: "/privacy" },
     ]
   },
   {
@@ -120,9 +119,8 @@ export default function Footer() {
           <div className="text-xs font-bold tracking-wide">
             © {currentYear} SM Developers Platform. A product of SM Digital.
           </div>
-          <div className="flex items-center gap-8 text-[10px] font-black uppercase tracking-widest">
-            <Link href="/privacy" className="hover:text-blue-500 transition-colors">Usage Policy</Link>
-            <Link href="/privacy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
+          <div className="flex items-center gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400">
+            <Link href="/privacy" className="hover:text-blue-500 transition-colors">Terms & Privacy</Link>
             <Link href="#" className="hover:text-blue-500 transition-colors">Cookie Audit</Link>
             <Link href="#" className="hover:text-blue-500 transition-colors">Security</Link>
           </div>

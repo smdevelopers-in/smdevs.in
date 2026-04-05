@@ -2,16 +2,17 @@
 
 import React from "react";
 import { Smartphone, Sparkles, Zap, Shield, Search, ArrowRight } from "lucide-react";
+import Breadcrumbs from "@/components/tools/Breadcrumbs";
 import Link from "next/link";
 
 export default function SEOAppPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-6 text-center space-y-16">
+      <div className="max-w-7xl mx-auto px-6 space-y-16">
         
         {/* Hero Section */}
-        <div className="space-y-6 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 font-bold text-xs uppercase tracking-widest animate-fade-in">
+        <div className="space-y-6 max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 font-bold text-xs uppercase tracking-widest animate-fade-in mx-auto">
              <Smartphone size={14} /> Mobile Experience
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
@@ -29,6 +30,10 @@ export default function SEOAppPage() {
               Use Web Version
             </Link>
           </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6">
+          <Breadcrumbs items={[{ label: "SEO Tools", href: "/tools/seo" }, { label: "SEO Tools in Your Pocket" }]} />
         </div>
 
         {/* Feature Grid */}

@@ -17,6 +17,7 @@ import {
   Target,
   Zap
 } from "lucide-react";
+import Breadcrumbs from "@/components/tools/Breadcrumbs";
 
 const TRADING_TOOLS = [
   {
@@ -78,19 +79,19 @@ const FAQS = [
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Directory Header (Mirrors SEO Hub) */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 lg:pt-32">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white mb-6 leading-[1.1]">
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 lg:pt-32 pb-16">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 space-y-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
             Professional <span className="gradient-text">Trading Tools</span> for Everyone
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
             Manage risk, identify key levels, and optimize your trade execution with our suite of free, high-performance trading calculators.
           </p>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-8">
-        <Breadcrumbs items={[{ label: "Web Tools", href: "/#web-tools" }, { label: "Trading Tools" }]} />
+        <div className="max-w-7xl mx-auto px-6">
+          <Breadcrumbs items={[{ label: "Web Tools", href: "/#web-tools" }, { label: "Trading Tools" }]} />
+        </div>
       </div>
 
       {/* Tools Grid Area */}
@@ -161,23 +162,5 @@ function ToolCard({ tool }: { tool: any }) {
         {tool.tag && <span className="text-[10px] px-2 py-0.5 bg-blue-600 text-white rounded-md uppercase tracking-widest">{tool.tag}</span>}
       </div>
     </Link>
-  );
-}
-
-function Breadcrumbs({ items }: { items: { label: string; href?: string }[] }) {
-  return (
-    <nav className="flex items-center gap-2 text-xs font-bold text-slate-400">
-      <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-      {items.map((item, i) => (
-        <React.Fragment key={i}>
-          <ChevronRight className="w-3 h-3 text-slate-300" />
-          {item.href ? (
-            <Link href={item.href} className="hover:text-blue-600 transition-colors">{item.label}</Link>
-          ) : (
-            <span className="text-slate-600 dark:text-slate-200">{item.label}</span>
-          )}
-        </React.Fragment>
-      ))}
-    </nav>
   );
 }

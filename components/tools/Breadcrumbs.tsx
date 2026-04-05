@@ -15,21 +15,21 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav className="flex items-center gap-3 text-xs font-bold" aria-label="Breadcrumb">
-      <Link href="/" className="flex items-center gap-2 text-slate-400 hover:text-blue-600 transition-colors">
-        <Home className="w-3.5 h-3.5" />
+    <nav className="flex items-center gap-2 text-xs font-bold py-6 border-t border-white/5" aria-label="Breadcrumb">
+      <Link href="/" className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors">
+        <Home size={14} />
         <span>Home</span>
       </Link>
       
       {items.map((item, index) => (
         <React.Fragment key={index}>
-          <ChevronRight className="w-3 h-3 text-slate-300 flex-shrink-0" />
+          <span className="text-slate-600 font-normal mx-1">/</span>
           {item.href ? (
-            <Link href={item.href} className="text-slate-400 hover:text-blue-600 transition-colors whitespace-nowrap">
+            <Link href={item.href} className="text-slate-400 hover:text-white transition-colors whitespace-nowrap">
               {item.label}
             </Link>
           ) : (
-            <span className="text-slate-900 dark:text-white font-black truncate max-w-[150px] md:max-w-none">
+            <span className="text-white font-black truncate max-w-[150px] md:max-w-none">
               {item.label}
             </span>
           )}

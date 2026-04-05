@@ -13,6 +13,7 @@ import {
   Heart
 } from "lucide-react";
 import Link from "next/link";
+import Breadcrumbs from "@/components/tools/Breadcrumbs";
 
 export const metadata = {
   title: "Documentation | SM Developers",
@@ -64,11 +65,11 @@ const STEPS = [
 
 export default function DocumentationPage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 px-6 pt-32 pb-20">
       {/* Hero Header */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 lg:pt-32">
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 rounded-[3rem] overflow-hidden pb-16">
         <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4 mx-auto">
             <BookOpen className="w-3.5 h-3.5" /> Platform Guide
           </div>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
@@ -77,6 +78,10 @@ export default function DocumentationPage() {
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
             A comprehensive guide to our free professional utilities. Designed for speed, precision, and zero friction.
           </p>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6">
+          <Breadcrumbs items={[{ label: "Documentation" }]} />
         </div>
       </div>
 

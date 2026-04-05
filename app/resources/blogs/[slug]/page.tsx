@@ -16,6 +16,7 @@ import {
   Linkedin,
   ChevronRight
 } from "lucide-react";
+import Breadcrumbs from "@/components/tools/Breadcrumbs";
 
 export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
@@ -39,7 +40,6 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
   const relatedPosts = blogs
     .filter(b => b.slug !== slug && b.category === blog.category)
     .slice(0, 3);
-
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -82,6 +82,15 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                        <Clock size={16} className="text-blue-600" />
                        6 min read
                     </div>
+                 </div>
+
+                 {/* Breadcrumbs below Metadata */}
+                 <div className="pt-4">
+                    <Breadcrumbs items={[
+                      { label: "Resources", href: "/resources/blogs" }, 
+                      { label: "Blogs", href: "/resources/blogs" }, 
+                      { label: blog.title }
+                    ]} />
                  </div>
               </div>
 

@@ -9,9 +9,11 @@ import {
   UserCheck 
 } from "lucide-react";
 
+import Breadcrumbs from "@/components/tools/Breadcrumbs";
+
 export const metadata = {
-  title: "Privacy Policy | SM Developers",
-  description: "Our commitment to your privacy. Learn how SM Developers protects your data and why we don't track our users.",
+  title: "Privacy & Terms | SM Developers",
+  description: "Our commitment to your privacy and rules for using our platform. Learn how SM Developers protects your data.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -20,17 +22,21 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 lg:pt-32">
-        <div className="max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-4">
-            <ShieldCheck className="w-3.5 h-3.5" /> Privacy First
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 lg:pt-32 pb-16">
+        <div className="max-w-4xl mx-auto px-6 space-y-6 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-4 mx-auto">
+            <ShieldCheck className="w-3.5 h-3.5" /> Privacy & Terms
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-            Privacy <span className="text-blue-600">Policy</span>
+            Privacy & <span className="text-blue-600">Terms</span>
           </h1>
           <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
-             Transparancy about how we protect your data. Last Updated: {lastUpdated}
+             Our commitment to your privacy and the rules for using our platform. Last Updated: {lastUpdated}
           </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6">
+          <Breadcrumbs items={[{ label: "Privacy & Terms" }]} />
         </div>
       </div>
 
@@ -106,6 +112,29 @@ export default function PrivacyPolicyPage() {
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                     Our platform may contain links to external sites. We are not responsible for the privacy practices of those repositories or websites. We recommend reviewing their policies before engaging with them.
                 </p>
+            </section>
+
+            <section className="space-y-6 pt-12 border-t border-slate-100 dark:border-slate-800">
+                <div className="flex items-center gap-3 text-indigo-600">
+                    <ShieldCheck className="w-5 h-5" />
+                    <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Usage Policy (Terms)</h2>
+                </div>
+                <div className="space-y-6 text-slate-600 dark:text-slate-400">
+                    <p className="leading-relaxed font-medium">
+                        By accessing SM Developers, you agree to follow our code of conduct and usage rules.
+                    </p>
+                    <ul className="space-y-4 list-disc pl-5">
+                        <li>
+                            <strong className="text-slate-900 dark:text-white">Fair Use:</strong> Our tools are provided for individual and professional use. Automated scraping or "stress-testing" our APIs without permission is strictly prohibited.
+                        </li>
+                        <li>
+                            <strong className="text-slate-900 dark:text-white">Accuracy:</strong> While we aim for 100% precision (especially in our Trading Calculators), all outputs are for informational purposes only. Always verify critical results.
+                        </li>
+                        <li>
+                            <strong className="text-slate-900 dark:text-white">No Liability:</strong> SM Developers is not liable for any financial losses or SEO ranking changes resulting from the use of our free utilities.
+                        </li>
+                    </ul>
+                </div>
             </section>
 
             <section className="pt-8 border-t border-slate-100 dark:border-slate-800 text-center space-y-6">
