@@ -1,64 +1,92 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { sql } from "@vercel/postgres";
 import { BlogPost } from "@/types/blog";
 
-const DATA_PATH = path.join(process.cwd(), "data", "blogs.json");
-
-// Helper to read blogs from JSON
-const readBlogs = (): BlogPost[] => {
+// Helper to ensure the table exists
+const ensureTableExists = async () => {
   try {
-    if (!fs.existsSync(DATA_PATH)) {
-      return [];
-    }
-    const data = fs.readFileSync(DATA_PATH, "utf-8");
-    return JSON.parse(data);
+    await sql`
+      CREATE TABLE IF NOT EXISTS blog_posts (
+        id SERIAL PRIMARY KEY,
+        title TEXT NOT NULL,
+        slug TEXT UNIQUE NOT NULL,
+        content TEXT NOT NULL,
+        excerpt TEXT,
+        category TEXT DEFAULT 'General',
+        author TEXT DEFAULT 'SM Dev Team',
+        featured_image TEXT,
+        publish_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        status TEXT DEFAULT 'published'
+      );
+    `;
+    await sql`CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON blog_posts(slug);`;
   } catch (error) {
-    console.error("Error reading blogs:", error);
-    return [];
-  }
-};
-
-// Helper to write blogs to JSON
-const writeBlogs = (blogs: BlogPost[]) => {
-  try {
-    const dir = path.dirname(DATA_PATH);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    fs.writeFileSync(DATA_PATH, JSON.stringify(blogs, null, 2), "utf-8");
-  } catch (error) {
-    console.error("Error writing blogs:", error);
+    console.error("Schema Initialization Error:", error);
   }
 };
 
 export async function GET() {
-  const blogs = readBlogs();
-  return NextResponse.json(blogs);
+  try {
+    await ensureTableExists();
+    const { rows } = await sql`
+      SELECT * FROM blog_posts 
+      WHERE status = 'published' 
+      ORDER BY publish_date DESC
+    `;
+    
+    // Map database fields to interface
+    const blogs: BlogPost[] = rows.map(row => ({
+      title: row.title,
+      slug: row.slug,
+      content: row.content,
+      excerpt: row.excerpt,
+      category: row.category,
+      author: row.author,
+      featuredImage: row.featured_image,
+      createdAt: row.created_at.toISOString(),
+      publishDate: row.publish_date.toISOString(),
+      status: row.status
+    }));
+
+    return NextResponse.json(blogs);
+  } catch (error) {
+    console.error("API GET Error:", error);
+    return NextResponse.json({ error: "Failed to fetch blogs." }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
   try {
     const newBlog: BlogPost = await request.json();
-    const blogs = readBlogs();
-    
+    await ensureTableExists();
+
     // Check for duplicate slug
-    const exists = blogs.some(b => b.slug === newBlog.slug);
-    if (exists) {
+    const { rowCount } = await sql`SELECT 1 FROM blog_posts WHERE slug = ${newBlog.slug}`;
+    if (rowCount && rowCount > 0) {
       return NextResponse.json({ error: "A blog with this slug already exists." }, { status: 400 });
     }
 
-    blogs.push({
-      ...newBlog,
-      createdAt: new Date().toISOString(),
-      status: "published"
-    });
-
-    writeBlogs(blogs);
+    await sql`
+      INSERT INTO blog_posts (
+        title, slug, content, excerpt, category, author, featured_image, publish_date, created_at, status
+      ) VALUES (
+        ${newBlog.title}, 
+        ${newBlog.slug}, 
+        ${newBlog.content}, 
+        ${newBlog.excerpt}, 
+        ${newBlog.category}, 
+        ${newBlog.author}, 
+        ${newBlog.featuredImage}, 
+        ${newBlog.publishDate || new Date().toISOString()}, 
+        ${new Date().toISOString()}, 
+        'published'
+      )
+    `;
 
     return NextResponse.json({ success: true, blog: newBlog });
   } catch (error) {
     console.error("API POST Error:", error);
-    return NextResponse.json({ error: "Failed to save blog post." }, { status: 500 });
+    return NextResponse.json({ error: "Failed to save blog post to database." }, { status: 500 });
   }
 }

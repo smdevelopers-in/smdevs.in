@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
+import { sql } from "@vercel/postgres";
 import { BlogPost } from "@/types/blog";
 import { 
   Calendar, 
@@ -21,25 +20,54 @@ import Breadcrumbs from "@/components/tools/Breadcrumbs";
 export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
   
-  // Read from JSON file
-  const dataPath = path.join(process.cwd(), "data", "blogs.json");
-  let blogs: BlogPost[] = [];
-  try {
-    const fileData = fs.readFileSync(dataPath, "utf-8");
-    blogs = JSON.parse(fileData);
-  } catch (e) {
-    console.error("Error reading blogs for detail page:", e);
-  }
+  // Fetch from Postgres
+  let blog: BlogPost | null = null;
+  let relatedPosts: BlogPost[] = [];
 
-  const blog = blogs.find(b => b.slug === slug);
+  try {
+    const { rows } = await sql`SELECT * FROM blog_posts WHERE slug = ${slug} LIMIT 1`;
+    
+    if (rows.length > 0) {
+      const row = rows[0];
+      blog = {
+        title: row.title,
+        slug: row.slug,
+        content: row.content,
+        excerpt: row.excerpt,
+        category: row.category,
+        author: row.author,
+        featuredImage: row.featured_image,
+        createdAt: row.created_at.toISOString(),
+        publishDate: row.publish_date.toISOString(),
+        status: row.status
+      };
+
+      // Fetch related posts
+      const { rows: relatedRows } = await sql`
+        SELECT * FROM blog_posts 
+        WHERE category = ${blog.category} AND slug != ${slug} 
+        LIMIT 3
+      `;
+      relatedPosts = relatedRows.map(r => ({
+        title: r.title,
+        slug: r.slug,
+        content: r.content,
+        excerpt: r.excerpt,
+        category: r.category,
+        author: r.author,
+        featuredImage: r.featured_image,
+        createdAt: r.created_at.toISOString(),
+        publishDate: r.publish_date.toISOString(),
+        status: r.status
+      }));
+    }
+  } catch (e) {
+    console.error("Error fetching blog from DB:", e);
+  }
 
   if (!blog) {
     notFound();
   }
-
-  const relatedPosts = blogs
-    .filter(b => b.slug !== slug && b.category === blog.category)
-    .slice(0, 3);
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
