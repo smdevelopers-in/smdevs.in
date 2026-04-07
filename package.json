@@ -10,11 +10,8 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
-    "@tiptap/extension-code-block-lowlight": "^3.21.0",
-    "@tiptap/extension-link": "^3.21.0",
-    "@tiptap/extension-underline": "^3.21.0",
-    "@tiptap/react": "^3.21.0",
-    "@tiptap/starter-kit": "^3.21.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tinymce/tinymce-react": "^6.3.0",
     "@vercel/edge-config": "^1.4.3",
     "@vercel/postgres": "^0.10.0",
     "cheerio": "^1.2.0",

@@ -79,7 +79,7 @@ const FAQS = [
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Directory Header (Mirrors SEO Hub) */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 lg:pt-32 pb-16">
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 lg:pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 space-y-8 text-center">
           <h1 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
             Professional <span className="gradient-text">Trading Tools</span> for Everyone

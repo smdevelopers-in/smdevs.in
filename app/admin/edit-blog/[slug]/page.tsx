@@ -11,16 +11,18 @@ import {
   ArrowLeft,
   Plus,
   Lock,
-  Search
+  Loader2,
+  Trash2
 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { BlogPost } from "@/types/blog";
 
 const CATEGORIES = ["SEO", "Trading", "Development", "General"];
 
-export default function CreateBlogPage() {
+export default function EditBlogPage() {
+  const { slug: urlSlug } = useParams();
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [category, setCategory] = useState("General");
@@ -30,24 +32,62 @@ export default function CreateBlogPage() {
   const [isGeneratingSummary, setIsGeneratingSummary] = useState(false);
   const [summary, setSummary] = useState("");
   const router = useRouter();
-  const [isPublishing, setIsPublishing] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   // Advanced SEO Fields
   const [tldr, setTldr] = useState("");
   const [focusKeyphrase, setFocusKeyphrase] = useState("");
   const [metaTitle, setMetaTitle] = useState("");
   const [metaDescription, setMetaDescription] = useState("");
-  const [isSlugManual, setIsSlugManual] = useState(false);
+  const [initialContent, setInitialContent] = useState("");
 
   const editorRef = useRef<any>(null);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isAdmin && urlSlug) {
+      fetchBlog();
+    }
+  }, [isAdmin, urlSlug]);
+
+  const fetchBlog = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/blogs");
+      const blogs = await res.json();
+      const blog = blogs.find((b: any) => b.slug === urlSlug);
+      
+      if (blog) {
+        setTitle(blog.title);
+        setSlug(blog.slug);
+        setCategory(blog.category);
+        setAuthor(blog.author);
+        setFeaturedImage(blog.featuredImage);
+        setPublishDate(blog.publishDate ? new Date(blog.publishDate).toISOString().slice(0, 16) : "");
+        setSummary(blog.excerpt || "");
+        setTldr(blog.tldr || "");
+        setFocusKeyphrase(blog.focusKeyphrase || "");
+        setMetaTitle(blog.metaTitle || "");
+        setMetaDescription(blog.metaDescription || "");
+        setInitialContent(blog.content || "");
+      } else {
+        setError("Blog post not found.");
+      }
+    } catch (err) {
+      console.error("Fetch Error:", err);
+      setError("Failed to load blog data.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const generateSummary = () => {
     if (!editorRef.current) return;
@@ -59,21 +99,16 @@ export default function CreateBlogPage() {
     }, 1500);
   };
 
-  const handlePublish = async () => {
+  const handleUpdate = async () => {
     if (!title || !editorRef.current) {
       alert("Please enter a title and content.");
       return;
     }
 
     const htmlContent = editorRef.current.getContent();
-    if (!htmlContent) {
-      alert("Please enter some content.");
-      return;
-    }
+    setIsUpdating(true);
 
-    setIsPublishing(true);
-
-    const newPost: Partial<BlogPost> = {
+    const updatedPost: Partial<BlogPost> = {
       title,
       slug,
       content: htmlContent,
@@ -90,39 +125,30 @@ export default function CreateBlogPage() {
     };
 
     try {
-      const res = await fetch("/api/blogs", {
-        method: "POST",
+      const res = await fetch(`/api/blogs?slug=${urlSlug}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newPost),
+        body: JSON.stringify(updatedPost),
       });
 
       const data = await res.json();
 
       if (data.success) {
-        router.push(`/resources/blogs/\${slug}`);
+        router.push(`/resources/blogs/${slug}`);
         router.refresh();
       } else {
-        alert(data.error || "Failed to publish blog.");
+        alert(data.error || "Failed to update blog.");
       }
     } catch (error) {
-      console.error("Publish Error:", error);
-      alert("An error occurred while publishing.");
+      console.error("Update Error:", error);
+      alert("An error occurred while updating.");
     } finally {
-      setIsPublishing(false);
-    }
-  };
-
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    setTitle(val);
-    if (!isSlugManual) {
-      setSlug(val.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
+      setIsUpdating(false);
     }
   };
 
   if (!isMounted) return null;
 
-  // Simple Admin Guard
   if (!isAdmin) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-6">
@@ -136,7 +162,7 @@ export default function CreateBlogPage() {
           </div>
           <form className="space-y-4" onSubmit={(e) => {
             e.preventDefault();
-            if (password === "smdevs2026") { // Standard placeholder password
+            if (password === "smdevs2026") {
               setIsAdmin(true);
             } else {
               setError("Incorrect password. Please try again.");
@@ -160,34 +186,41 @@ export default function CreateBlogPage() {
     );
   }
 
+  if (isLoading) {
+    return (
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
+            <div className="flex flex-col items-center gap-6">
+                <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
+                <p className="text-sm font-black text-slate-400 uppercase tracking-widest italic animate-pulse">Retrieving Archives...</p>
+            </div>
+        </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-12">
       <div className="max-w-6xl mx-auto px-6 space-y-8">
         {/* Header Actions */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
            <div className="space-y-1">
-              <Link href="/resources/blogs" className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
-                 <ArrowLeft size={14} /> Back to Blogs
+              <Link href="/admin/manage-blogs" className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
+                 <ArrowLeft size={14} /> Back to Dashboard
               </Link>
               <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                Create New <span className="text-blue-600">Blog Post</span>
+                Refining <span className="text-blue-600">Archived Post</span>
               </h1>
            </div>
            <div className="flex items-center gap-3">
-              <Link 
-                href="/admin/manage-blogs"
-                className="px-6 py-2.5 rounded-xl border border-border bg-white dark:bg-slate-900 text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors flex items-center gap-2"
-              >
-                 <Search size={16} />
-                 Manage
+              <Link href="/admin/manage-blogs" className="px-6 py-2.5 rounded-xl border border-border bg-white dark:bg-slate-900 text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 transition-colors">
+                 Discard
               </Link>
               <button 
-                onClick={handlePublish}
-                disabled={isPublishing}
+                onClick={handleUpdate}
+                disabled={isUpdating}
                 className="px-6 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2 disabled:opacity-50"
               >
-                 {isPublishing ? <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full" /> : <Save size={18} />}
-                 {isPublishing ? "Publishing..." : "Publish Now"}
+                 {isUpdating ? <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full" /> : <Save size={18} />}
+                 {isUpdating ? "Optimizing..." : "Update Post"}
               </button>
            </div>
         </div>
@@ -201,7 +234,7 @@ export default function CreateBlogPage() {
                     <input 
                       type="text" 
                       value={title}
-                      onChange={handleTitleChange}
+                      onChange={(e) => setTitle(e.target.value)}
                       placeholder="Enter a catchy title..."
                       className="w-full text-3xl font-bold bg-transparent border-none focus:ring-0 placeholder:text-slate-400 dark:placeholder:text-slate-600 p-0 text-slate-900 dark:text-white"
                     />
@@ -211,13 +244,9 @@ export default function CreateBlogPage() {
                     <span className="text-blue-600 underline shrink-0 hidden sm:block">smdevs.in/resources/blogs/</span>
                     <input 
                       type="text"
-                      className="w-full bg-slate-50 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white font-bold focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      readOnly
+                      className="w-full bg-slate-50/50 dark:bg-slate-800/50 px-3 py-1.5 rounded-lg border border-slate-200/50 dark:border-slate-700/50 text-slate-500 font-bold focus:outline-none cursor-not-allowed"
                       value={slug}
-                      onChange={(e) => {
-                        setSlug(e.target.value.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
-                        setIsSlugManual(true);
-                      }}
-                      placeholder="custom-url-slug"
                     />
                  </div>
               </div>
@@ -227,7 +256,7 @@ export default function CreateBlogPage() {
                  <Editor
                    apiKey="07xf0znqle7x4fpbhw4ulmas3pa8j88hbtgw3wo05ngkmoo9"
                    onInit={(_evt, editor) => editorRef.current = editor}
-                   initialValue="<p>Start writing your masterpiece here...</p>"
+                   initialValue={initialContent}
                    init={{
                      height: 700,
                      menubar: true,

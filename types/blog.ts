@@ -5,6 +5,10 @@ export interface BlogPost {
   slug: string;
   content: string;
   excerpt: string;
+  tldr?: string;
+  focusKeyphrase?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   category: BlogCategory;
   author: string;
   featuredImage: string;

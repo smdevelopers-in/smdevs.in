@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 lg:pt-32 pb-16">
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 lg:pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-6 space-y-6 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-4 mx-auto">
             <ShieldCheck className="w-3.5 h-3.5" /> Privacy & Terms

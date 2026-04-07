@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 w-full z-50 py-3 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300"
+      className={`fixed top-0 w-full ${isOpen ? "z-[9999] bg-white dark:bg-slate-950" : "z-[100] bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl"} py-3 border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
@@ -112,7 +112,7 @@ export default function Header() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[72px] bg-white dark:bg-slate-950 z-40 animate-in slide-in-from-right duration-300 overflow-y-auto">
+        <div className="lg:hidden fixed left-0 right-0 bottom-0 top-[64px] bg-white dark:bg-slate-950 z-[999] overflow-y-auto border-t border-slate-100 dark:border-slate-800">
           <div className="p-8 space-y-10">
             {NAV_LINKS.map((link) => (
               <div key={link.name} className="space-y-6">

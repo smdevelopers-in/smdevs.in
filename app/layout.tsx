@@ -78,7 +78,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen flex flex-col bg-background text-foreground`}
       >
         <Header />
-        <main className="flex-grow pt-24 lg:pt-32 bg-white dark:bg-slate-950 transition-colors duration-300">
+        <main className="flex-grow pt-18 lg:pt-32 bg-white dark:bg-slate-950 transition-colors duration-300">
           {children}
         </main>
         <Footer />

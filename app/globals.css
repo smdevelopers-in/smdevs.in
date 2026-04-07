@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -80,4 +80,137 @@
 
 .section-padding {
   @apply py-16 md:py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto;
+}
+
+/* Rich Text / Tiptap Overrides & Google Docs Formatting */
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: #0f172a !important;
+}
+
+.dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4, .dark .prose h5, .dark .prose h6 {
+  color: #f8fafc !important;
+}
+
+.prose details {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0;
+  margin-top: 0;
+  margin-bottom: 0px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.prose details:first-of-type {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.prose details:last-of-type {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.prose details + details {
+  border-top: none; 
+}
+
+.dark .prose details {
+  background-color: #0f172a;
+  border-color: #1e293b;
+}
+
+.prose summary {
+  padding: 1.25rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #0f172a !important; /* Forces dark slate */
+  cursor: pointer;
+  background-color: #ffffff;
+  list-style-type: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.dark .prose summary {
+  background-color: #0f172a;
+  color: #f8fafc !important;
+}
+
+.prose summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose summary::before {
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #0f172a;
+  width: 24px;
+  text-align: center;
+}
+
+.dark .prose summary::before {
+  color: #f8fafc;
+}
+
+.prose details[open] summary::before {
+  content: "-";
+}
+
+.prose details[open] summary {
+  border-bottom: 1px solid #e2e8f0; /* adds separation to answer */
+}
+.dark .prose details[open] summary {
+  border-color: #1e293b;
+}
+
+.prose details p {
+  padding: 1.25rem;
+  margin: 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dark .prose table {
+  border-color: #1e293b;
+}
+
+.prose th, .prose td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+}
+
+.dark .prose th, .dark .prose td {
+  border-color: #1e293b;
+}
+
+.prose th {
+  background-color: #f8fafc;
+  font-weight: 800;
+  text-align: left;
+}
+
+.dark .prose th {
+  background-color: #0f172a;
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tr td:last-child, .prose tr th:last-child {
+  border-right: none;
 }

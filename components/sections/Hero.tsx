@@ -3,7 +3,7 @@ import { ArrowRight, Play } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative pt-8 pb-20 md:pt-12 md:pb-32 overflow-hidden bg-slate-50 dark:bg-slate-950">
+    <section className="relative pt-2 pb-20 md:pt-12 md:pb-32 overflow-hidden bg-slate-50 dark:bg-slate-950">
       {/* Background Gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-400/10 blur-[120px] rounded-full" />

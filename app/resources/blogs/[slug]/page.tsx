@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { sql } from "@vercel/postgres";
 import { BlogPost } from "@/types/blog";
+import * as cheerio from "cheerio";
 import { 
   Calendar, 
   User, 
@@ -13,35 +14,71 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  ChevronRight
+  ChevronRight,
+  ListOrdered
 } from "lucide-react";
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
+import TableOfContents from "@/components/tools/TableOfContents";
+import SidebarTools from "@/components/tools/SidebarTools";
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
-  
-  // Fetch from Postgres
-  let blog: BlogPost | null = null;
-  let relatedPosts: BlogPost[] = [];
-
+async function getBlog(slug: string) {
   try {
     const { rows } = await sql`SELECT * FROM blog_posts WHERE slug = ${slug} LIMIT 1`;
-    
     if (rows.length > 0) {
       const row = rows[0];
-      blog = {
+      return {
         title: row.title,
         slug: row.slug,
         content: row.content,
         excerpt: row.excerpt,
+        tldr: row.tldr,
+        focusKeyphrase: row.focus_keyphrase,
+        metaTitle: row.meta_title,
+        metaDescription: row.meta_description,
         category: row.category,
         author: row.author,
         featuredImage: row.featured_image,
         createdAt: row.created_at.toISOString(),
         publishDate: row.publish_date.toISOString(),
         status: row.status
-      };
+      } as BlogPost;
+    }
+  } catch (e) {
+    console.error("Error fetching blog from DB:", e);
+  }
+  return null;
+}
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
+  const blog = await getBlog(slug);
+  
+  if (!blog) return { title: 'Post Not Found' };
+
+  return {
+    title: blog.metaTitle || `${blog.title} | SM Developers`,
+    description: blog.metaDescription || blog.excerpt || blog.tldr?.slice(0, 150),
+    keywords: blog.focusKeyphrase ? [blog.focusKeyphrase] : [],
+    openGraph: {
+      title: blog.metaTitle || blog.title,
+      description: blog.metaDescription || blog.excerpt,
+      images: [blog.featuredImage],
+      type: 'article',
+      publishedTime: blog.publishDate,
+      authors: [blog.author],
+    }
+  };
+}
+
+export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
+  
+  let blog: BlogPost | null = await getBlog(slug);
+  let relatedPosts: BlogPost[] = [];
+  let tableOfContents: { id: string; text: string; level: number }[] = [];
+
+  if (blog) {
+    try {
       // Fetch related posts
       const { rows: relatedRows } = await sql`
         SELECT * FROM blog_posts 
@@ -59,82 +96,105 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
         createdAt: r.created_at.toISOString(),
         publishDate: r.publish_date.toISOString(),
         status: r.status
-      }));
+      } as BlogPost));
+
+      // Parse HTML for TOC and inject IDs
+      const $ = cheerio.load(blog.content);
+      $('h1, h2, h3, h4, h5, h6').each((i, el) => {
+        const text = $(el).text();
+        const id = text.toLowerCase().replace(/\\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+        $(el).attr('id', id);
+        
+        tableOfContents.push({
+          id,
+          text,
+          level: parseInt(el.tagName.replace('h', ''))
+        });
+      });
+      blog.content = $.html();
+
+    } catch (e) {
+      console.error("Error processing blog post:", e);
     }
-  } catch (e) {
-    console.error("Error fetching blog from DB:", e);
   }
 
   if (!blog) {
     notFound();
   }
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-           
-           {/* Main Content Side */}
-           <article className="lg:col-span-8 space-y-12">
-              {/* Breadcrumb & Navigation */}
-              <div className="flex items-center justify-between">
-                 <Link href="/resources/blogs" className="flex items-center gap-2 text-xs font-black text-blue-600 uppercase tracking-widest hover:translate-x-[-4px] transition-transform">
-                    <ArrowLeft size={16} /> Back to Library
-                 </Link>
-                 <div className="flex items-center gap-4 text-slate-400">
-                    <Share2 size={18} className="hover:text-blue-600 cursor-pointer transition-colors" />
-                    <Bookmark size={18} className="hover:text-blue-600 cursor-pointer transition-colors" />
+    <div className="min-h-screen bg-white dark:bg-slate-950 pb-20">
+      
+      {/* 1. Full Width Dark Banner */}
+      <section className="bg-slate-950 dark:bg-[#040B16] text-white pt-32 pb-16 border-b border-slate-800">
+         <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+               
+               {/* Left Column: Title & Meta */}
+               <div className="space-y-6">
+                 {/* Breadcrumbs */}
+                 <div className="flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400">
+                    <Link href="/" className="hover:text-blue-500 transition-colors">Home</Link>
+                    <span>/</span>
+                    <Link href="/resources/blogs" className="hover:text-blue-500 transition-colors">Blogs</Link>
+                    <span>/</span>
+                    <span className="text-white line-clamp-1">{blog.title}</span>
                  </div>
-              </div>
-
-              {/* Title & Metadata */}
-              <div className="space-y-6">
-                 <div className="inline-block px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-[10px] font-black uppercase tracking-widest rounded-full border border-blue-500/10">
-                    {blog.category}
-                 </div>
-                 <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+                 
+                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black tracking-tight leading-[1.2]">
                     {blog.title}
                  </h1>
                  
-                 <div className="flex flex-wrap items-center gap-6 pt-4 text-sm font-medium text-slate-500 dark:text-slate-400 border-b border-slate-50 dark:border-slate-800 pb-8">
+                 <div className="flex flex-wrap items-center gap-6 pt-4 text-sm font-medium text-slate-400">
                     <div className="flex items-center gap-2">
-                       <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 font-black text-[10px]">
-                          SM
-                       </div>
-                       <span className="font-bold text-slate-900 dark:text-white">{blog.author}</span>
+                       <span className="text-slate-500">Posted by:</span>
+                       <span className="font-bold text-white">{blog.author}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                       <Calendar size={16} className="text-blue-600" />
-                       {new Date(blog.publishDate).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })}
+                       <span className="text-slate-500">Date:</span>
+                       <span className="text-blue-400">{new Date(blog.publishDate).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                       <Clock size={16} className="text-blue-600" />
-                       6 min read
+                       <span className="text-slate-500">Read time:</span>
+                       <span className="text-rose-400">6 min read</span>
                     </div>
                  </div>
+               </div>
+               
+               {/* Right Column: Featured Image */}
+               <div className="aspect-[16/9] lg:aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl relative group border border-slate-800">
+                  <img 
+                    src={blog.featuredImage} 
+                    alt={blog.title} 
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                  />
+               </div>
+               
+            </div>
+         </div>
+      </section>
 
-                 {/* Breadcrumbs below Metadata */}
-                 <div className="pt-4">
-                    <Breadcrumbs items={[
-                      { label: "Resources", href: "/resources/blogs" }, 
-                      { label: "Blogs", href: "/resources/blogs" }, 
-                      { label: blog.title }
-                    ]} />
+      {/* 2. Main Content Area */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+           <article className="lg:col-span-8 space-y-12">
+              
+              {/* TLDR Block (Key Takeaways) */}
+              {blog.tldr && (
+                 <div className="bg-slate-50 dark:bg-slate-900 border-l-4 border-blue-600 p-6 md:p-8 rounded-r-2xl space-y-4 shadow-sm">
+                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                     Key Takeaways
+                   </h3>
+                   <ul className="space-y-4 list-disc pl-5 text-[17px] text-slate-600 dark:text-slate-300">
+                     {blog.tldr.split('\n').filter((b: string) => b.trim() !== '').map((bullet: string, i: number) => (
+                       <li key={i} className="pl-2 leading-relaxed">{bullet}</li>
+                     ))}
+                   </ul>
                  </div>
-              </div>
-
-              {/* Featured Image */}
-              <div className="aspect-[21/9] w-full rounded-[3rem] overflow-hidden shadow-2xl relative group">
-                 <img 
-                   src={blog.featuredImage} 
-                   alt={blog.title} 
-                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
-              </div>
+              )}
 
               {/* Rich Text Content */}
               <div 
-                className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-black prose-headings:tracking-tight prose-a:text-blue-600 prose-blockquote:border-blue-600 prose-blockquote:italic prose-blockquote:bg-blue-50/50 dark:prose-blockquote:bg-blue-900/10 prose-img:rounded-[2rem] text-lg leading-relaxed text-slate-600 dark:text-slate-300 font-medium"
+                className="prose prose-slate dark:prose-invert max-w-none text-[17px] leading-[1.8] text-slate-700 dark:text-slate-300 prose-headings:font-black prose-a:text-blue-600 prose-p:my-4 prose-headings:mt-8 prose-headings:mb-4 prose-ul:my-4 prose-li:my-1 prose-img:rounded-2xl"
                 dangerouslySetInnerHTML={{ __html: blog.content }}
               />
 
@@ -153,11 +213,39 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                      <span className="text-sm font-bold text-slate-900 dark:text-white italic">"Fascinating read. Great insights on {blog.category}!"</span>
                   </div>
               </div>
-           </article>
 
+              {/* Related Posts */}
+              {relatedPosts.length > 0 && (
+                <div className="pt-16 mt-16 border-t border-slate-100 dark:border-slate-800 space-y-8">
+                   <h3 className="text-2xl font-black text-slate-900 dark:text-white">Related Insights</h3>
+                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {relatedPosts.map((related, i) => (
+                        <Link 
+                          key={i} 
+                          href={`/resources/blogs/${related.slug}`}
+                          className="group space-y-4"
+                        >
+                           <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-sm transition-transform duration-500 group-hover:scale-105 border border-slate-100 dark:border-slate-800">
+                              <img src={related.featuredImage} alt={related.title} className="w-full h-full object-cover" />
+                           </div>
+                           <div className="space-y-2 py-1">
+                              <h4 className="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                                 {related.title}
+                              </h4>
+                              <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 flex items-center gap-1 mt-2">
+                                 READ MORE <ChevronRight size={14} />
+                              </span>
+                           </div>
+                        </Link>
+                      ))}
+                   </div>
+                </div>
+              )}
+
+           </article>
            {/* Sidebar Side */}
-           <aside className="lg:col-span-4 space-y-12">
-              {/* About Author */}
+           <aside className="lg:col-span-4 space-y-12 relative">
+              {/* 1. About Author */}
               <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 space-y-6">
                  <h3 className="text-sm font-black uppercase tracking-widest text-blue-600 border-l-4 border-blue-600 pl-4">About Author</h3>
                  <div className="flex items-center gap-4">
@@ -174,57 +262,18 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                  </p>
               </div>
 
-              {/* Related Posts */}
-              {relatedPosts.length > 0 && (
-                <div className="space-y-8">
-                   <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 border-l-4 border-slate-200 dark:border-slate-800 pl-4">Related Insights</h3>
-                   <div className="space-y-6">
-                      {relatedPosts.map((related, i) => (
-                        <Link 
-                          key={i} 
-                          href={`/resources/blogs/${related.slug}`}
-                          className="flex gap-4 group"
-                        >
-                           <div className="w-20 h-20 rounded-2xl overflow-hidden shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-105">
-                              <img src={related.featuredImage} alt={related.title} className="w-full h-full object-cover" />
-                           </div>
-                           <div className="space-y-2 py-1">
-                              <h4 className="text-sm font-bold text-slate-900 dark:text-white leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                                 {related.title}
-                              </h4>
-                              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-1 group-hover:text-blue-500 transition-colors">
-                                 READ MORE <ChevronRight size={10} />
-                              </span>
-                           </div>
-                        </Link>
-                      ))}
-                   </div>
+              {/* 2. New Tools (Dynamic based on category) */}
+              <SidebarTools category={blog.category} />
+
+              {/* 3. Table of Contents (Sticky) */}
+              {tableOfContents.length > 0 && (
+                <div className="sticky top-28 z-10 transition-all duration-300">
+                  <TableOfContents items={tableOfContents} />
                 </div>
               )}
-
-              {/* Newsletter Ad */}
-              <div className="bg-blue-600 rounded-[2.5rem] p-10 text-white space-y-8 shadow-2xl shadow-blue-500/30 relative overflow-hidden">
-                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -mr-32 -mt-32" />
-                 <div className="space-y-4 relative">
-                    <h3 className="text-2xl font-black leading-tight">Join 10,000+ Readers</h3>
-                    <p className="text-sm text-blue-100 font-medium leading-relaxed">
-                       Subscribe to our weekly newsletter and never miss an update on new tools and tech guides.
-                    </p>
-                 </div>
-                 <div className="space-y-3 relative">
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email..." 
-                      className="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-blue-200 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm font-bold"
-                    />
-                    <button className="w-full py-4 bg-white text-blue-600 rounded-xl font-bold hover:bg-slate-100 transition-all text-sm uppercase tracking-widest shadow-xl">
-                       JOIN THE CLUB
-                    </button>
-                 </div>
-              </div>
            </aside>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
