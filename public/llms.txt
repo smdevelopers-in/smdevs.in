@@ -27,7 +27,7 @@ SM Developers is a professional SaaS utilities platform providing high-performan
 - **Always Free**: Our core suite of professional tools is committed to remaining free forever.
 
 ## Contact & Links
-- Website: https://smdevelopers.xyz
-- Documentation: https://smdevelopers.xyz/docs
-- Privacy Policy: https://smdevelopers.xyz/privacy
+- Website: https://smdevs.in
+- Documentation: https://smdevs.in/docs
+- Privacy Policy: https://smdevs.in/privacy
 - Support: support@smdevelopers.io

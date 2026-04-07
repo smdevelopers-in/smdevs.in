@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from "path";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://smdevelopers.xyz';
+  const baseUrl = 'https://smdevs.in';
 
   // 1. Static Routes
   const staticRoutes = [

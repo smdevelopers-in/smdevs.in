@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "SM Developers | Professional SaaS Utilities Platform",
     description: "High-performance suite of SEO, Trading, and Content intelligence tools.",
     type: "website",
-    url: "https://smdevelopers.xyz", // Updated placeholder
+    url: "https://smdevs.in",
     siteName: "SM Developers",
     locale: "en_US",
   },
