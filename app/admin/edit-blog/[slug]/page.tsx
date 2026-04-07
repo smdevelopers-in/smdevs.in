@@ -12,7 +12,8 @@ import {
   Plus,
   Lock,
   Loader2,
-  Trash2
+  Trash2,
+  Code
 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
@@ -44,6 +45,8 @@ export default function EditBlogPage() {
   const [focusKeyphrase, setFocusKeyphrase] = useState("");
   const [metaTitle, setMetaTitle] = useState("");
   const [metaDescription, setMetaDescription] = useState("");
+  const [featuredImageAlt, setFeaturedImageAlt] = useState("");
+  const [customSchema, setCustomSchema] = useState("");
   const [initialContent, setInitialContent] = useState("");
 
   const editorRef = useRef<any>(null);
@@ -77,6 +80,8 @@ export default function EditBlogPage() {
         setFocusKeyphrase(blog.focusKeyphrase || "");
         setMetaTitle(blog.metaTitle || "");
         setMetaDescription(blog.metaDescription || "");
+        setFeaturedImageAlt(blog.featuredImageAlt || "");
+        setCustomSchema(blog.customSchema || "");
         setInitialContent(blog.content || "");
       } else {
         setError("Blog post not found.");
@@ -120,6 +125,8 @@ export default function EditBlogPage() {
       category: category as any,
       author,
       featuredImage: featuredImage || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+      featuredImageAlt,
+      customSchema,
       publishDate: publishDate || new Date().toISOString(),
       status: "published"
     };
@@ -397,6 +404,30 @@ export default function EditBlogPage() {
                    value={featuredImage}
                    onChange={(e) => setFeaturedImage(e.target.value)}
                    className="w-full px-4 py-2 border-b border-border focus:outline-none bg-transparent text-xs font-medium"
+                 />
+                 <div className="pt-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400">Image Alt Tag</label>
+                    <input 
+                      type="text" 
+                      placeholder="e.g. A developer working on SEO tools..."
+                      value={featuredImageAlt}
+                      onChange={(e) => setFeaturedImageAlt(e.target.value)}
+                      className="w-full px-4 py-3 mt-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-sm font-bold text-slate-900 dark:text-white"
+                    />
+                 </div>
+              </div>
+
+              {/* Custom JSON-LD Schema */}
+              <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-border shadow-sm space-y-4">
+                 <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <Code className="text-blue-600" size={18} /> Custom Schema Payload
+                 </h3>
+                 <textarea 
+                   value={customSchema} 
+                   onChange={(e) => setCustomSchema(e.target.value)}
+                   placeholder='{"@context": "https://schema.org", "@type": "Article"...}'
+                   rows={6}
+                   className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-xs font-mono text-slate-900 dark:text-white resize-y"
                  />
               </div>
 

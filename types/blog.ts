@@ -12,6 +12,8 @@ export interface BlogPost {
   category: BlogCategory;
   author: string;
   featuredImage: string;
+  featuredImageAlt?: string;
+  customSchema?: string;
   createdAt: string;
   publishDate: string;
   status: "published" | "draft" | "scheduled";

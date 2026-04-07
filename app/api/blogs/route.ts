@@ -24,6 +24,8 @@ const ensureTableExists = async () => {
     await sql`ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS focus_keyphrase TEXT;`;
     await sql`ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS meta_title TEXT;`;
     await sql`ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS meta_description TEXT;`;
+    await sql`ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS featured_image_alt TEXT;`;
+    await sql`ALTER TABLE blog_posts ADD COLUMN IF NOT EXISTS custom_schema TEXT;`;
     await sql`CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON blog_posts(slug);`;
   } catch (error) {
     console.error("Schema Initialization Error:", error);
@@ -52,6 +54,8 @@ export async function GET() {
       focusKeyphrase: row.focus_keyphrase,
       metaTitle: row.meta_title,
       metaDescription: row.meta_description,
+      featuredImageAlt: row.featured_image_alt,
+      customSchema: row.custom_schema,
       createdAt: row.created_at.toISOString(),
       publishDate: row.publish_date.toISOString(),
       status: row.status
@@ -77,7 +81,7 @@ export async function POST(request: Request) {
 
     await sql`
       INSERT INTO blog_posts (
-        title, slug, content, excerpt, category, author, featured_image, publish_date, created_at, status, tldr, focus_keyphrase, meta_title, meta_description
+        title, slug, content, excerpt, category, author, featured_image, publish_date, created_at, status, tldr, focus_keyphrase, meta_title, meta_description, featured_image_alt, custom_schema
       ) VALUES (
         ${newBlog.title}, 
         ${newBlog.slug}, 
@@ -92,7 +96,9 @@ export async function POST(request: Request) {
         ${newBlog.tldr || null},
         ${newBlog.focusKeyphrase || null},
         ${newBlog.metaTitle || null},
-        ${newBlog.metaDescription || null}
+        ${newBlog.metaDescription || null},
+        ${newBlog.featuredImageAlt || null},
+        ${newBlog.customSchema || null}
       )
     `;
 
@@ -129,6 +135,8 @@ export async function PUT(request: Request) {
         focus_keyphrase = ${updatedBlog.focusKeyphrase || null},
         meta_title = ${updatedBlog.metaTitle || null},
         meta_description = ${updatedBlog.metaDescription || null},
+        featured_image_alt = ${updatedBlog.featuredImageAlt || null},
+        custom_schema = ${updatedBlog.customSchema || null},
         status = ${updatedBlog.status || 'published'}
       WHERE slug = ${slug}
     `;

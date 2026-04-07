@@ -122,7 +122,14 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
     notFound();
   }
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 pb-20">
+    <>
+      {blog.customSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: blog.customSchema }}
+        />
+      )}
+      <div className="min-h-screen bg-white dark:bg-slate-950 pb-20">
       
       {/* 1. Full Width Dark Banner */}
       <section className="bg-slate-950 dark:bg-[#040B16] text-white pt-32 pb-16 border-b border-slate-800">
@@ -164,7 +171,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                <div className="aspect-[16/9] lg:aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-2xl relative group border border-slate-800">
                   <img 
                     src={blog.featuredImage} 
-                    alt={blog.title} 
+                    alt={blog.featuredImageAlt || blog.title} 
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                   />
                </div>
@@ -272,8 +279,9 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                 </div>
               )}
            </aside>
-        </div>
+         </div>
       </section>
     </div>
+    </>
   );
 }
