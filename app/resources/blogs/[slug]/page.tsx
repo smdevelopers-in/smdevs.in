@@ -121,12 +121,76 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
   if (!blog) {
     notFound();
   }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://smdevs.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blogs",
+        "item": "https://smdevs.in/resources/blogs"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": blog.title,
+        "item": `https://smdevs.in/resources/blogs/${blog.slug}`
+      }
+    ]
+  };
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://smdevs.in/resources/blogs/${blog.slug}`
+    },
+    "headline": blog.metaTitle || blog.title,
+    "description": blog.metaDescription || blog.excerpt || blog.tldr?.slice(0, 150) || "",
+    "image": blog.featuredImage,
+    "author": {
+      "@type": "Person",
+      "name": blog.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SM Developers",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://smdevs.in/icon.png"
+      }
+    },
+    "datePublished": blog.publishDate || blog.createdAt,
+    "dateModified": blog.publishDate || blog.createdAt
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {blog.customSchema && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: blog.customSchema }}
+          dangerouslySetInnerHTML={{ 
+            __html: blog.customSchema.includes('<script') 
+              ? blog.customSchema.replace(/<script[^>]*>|<\/script>/g, '') 
+              : blog.customSchema 
+          }}
         />
       )}
       <div className="min-h-screen bg-white dark:bg-slate-950 pb-20">
