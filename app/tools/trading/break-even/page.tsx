@@ -95,9 +95,9 @@ export default function BreakEvenCalculatorPage() {
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
              <div className="space-y-4">
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Entry Price</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Entry Price</label>
                    <div className="relative">
-                      <span className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400">$</span>
+                      <span className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400">$</span>
                       <input 
                         type="text"
                         inputMode="decimal"
@@ -108,7 +108,7 @@ export default function BreakEvenCalculatorPage() {
                    </div>
                 </div>
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Total Fees (Buy + Sell)</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Total Fees (Buy + Sell)</label>
                    <div className="relative">
                       <DollarSign className="absolute left-6 top-1/2 -translate-y-1/2 text-rose-400" size={18} />
                       <input 
@@ -122,7 +122,7 @@ export default function BreakEvenCalculatorPage() {
                    </div>
                 </div>
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Position Quantity</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Position Quantity</label>
                    <input 
                      type="text"
                      inputMode="decimal"
@@ -151,7 +151,7 @@ export default function BreakEvenCalculatorPage() {
               {!results ? (
                  <div className="flex-1 py-12 text-center space-y-4 opacity-50 relative z-10 w-full">
                     <Calculator className="mx-auto text-slate-500" size={48} />
-                    <p className="text-slate-400 font-medium italic">Complete the inputs to find your break-even point.</p>
+                    <p className="text-slate-500 dark:text-slate-400 font-medium italic">Complete the inputs to find your break-even point.</p>
                  </div>
               ) : (
                 <>

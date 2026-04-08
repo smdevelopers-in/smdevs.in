@@ -101,7 +101,7 @@ export default function LinkProfileAnalyzerPage() {
         <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto w-full">
            <div className="space-y-4">
             <div className="relative">
-              <Link2 className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Link2 className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 dark:text-slate-400" />
               <input
                 type="url"
                 value={url}
@@ -130,15 +130,15 @@ export default function LinkProfileAnalyzerPage() {
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm text-center">
                    <div className="text-4xl font-black text-slate-900 dark:text-white mb-2">{result.total}</div>
-                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Total Links</div>
+                   <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Total Links</div>
                 </div>
                 <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm text-center">
                    <div className="text-4xl font-black text-blue-600 mb-2">{result.internal}</div>
-                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Internal (Site)</div>
+                   <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Internal (Site)</div>
                 </div>
                 <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm text-center">
                    <div className="text-4xl font-black text-indigo-600 mb-2">{result.external}</div>
-                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">External (Outbound)</div>
+                   <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">External (Outbound)</div>
                 </div>
              </div>
 
@@ -157,7 +157,7 @@ export default function LinkProfileAnalyzerPage() {
                 <div className="max-h-[600px] overflow-y-auto custom-scrollbar">
                    <table className="w-full text-left border-collapse">
                       <thead className="bg-slate-50 dark:bg-slate-800/50 sticky top-0 z-10">
-                        <tr className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        <tr className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                           <th className="px-8 py-4">Anchor Text</th>
                           <th className="px-8 py-4">Target URL</th>
                           <th className="px-8 py-4 text-center">Type</th>
@@ -194,13 +194,13 @@ export default function LinkProfileAnalyzerPage() {
                       <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-indigo-400">
                         <ArrowRight className="w-4 h-4" /> Why External Links?
                       </h4>
-                      <p className="text-xs text-slate-400 leading-relaxed font-medium">Linking to high-authority external sources helps search engines understand your niche and proves you've researched your content. Aim for a 2-3 quality external links per 1000 words.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Linking to high-authority external sources helps search engines understand your niche and proves you've researched your content. Aim for a 2-3 quality external links per 1000 words.</p>
                    </div>
                    <div className="p-6 bg-white/5 rounded-[2rem] border border-white/10">
                       <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-blue-400">
                         <ArrowRight className="w-4 h-4" /> Anchor Text Matters
                       </h4>
-                      <p className="text-xs text-slate-400 leading-relaxed font-medium">Avoid generic text like 'Click Here'. Use descriptive keywords in your anchor text to tell crawlers exactly what the destination page is about.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Avoid generic text like 'Click Here'. Use descriptive keywords in your anchor text to tell crawlers exactly what the destination page is about.</p>
                    </div>
                 </div>
              </div>

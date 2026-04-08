@@ -95,7 +95,7 @@ export default function RiskRewardCalculatorPage() {
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
              <div className="space-y-4">
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Entry Price</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Entry Price</label>
                    <input 
                      type="text"
                      inputMode="decimal"
@@ -149,7 +149,7 @@ export default function RiskRewardCalculatorPage() {
 
                  {!results ? (
                    <div className="py-20 text-center space-y-4 opacity-50">
-                      <p className="text-slate-400 font-medium italic">Enter trade levels to calculate ratio.</p>
+                      <p className="text-slate-500 dark:text-slate-400 font-medium italic">Enter trade levels to calculate ratio.</p>
                    </div>
                  ) : (
                    <div className="space-y-8">

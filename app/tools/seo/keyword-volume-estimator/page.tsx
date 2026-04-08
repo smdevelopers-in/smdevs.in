@@ -109,7 +109,7 @@ export default function KeywordVolumeEstimatorPage() {
         <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto w-full">
            <div className="space-y-4">
             <div className="relative">
-              <BarChart3 className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <BarChart3 className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 dark:text-slate-400" />
               <input
                 type="text"
                 value={keyword}
@@ -127,7 +127,7 @@ export default function KeywordVolumeEstimatorPage() {
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <TrendingUp className="w-5 h-5" />}
               Estimate Competition
             </button>
-            <p className="text-[10px] text-slate-400 text-center font-bold uppercase tracking-widest pt-2">
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 text-center font-bold uppercase tracking-widest pt-2">
               <AlertTriangle className="w-3 h-3 inline mr-1 text-amber-500" /> Estimated values based on heuristic analysis
             </p>
           </div>
@@ -151,7 +151,7 @@ export default function KeywordVolumeEstimatorPage() {
              <div className="space-y-6">
                 <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm">
                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Search Volume</span>
+                      <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Search Volume</span>
                       <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${result.volume === 'High' ? 'bg-rose-100 text-rose-600' : result.volume === 'Medium' ? 'bg-amber-100 text-amber-600' : 'bg-emerald-100 text-emerald-600'}`}>
                         {result.volume} VOLUME
                       </span>
@@ -184,7 +184,7 @@ export default function KeywordVolumeEstimatorPage() {
            <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead className="bg-slate-50 dark:bg-slate-800/50">
-                  <tr className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                  <tr className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">
                     <th className="px-8 py-4">Score Range</th>
                     <th className="px-8 py-4">Meaning</th>
                     <th className="px-8 py-4">Strategy</th>

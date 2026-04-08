@@ -99,7 +99,7 @@ export default function KeywordSuggestionPage() {
         <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto w-full">
           <div className="space-y-4">
             <div className="relative">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 dark:text-slate-400" />
               <input
                 type="text"
                 value={keyword}
@@ -131,7 +131,7 @@ export default function KeywordSuggestionPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">Questions</h3>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Informational Intent</p>
+                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Informational Intent</p>
                 </div>
               </div>
               <div className="space-y-3">
@@ -142,10 +142,10 @@ export default function KeywordSuggestionPage() {
                     className="w-full text-left p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl text-sm font-bold text-slate-700 dark:text-slate-300 border border-transparent hover:border-amber-200 dark:hover:border-amber-900 transition-all group flex items-center justify-between"
                   >
                     <span className="truncate">{s}</span>
-                    {copied === s ? <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" /> : <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 shrink-0" />}
+                    {copied === s ? <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" /> : <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-500 dark:text-slate-400 shrink-0" />}
                   </button>
                 ))}
-                {results.questions.length === 0 && <p className="text-xs text-slate-400 italic text-center py-4">No question-based suggestions found.</p>}
+                {results.questions.length === 0 && <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center py-4">No question-based suggestions found.</p>}
               </div>
             </div>
 
@@ -157,7 +157,7 @@ export default function KeywordSuggestionPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">Comparisons</h3>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Transactional Intent</p>
+                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Transactional Intent</p>
                 </div>
               </div>
               <div className="space-y-3">
@@ -168,10 +168,10 @@ export default function KeywordSuggestionPage() {
                     className="w-full text-left p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl text-sm font-bold text-slate-700 dark:text-slate-300 border border-transparent hover:border-indigo-200 dark:hover:border-indigo-900 transition-all group flex items-center justify-between"
                   >
                     <span className="truncate">{s}</span>
-                    {copied === s ? <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" /> : <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 shrink-0" />}
+                    {copied === s ? <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" /> : <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-500 dark:text-slate-400 shrink-0" />}
                   </button>
                 ))}
-                {results.comparisons.length === 0 && <p className="text-xs text-slate-400 italic text-center py-4">No comparison-based suggestions found.</p>}
+                {results.comparisons.length === 0 && <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center py-4">No comparison-based suggestions found.</p>}
               </div>
             </div>
 
@@ -183,7 +183,7 @@ export default function KeywordSuggestionPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white italic">AI Suggestions</h3>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-blue-100">Broad Intent</p>
+                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest text-blue-100">Broad Intent</p>
                 </div>
               </div>
               <div className="space-y-3">
@@ -194,10 +194,10 @@ export default function KeywordSuggestionPage() {
                     className="w-full text-left p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl text-sm font-bold text-slate-700 dark:text-slate-300 border border-transparent hover:border-blue-200 dark:hover:border-blue-900 transition-all group flex items-center justify-between"
                   >
                     <span className="truncate">{s}</span>
-                    {copied === s ? <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" /> : <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 shrink-0" />}
+                    {copied === s ? <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" /> : <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-500 dark:text-slate-400 shrink-0" />}
                   </button>
                 ))}
-                {results.longTail.length === 0 && <p className="text-xs text-slate-400 italic text-center py-4">No long-tail suggestions found.</p>}
+                {results.longTail.length === 0 && <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center py-4">No long-tail suggestions found.</p>}
               </div>
             </div>
           </div>
@@ -211,15 +211,15 @@ export default function KeywordSuggestionPage() {
             <div className="space-y-4">
               <div className="p-4 bg-white/5 rounded-2xl border border-white/10 hover:border-blue-500/50 transition-colors">
                 <h4 className="font-bold text-blue-400 text-sm mb-1 uppercase tracking-widest">Informational</h4>
-                <p className="text-xs text-slate-400 leading-relaxed font-medium">Use 'Questions' to fuel your blog and FAQ sections. High traffic, low conversion but builds authority.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Use 'Questions' to fuel your blog and FAQ sections. High traffic, low conversion but builds authority.</p>
               </div>
               <div className="p-4 bg-white/5 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-colors">
                 <h4 className="font-bold text-indigo-400 text-sm mb-1 uppercase tracking-widest">Transactional</h4>
-                <p className="text-xs text-slate-400 leading-relaxed font-medium">Use 'Comparisons' for product pages and reviews. Lower traffic, but highly qualified leads.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Use 'Comparisons' for product pages and reviews. Lower traffic, but highly qualified leads.</p>
               </div>
             </div>
             <div className="flex flex-col justify-center">
-              <p className="text-slate-400 text-sm italic font-medium leading-relaxed">
+              <p className="text-slate-500 dark:text-slate-400 text-sm italic font-medium leading-relaxed">
                 "Finding the right keyword isn't about search volume—it's about matching what the user is thinking at that exact moment. Use long-tail variations to capture 'hidden' traffic competitors often miss."
               </p>
             </div>

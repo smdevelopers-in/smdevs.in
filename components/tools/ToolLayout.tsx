@@ -88,7 +88,7 @@ export default function ToolLayout({
                 </div>
                 <div>
                   <h2 className="text-2xl font-black text-slate-900 dark:text-white">Why use this tool?</h2>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">In-depth Analysis & Guidance</p>
+                  <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">In-depth Analysis & Guidance</p>
                 </div>
               </div>
               <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
@@ -111,7 +111,7 @@ export default function ToolLayout({
 
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Name</label>
+                <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Name</label>
                 <input 
                   type="text"
                   placeholder="John Doe"
@@ -119,7 +119,7 @@ export default function ToolLayout({
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email</label>
+                <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Email</label>
                 <input 
                   type="email"
                   placeholder="john@example.com"
@@ -127,7 +127,7 @@ export default function ToolLayout({
                 />
               </div>
               <div className="md:col-span-2 space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Feedback Message</label>
+                <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Feedback Message</label>
                 <textarea 
                   rows={4}
                   placeholder="Tell us what's on your mind..."

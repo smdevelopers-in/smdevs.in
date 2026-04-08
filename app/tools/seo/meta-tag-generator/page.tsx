@@ -152,13 +152,13 @@ export default function MetaTagGeneratorPage() {
               <div className="flex bg-white dark:bg-slate-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
                 <button
                   onClick={() => setView("desktop")}
-                  className={`p-2 rounded-lg transition-all ${view === "desktop" ? "bg-blue-600 text-white shadow-md" : "text-slate-400 hover:text-slate-600"}`}
+                  className={`p-2 rounded-lg transition-all ${view === "desktop" ? "bg-blue-600 text-white shadow-md" : "text-slate-500 dark:text-slate-400 hover:text-slate-600"}`}
                 >
                   <Monitor className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setView("mobile")}
-                  className={`p-2 rounded-lg transition-all ${view === "mobile" ? "bg-blue-600 text-white shadow-md" : "text-slate-400 hover:text-slate-600"}`}
+                  className={`p-2 rounded-lg transition-all ${view === "mobile" ? "bg-blue-600 text-white shadow-md" : "text-slate-500 dark:text-slate-400 hover:text-slate-600"}`}
                 >
                   <Smartphone className="w-4 h-4" />
                 </button>
@@ -171,7 +171,7 @@ export default function MetaTagGeneratorPage() {
                     <div className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px]">G</div>
                     <div className="flex flex-col">
                       <span className="text-xs text-slate-700 dark:text-slate-300 font-medium truncate">{url}</span>
-                      <span className="text-[10px] text-slate-400 flex items-center gap-1">https://example.com <span className="rotate-90">›</span> article</span>
+                      <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">https://example.com <span className="rotate-90">›</span> article</span>
                     </div>
                   </div>
                   <h4 className="text-xl text-[#1a0dab] dark:text-[#8ab4f8] hover:underline cursor-pointer font-medium line-clamp-1">

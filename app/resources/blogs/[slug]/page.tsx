@@ -76,6 +76,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
   let blog: BlogPost | null = await getBlog(slug);
   let relatedPosts: BlogPost[] = [];
   let tableOfContents: { id: string; text: string; level: number }[] = [];
+  let faqSchemaObj: any = null;
 
   if (blog) {
     try {
@@ -111,6 +112,33 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
           level: parseInt(el.tagName.replace('h', ''))
         });
       });
+
+      // Automatically Extract FAQs for Schema
+      let faqEntities: any[] = [];
+      $('details').each((i, el) => {
+        const question = $(el).find('summary').text().trim();
+        // Get the inner text of the answer block, avoiding empty spaces
+        const answer = $(el).children().not('summary').text().trim().replace(/\s+/g, ' ');
+        if (question && answer) {
+          faqEntities.push({
+            "@type": "Question",
+            "name": question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": answer
+            }
+          });
+        }
+      });
+
+      if (faqEntities.length > 0) {
+        faqSchemaObj = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqEntities
+        };
+      }
+
       blog.content = $.html();
 
     } catch (e) {
@@ -183,6 +211,12 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      {faqSchemaObj && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaObj) }}
+        />
+      )}
       {blog.customSchema && (
         <script
           type="application/ld+json"

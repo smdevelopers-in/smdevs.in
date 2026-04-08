@@ -98,13 +98,13 @@ export default function SerpPreviewPage() {
             <div className="flex bg-white dark:bg-slate-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
               <button
                 onClick={() => setView("desktop")}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${view === "desktop" ? "bg-blue-600 text-white shadow-md" : "text-slate-400 hover:text-slate-600"}`}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${view === "desktop" ? "bg-blue-600 text-white shadow-md" : "text-slate-500 dark:text-slate-400 hover:text-slate-600"}`}
               >
                 <Monitor className="w-4 h-4" /> Desktop
               </button>
               <button
                 onClick={() => setView("mobile")}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${view === "mobile" ? "bg-blue-600 text-white shadow-md" : "text-slate-400 hover:text-slate-600"}`}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${view === "mobile" ? "bg-blue-600 text-white shadow-md" : "text-slate-500 dark:text-slate-400 hover:text-slate-600"}`}
               >
                 <Smartphone className="w-4 h-4" /> Mobile
               </button>
@@ -136,7 +136,7 @@ export default function SerpPreviewPage() {
             <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <div className={`w-2 h-2 rounded-full ${titlePixels > 580 ? "bg-rose-500" : "bg-emerald-500"}`} />
-                <span className="text-[10px] font-black uppercase text-slate-400">Title Width</span>
+                <span className="text-[10px] font-black uppercase text-slate-500 dark:text-slate-400">Title Width</span>
               </div>
               <p className="text-xl font-black text-slate-900 dark:text-white">~{Math.round(titlePixels)}px</p>
               <p className="text-[10px] text-slate-500 font-bold uppercase mt-1">Limit: 580px</p>
@@ -144,7 +144,7 @@ export default function SerpPreviewPage() {
             <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <div className={`w-2 h-2 rounded-full ${descPixels > 920 ? "bg-rose-500" : "bg-emerald-500"}`} />
-                <span className="text-[10px] font-black uppercase text-slate-400">Snippet Width</span>
+                <span className="text-[10px] font-black uppercase text-slate-500 dark:text-slate-400">Snippet Width</span>
               </div>
               <p className="text-xl font-black text-slate-900 dark:text-white">~{Math.round(descPixels)}px</p>
               <p className="text-[10px] text-slate-500 font-bold uppercase mt-1">Limit: 920px</p>

@@ -172,8 +172,8 @@ export default function ContentHumanizerPage() {
            {/* Input Side */}
            <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Input Content</span>
-                <span className="text-[10px] font-bold text-slate-400">{inputText.length} characters</span>
+                <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Input Content</span>
+                <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">{inputText.length} characters</span>
               </div>
               
               <textarea
@@ -184,7 +184,7 @@ export default function ContentHumanizerPage() {
               />
 
               <div className="space-y-4">
-                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block ml-1">Target Tone</label>
+                 <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block ml-1">Target Tone</label>
                  <div className="grid grid-cols-3 gap-3">
                     {[
                       { id: "casual", label: "Casual", icon: Smile, color: "text-amber-500", bg: "bg-amber-50" },
@@ -200,7 +200,7 @@ export default function ContentHumanizerPage() {
                             : "border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:border-blue-200"
                         }`}
                       >
-                        <t.icon className={`w-5 h-5 ${tone === t.id ? 'text-blue-600' : 'text-slate-400 group-hover:text-blue-400'}`} />
+                        <t.icon className={`w-5 h-5 ${tone === t.id ? 'text-blue-600' : 'text-slate-500 dark:text-slate-400 group-hover:text-blue-400'}`} />
                         <span className={`text-[10px] font-black uppercase tracking-widest ${tone === t.id ? 'text-blue-600' : 'text-slate-500'}`}>{t.label}</span>
                       </button>
                     ))}
@@ -226,13 +226,13 @@ export default function ContentHumanizerPage() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900 dark:text-white">Humanized Output</h3>
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Smoother Phrasing</p>
+                      <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Smoother Phrasing</p>
                     </div>
                  </div>
                  {result && (
                    <div className="flex flex-col items-end">
                       <span className="text-2xl font-black text-emerald-500">+{result.score}%</span>
-                      <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Growth in Nuance</span>
+                      <span className="text-[8px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Growth in Nuance</span>
                    </div>
                  )}
               </div>
@@ -253,8 +253,8 @@ export default function ContentHumanizerPage() {
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center h-full py-20 text-center space-y-4 opacity-30">
-                     <RefreshCcw className="w-12 h-12 text-slate-400" />
-                     <p className="text-sm font-bold text-slate-400 italic">Processing text triggers here...</p>
+                     <RefreshCcw className="w-12 h-12 text-slate-500 dark:text-slate-400" />
+                     <p className="text-sm font-bold text-slate-500 dark:text-slate-400 italic">Processing text triggers here...</p>
                   </div>
                 )}
               </div>
@@ -271,21 +271,21 @@ export default function ContentHumanizerPage() {
                     <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                     <h4 className="font-bold text-sm">Balanced Pacing</h4>
                  </div>
-                 <p className="text-xs text-slate-400 leading-relaxed">We automatically split run-on sentences and merge choppy ones to create a natural reading 'flow'.</p>
+                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">We automatically split run-on sentences and merge choppy ones to create a natural reading 'flow'.</p>
               </div>
               <div className="space-y-2">
                  <div className="flex items-center gap-2 mb-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                     <h4 className="font-bold text-sm">Contextual Connectors</h4>
                  </div>
-                 <p className="text-xs text-slate-400 leading-relaxed">Injection of transitional phrases helps build logic and makes the content feel like it was written by a narrator.</p>
+                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Injection of transitional phrases helps build logic and makes the content feel like it was written by a narrator.</p>
               </div>
               <div className="space-y-2">
                  <div className="flex items-center gap-2 mb-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                     <h4 className="font-bold text-sm">Synonym Re-Mapping</h4>
                  </div>
-                 <p className="text-xs text-slate-400 leading-relaxed">Swapping sterile vocabulary for tone-accurate synonyms helps the text resonate with the target audience.</p>
+                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Swapping sterile vocabulary for tone-accurate synonyms helps the text resonate with the target audience.</p>
               </div>
            </div>
         </div>

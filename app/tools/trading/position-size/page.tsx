@@ -106,9 +106,9 @@ export default function PositionSizeCalculatorPage() {
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-100 dark:border-slate-800 shadow-sm space-y-8">
              <div className="space-y-6">
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Account Capital</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Account Capital</label>
                    <div className="relative">
-                      <span className="absolute left-6 top-1/2 -translate-y-1/2 font-bold text-slate-400">$</span>
+                      <span className="absolute left-6 top-1/2 -translate-y-1/2 font-bold text-slate-500 dark:text-slate-400">$</span>
                       <input 
                         type="text"
                         inputMode="decimal"
@@ -122,7 +122,7 @@ export default function PositionSizeCalculatorPage() {
 
                 <div className="grid grid-cols-2 gap-4">
                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Risk per trade (%)</label>
+                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Risk per trade (%)</label>
                       <input 
                         type="text"
                         inputMode="decimal"
@@ -132,7 +132,7 @@ export default function PositionSizeCalculatorPage() {
                       />
                    </div>
                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Planned Entry</label>
+                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Planned Entry</label>
                       <input 
                         type="text"
                         inputMode="decimal"
@@ -145,7 +145,7 @@ export default function PositionSizeCalculatorPage() {
                 </div>
 
                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Stop Loss Price</label>
+                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Stop Loss Price</label>
                    <div className="relative">
                       <ShieldAlert className="absolute left-6 top-1/2 -translate-y-1/2 text-rose-400" size={18} />
                       <input 
@@ -183,7 +183,7 @@ export default function PositionSizeCalculatorPage() {
 
                  {!results ? (
                     <div className="py-20 text-center space-y-4 opacity-50">
-                       <p className="text-slate-400 font-medium italic">Complete the inputs to calculate size.</p>
+                       <p className="text-slate-500 dark:text-slate-400 font-medium italic">Complete the inputs to calculate size.</p>
                     </div>
                  ) : (
                     <div className="space-y-6">

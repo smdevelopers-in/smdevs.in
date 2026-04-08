@@ -55,7 +55,7 @@ export default function SidebarTools({ category }: SidebarToolsProps) {
         
         <Link 
           href={category.toLowerCase() === "trading" ? "/tools/trading" : category.toLowerCase() === "seo" ? "/tools/seo" : "/tools"} 
-          className="block w-full py-3 text-center text-xs font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-800 rounded-xl"
+          className="block w-full py-3 text-center text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-800 rounded-xl"
         >
           View All {category !== "General" ? category : ""} Tools
         </Link>

@@ -69,7 +69,7 @@ export default function SchemaInputModal({ isOpen, onClose, onRunTest, initialVa
             {input && (
               <button
                 onClick={clearInput}
-                className="absolute top-4 right-4 p-2 bg-white dark:bg-slate-800 text-slate-400 hover:text-red-500 border border-slate-200 dark:border-slate-700 rounded-xl shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute top-4 right-4 p-2 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-red-500 border border-slate-200 dark:border-slate-700 rounded-xl shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
                 title="Clear input"
               >
                 <Trash2 className="w-4 h-4" />

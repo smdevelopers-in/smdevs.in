@@ -139,7 +139,7 @@ export default function PivotCalculatorPage() {
             <div className="space-y-4">
                {["High", "Low", "Close"].map((field) => (
                  <div key={field} className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">{field} Price</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">{field} Price</label>
                     <input 
                       type="text"
                       inputMode="decimal"
@@ -153,7 +153,7 @@ export default function PivotCalculatorPage() {
             </div>
 
             <div className="space-y-4">
-               <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Calculation Method</label>
+               <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Calculation Method</label>
                <div className="grid grid-cols-2 gap-2">
                   {(["Standard", "Fibonacci", "Camarilla", "Woodie"] as PivotMethod[]).map((m) => (
                     <button
@@ -162,7 +162,7 @@ export default function PivotCalculatorPage() {
                       className={`px-4 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all border ${
                         method === m 
                         ? "bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/20" 
-                        : "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400 hover:border-blue-500/50"
+                        : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-blue-500/50"
                       }`}
                     >
                       {m}
@@ -181,7 +181,7 @@ export default function PivotCalculatorPage() {
 
               <button 
                 onClick={() => { setHigh(""); setLow(""); setClose(""); setResults(null); }}
-                className="w-full py-4 border border-dashed border-slate-200 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-red-500 hover:border-red-500/50 transition-all flex items-center justify-center gap-2"
+                className="w-full py-4 border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-red-500 hover:border-red-500/50 hover:bg-red-50 dark:hover:bg-red-950/20 transition-all flex items-center justify-center gap-2"
               >
                  <RefreshCw size={14} /> Clear Inputs
               </button>

@@ -23,7 +23,7 @@ export default function InputField({
   description,
   error,
 }: InputFieldProps) {
-  const baseClasses = "w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400 shadow-sm";
+  const baseClasses = "w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-500 dark:text-slate-400 shadow-sm";
 
   return (
     <div className="space-y-2">
@@ -32,7 +32,7 @@ export default function InputField({
           {label}
         </label>
         {description && (
-          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">
+          <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase">
             {description}
           </span>
         )}

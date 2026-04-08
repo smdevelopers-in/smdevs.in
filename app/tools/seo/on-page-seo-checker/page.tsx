@@ -138,7 +138,7 @@ export default function OnPageSEOPage() {
                   <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm">
                     <stat.icon className={`w-5 h-5 ${stat.color} mb-3`} />
                     <p className="text-2xl font-black text-slate-900 dark:text-white">{stat.value}</p>
-                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</p>
+                    <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{stat.label}</p>
                   </div>
                 ))}
               </div>

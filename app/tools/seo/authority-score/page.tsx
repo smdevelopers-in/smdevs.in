@@ -111,7 +111,7 @@ export default function AuthorityScorePage() {
         <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto w-full">
            <div className="space-y-4">
             <div className="relative">
-              <GlobeIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <GlobeIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 dark:text-slate-400" />
               <input
                 type="url"
                 value={url}
@@ -158,13 +158,13 @@ export default function AuthorityScorePage() {
                   ].map((stat, i) => (
                     <div key={i} className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col justify-between">
                        <div className="flex items-center justify-between mb-4">
-                          <stat.icon className="w-5 h-5 text-slate-400" />
-                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{stat.label}</span>
+                          <stat.icon className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                          <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">{stat.label}</span>
                        </div>
                        <div className="space-y-3">
                           <div className="flex justify-between items-end">
                              <span className="text-2xl font-black text-slate-900 dark:text-white">{stat.value}</span>
-                             <span className="text-[10px] text-slate-400 font-bold mb-1">/ {stat.max}</span>
+                             <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold mb-1">/ {stat.max}</span>
                           </div>
                           <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                              <div className={`h-full ${stat.color} transition-all duration-1000`} style={{ width: `${(stat.value / stat.max) * 100}%` }} />
@@ -186,7 +186,7 @@ export default function AuthorityScorePage() {
                   <div key={i} className="bg-slate-50 dark:bg-slate-800 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
                      <item.icon className="w-5 h-5 text-blue-500 mb-2" />
                      <div className="text-xl font-black text-slate-900 dark:text-white">{item.value}</div>
-                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{item.label}</div>
+                     <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">{item.label}</div>
                   </div>
                 ))}
              </div>
@@ -198,15 +198,15 @@ export default function AuthorityScorePage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                    <div className="space-y-2">
                       <h4 className="font-bold text-sm">Content Health</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed">We analyze word count and structural complexity. High word counts (1000+) are strongly correlated with higher authority in search engines.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">We analyze word count and structural complexity. High word counts (1000+) are strongly correlated with higher authority in search engines.</p>
                    </div>
                    <div className="space-y-2">
                       <h4 className="font-bold text-sm">Link Connectivity</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed">The internal link ratio shows how well site authority is distributed. Dense internal linking suggests a more 'crawlable' and established site.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">The internal link ratio shows how well site authority is distributed. Dense internal linking suggests a more 'crawlable' and established site.</p>
                    </div>
                    <div className="space-y-2">
                       <h4 className="font-bold text-sm">Technical Signals</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed">Checking for H1 tags, meta descriptions, and image density. These are non-negotiable foundations for domain trust.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Checking for H1 tags, meta descriptions, and image density. These are non-negotiable foundations for domain trust.</p>
                    </div>
                 </div>
                 <div className="mt-10 p-4 bg-white/5 rounded-2xl border border-white/10 text-center">

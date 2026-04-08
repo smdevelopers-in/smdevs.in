@@ -81,7 +81,7 @@ export default function KeywordDensityPage() {
       <div className="space-y-12">
         {/* Input Card */}
         <div className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm">
-          <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Content to Analyze</label>
+          <label className="block text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Content to Analyze</label>
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -114,7 +114,7 @@ export default function KeywordDensityPage() {
                     <ListFilter className="w-8 h-8" />
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Words (3+ chars)</h4>
+                    <h4 className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1">Total Words (3+ chars)</h4>
                     <p className="text-3xl font-black text-slate-900 dark:text-white">{totalWords}</p>
                   </div>
                 </div>
@@ -135,9 +135,9 @@ export default function KeywordDensityPage() {
                   <table className="w-full text-left">
                     <thead>
                       <tr className="bg-slate-50 dark:bg-slate-800/50">
-                        <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Keyword</th>
-                        <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Count</th>
-                        <th className="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Density %</th>
+                        <th className="px-8 py-5 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Keyword</th>
+                        <th className="px-8 py-5 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest text-center">Count</th>
+                        <th className="px-8 py-5 text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest text-right">Density %</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 dark:divide-slate-800">

@@ -28,7 +28,7 @@ export default function CodeDisplay({ code }: CodeDisplayProps) {
             <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
           </div>
-          <span className="text-xs font-mono text-slate-400 ml-2">JSON-LD</span>
+          <span className="text-xs font-mono text-slate-500 dark:text-slate-400 ml-2">JSON-LD</span>
         </div>
       </div>
       <div className="flex-1 overflow-auto p-6 font-mono text-sm leading-relaxed text-blue-400 custom-scrollbar">

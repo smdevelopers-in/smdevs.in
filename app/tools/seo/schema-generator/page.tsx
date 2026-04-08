@@ -201,7 +201,7 @@ export default function SchemaGeneratorPage() {
                 <div key={index} className="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 relative">
                   <button
                     onClick={() => removeFaqItem(index)}
-                    className="absolute top-4 right-4 text-slate-400 hover:text-rose-500 transition-colors"
+                    className="absolute top-4 right-4 text-slate-500 dark:text-slate-400 hover:text-rose-500 transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

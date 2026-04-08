@@ -157,7 +157,7 @@ function ToolCard({ tool }: { tool: any }) {
         {tool.description}
       </p>
       
-      <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 font-bold text-sm flex items-center justify-between text-slate-400 group-hover:text-blue-600">
+      <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 font-bold text-sm flex items-center justify-between text-slate-500 dark:text-slate-400 group-hover:text-blue-600">
         <span>Open Calculator</span>
         {tool.tag && <span className="text-[10px] px-2 py-0.5 bg-blue-600 text-white rounded-md uppercase tracking-widest">{tool.tag}</span>}
       </div>

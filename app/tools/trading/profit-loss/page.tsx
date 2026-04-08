@@ -91,7 +91,7 @@ export default function ProfitLossCalculatorPage() {
            <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
               <div className="space-y-4">
                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Entry Price</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Entry Price</label>
                     <input 
                       type="text"
                       inputMode="decimal"
@@ -101,7 +101,7 @@ export default function ProfitLossCalculatorPage() {
                     />
                  </div>
                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Exit Price</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Exit Price</label>
                     <input 
                       type="text"
                       inputMode="decimal"
@@ -111,7 +111,7 @@ export default function ProfitLossCalculatorPage() {
                     />
                  </div>
                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-1">Trade Quantity</label>
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 pl-1">Trade Quantity</label>
                     <input 
                       type="text"
                       inputMode="decimal"
@@ -140,7 +140,7 @@ export default function ProfitLossCalculatorPage() {
               {!results ? (
                  <div className="space-y-4 opacity-50 relative z-10">
                     <BarChart3 className="mx-auto text-slate-500" size={48} />
-                    <p className="text-slate-400 font-medium">Input your trade data to see P&L.</p>
+                    <p className="text-slate-500 dark:text-slate-400 font-medium">Input your trade data to see P&L.</p>
                  </div>
               ) : (
                  <div className="space-y-10 relative z-10">

@@ -83,7 +83,7 @@ export default function SitemapGeneratorPage() {
 
           <div className="p-6 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-3 mb-3">
-              <FileCode className="w-5 h-5 text-slate-400" />
+              <FileCode className="w-5 h-5 text-slate-500 dark:text-slate-400" />
               <p className="text-sm font-bold text-slate-700 dark:text-slate-300">Quick Tips</p>
             </div>
             <ul className="text-xs text-slate-500 dark:text-slate-400 space-y-2 leading-relaxed font-medium">

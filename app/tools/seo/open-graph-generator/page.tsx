@@ -77,7 +77,7 @@ export default function OpenGraphGeneratorPage() {
             </h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Page Title</label>
+                <label className="block text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Page Title</label>
                 <input
                   name="title"
                   value={formData.title}
@@ -87,7 +87,7 @@ export default function OpenGraphGeneratorPage() {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Description</label>
+                <label className="block text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Description</label>
                 <textarea
                   name="description"
                   value={formData.description}
@@ -97,7 +97,7 @@ export default function OpenGraphGeneratorPage() {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Image URL</label>
+                <label className="block text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Image URL</label>
                 <input
                   name="image"
                   value={formData.image}
@@ -107,7 +107,7 @@ export default function OpenGraphGeneratorPage() {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Page URL</label>
+                <label className="block text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Page URL</label>
                 <input
                   name="url"
                   value={formData.url}
@@ -143,7 +143,7 @@ export default function OpenGraphGeneratorPage() {
                   )}
                 </div>
                 <div className="p-6 space-y-2">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                  <span className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider">
                     {formData.url ? new URL(formData.url).hostname.toUpperCase() : "EXAMPLE.COM"}
                   </span>
                   <h4 className="text-lg font-black text-slate-900 dark:text-white leading-tight truncate">

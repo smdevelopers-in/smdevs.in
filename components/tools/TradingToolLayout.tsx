@@ -44,7 +44,7 @@ export default function TradingToolLayout({
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-6 py-12 lg:py-20 space-y-16">
+      <main className="max-w-6xl mx-auto px-6 py-12 lg:py-20 space-y-16">
         <Breadcrumbs 
           items={[
             { label: "Trading Tools", href: "/tools/trading" },
@@ -109,7 +109,7 @@ export default function TradingToolLayout({
                    </div>
                    <div>
                       <h2 className="text-2xl font-black text-slate-900 dark:text-white">Trading Deep Dive</h2>
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Mastering the Concept</p>
+                      <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Mastering the Concept</p>
                    </div>
                 </div>
                 <div className="text-slate-600 dark:text-slate-400 font-medium leading-[1.8] prose prose-slate dark:prose-invert max-w-none">
@@ -133,7 +133,7 @@ export default function TradingToolLayout({
 
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Name</label>
+              <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Name</label>
               <input 
                 type="text"
                 placeholder="John Doe"
@@ -141,7 +141,7 @@ export default function TradingToolLayout({
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email</label>
+              <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Email</label>
               <input 
                 type="email"
                 placeholder="john@example.com"
@@ -149,7 +149,7 @@ export default function TradingToolLayout({
               />
             </div>
             <div className="md:col-span-2 space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Feedback Message</label>
+              <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Feedback Message</label>
               <textarea 
                 rows={4}
                 placeholder="Tell us what's on your mind..."

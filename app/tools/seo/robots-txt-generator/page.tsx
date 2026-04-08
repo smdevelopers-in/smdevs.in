@@ -130,7 +130,7 @@ export default function RobotsTxtGeneratorPage() {
                   />
                   <button
                     onClick={() => removePath(index)}
-                    className="p-2 text-slate-400 hover:text-rose-500"
+                    className="p-2 text-slate-500 dark:text-slate-400 hover:text-rose-500"
                   >
                     <Plus className="w-5 h-5 rotate-45" />
                   </button>

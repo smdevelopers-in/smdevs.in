@@ -12,7 +12,8 @@ import {
   Plus,
   Lock,
   Search,
-  Code
+  Code,
+  Loader2
 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
@@ -45,6 +46,7 @@ export default function CreateBlogPage() {
   const [featuredImageAlt, setFeaturedImageAlt] = useState("");
   const [customSchema, setCustomSchema] = useState("");
   const [isSlugManual, setIsSlugManual] = useState(false);
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const editorRef = useRef<any>(null);
 
@@ -114,6 +116,33 @@ export default function CreateBlogPage() {
       alert("An error occurred while publishing.");
     } finally {
       setIsPublishing(false);
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploadingImage(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setFeaturedImage(data.url);
+      } else {
+        alert(data.error || "Upload failed.");
+      }
+    } catch (error) {
+      console.error("Upload failed", error);
+      alert("Failed to upload image.");
+    } finally {
+      setIsUploadingImage(false);
     }
   };
 
@@ -355,21 +384,32 @@ export default function CreateBlogPage() {
                  <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <ImageIcon size={18} className="text-blue-600" /> Featured Image
                  </h3>
-                 <div className="aspect-video w-full bg-slate-50 dark:bg-slate-800 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center gap-3 group hover:border-blue-500/50 transition-colors cursor-pointer overflow-hidden relative">
-                    {featuredImage ? (
-                       <img src={featuredImage} alt="Preview" className="w-full h-full object-cover" />
+                 <label className={`aspect-video w-full bg-slate-50 dark:bg-slate-800 rounded-2xl border-2 border-dashed ${isUploadingImage ? 'border-blue-500' : 'border-slate-200 dark:border-slate-700 hover:border-blue-500/50'} flex flex-col items-center justify-center gap-3 transition-colors cursor-pointer overflow-hidden relative group`}>
+                    <input type="file" accept="image/*" onChange={handleImageUpload} disabled={isUploadingImage} className="hidden" />
+                    {isUploadingImage ? (
+                       <div className="flex flex-col items-center gap-3">
+                          <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+                          <span className="text-xs font-bold text-blue-600 animate-pulse">Uploading to Cloudinary...</span>
+                       </div>
+                    ) : featuredImage ? (
+                       <div className="w-full h-full relative">
+                          <img src={featuredImage} alt="Preview" className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                             <span className="bg-white/90 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-xl">Change Image</span>
+                          </div>
+                       </div>
                     ) : (
                        <>
                           <div className="p-3 bg-white dark:bg-slate-700 rounded-full shadow-sm group-hover:scale-110 transition-transform">
                              <Plus className="w-5 h-5 text-slate-400" />
                           </div>
-                          <span className="text-xs font-bold text-slate-400">Upload Banner Image</span>
+                          <span className="text-xs font-bold text-slate-400">Upload WebP Image</span>
                        </>
                     )}
-                 </div>
+                 </label>
                  <input 
                    type="text" 
-                   placeholder="Or enter image URL..."
+                   placeholder="Or enter remote image URL..."
                    value={featuredImage}
                    onChange={(e) => setFeaturedImage(e.target.value)}
                    className="w-full px-4 py-2 border-b border-border focus:outline-none bg-transparent text-xs font-medium"

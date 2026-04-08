@@ -141,7 +141,7 @@ export default function AIContentDetectorPage() {
         {/* Input */}
         <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-sm max-w-4xl mx-auto w-full">
            <div className="space-y-4">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Paste Content (Min 50 words)</label>
+              <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Paste Content (Min 50 words)</label>
               <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -156,7 +156,7 @@ export default function AIContentDetectorPage() {
                 {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Brain className="w-5 h-5" />}
                 Analyze Content
               </button>
-              <p className="text-[10px] text-slate-400 text-center font-bold uppercase tracking-widest">
+              <p className="text-[10px] text-slate-500 dark:text-slate-400 text-center font-bold uppercase tracking-widest">
                 <AlertCircle className="w-3 h-3 inline mr-1 text-amber-500" /> Probabilistic results based on local heuristics
               </p>
            </div>
@@ -175,7 +175,7 @@ export default function AIContentDetectorPage() {
                       </svg>
                       <div className="absolute flex flex-col">
                         <span className={`text-4xl font-black ${result.aiProbability > 50 ? 'text-rose-500' : 'text-blue-500'}`}>{result.aiProbability}%</span>
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">AI Prob.</span>
+                        <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">AI Prob.</span>
                       </div>
                    </div>
                    <div className="px-6 py-2 bg-slate-50 dark:bg-slate-800 rounded-full text-xs font-black text-slate-500 uppercase tracking-widest">
@@ -193,8 +193,8 @@ export default function AIContentDetectorPage() {
                      <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
                         <m.icon className={`w-5 h-5 ${m.color} mb-2`} />
                         <div className="text-2xl font-black text-slate-900 dark:text-white">{m.value}%</div>
-                        <div className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{m.label}</div>
-                        <div className="text-[8px] font-bold text-slate-400 italic">{m.desc}</div>
+                        <div className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1">{m.label}</div>
+                        <div className="text-[8px] font-bold text-slate-500 dark:text-slate-400 italic">{m.desc}</div>
                      </div>
                    ))}
                 </div>
@@ -209,11 +209,11 @@ export default function AIContentDetectorPage() {
                    <div className="flex gap-4">
                       <div className="flex items-center gap-2">
                         <div className="w-3 h-3 rounded-full bg-rose-100 border border-rose-200" />
-                        <span className="text-[10px] font-bold text-slate-400 uppercase">AI Pattern</span>
+                        <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">AI Pattern</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-3 h-3 rounded-full bg-emerald-100 border border-emerald-200" />
-                        <span className="text-[10px] font-bold text-slate-400 uppercase">Human Marker</span>
+                        <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">Human Marker</span>
                       </div>
                    </div>
                 </div>
@@ -239,15 +239,15 @@ export default function AIContentDetectorPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                    <div className="space-y-2">
                       <h4 className="font-bold text-sm">Burstiness (Sentence Length)</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed font-medium">Humans naturally vary sentence lengths. AI tends to produce uniform, medium-length sentences that lack 'rhythm'.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Humans naturally vary sentence lengths. AI tends to produce uniform, medium-length sentences that lack 'rhythm'.</p>
                    </div>
                    <div className="space-y-2">
                       <h4 className="font-bold text-sm">Perplexity (Randomness)</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed font-medium">Humans use surprising or complex word choices occasionally. AI models are programmed to choose the 'most likely' next word, leading to lower perplexity.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Humans use surprising or complex word choices occasionally. AI models are programmed to choose the 'most likely' next word, leading to lower perplexity.</p>
                    </div>
                    <div className="space-y-2">
                       <h4 className="font-bold text-sm">Type-Token Ratio</h4>
-                      <p className="text-xs text-slate-400 leading-relaxed font-medium">Measures vocabulary diversity. A high repetition of common connective words is a strong indicator of machine generation.</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Measures vocabulary diversity. A high repetition of common connective words is a strong indicator of machine generation.</p>
                    </div>
                 </div>
                 <div className="mt-10 pt-6 border-t border-white/10 flex items-center justify-center gap-2">

@@ -185,7 +185,7 @@ export default function SEOStructureAnalyzerPage() {
           <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                <div className="space-y-2">
-                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                 <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">
                    {activeTab === "url" ? "Target URL" : "Source Code"}
                  </label>
                  {activeTab === "url" ? (
@@ -206,7 +206,7 @@ export default function SEOStructureAnalyzerPage() {
                  )}
                </div>
                <div className="space-y-2">
-                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 flex items-center gap-2">
+                 <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1 flex items-center gap-2">
                    <Target className="w-3 h-3 text-blue-600" /> Target Keyword (Optional)
                  </label>
                  <input
@@ -223,7 +223,7 @@ export default function SEOStructureAnalyzerPage() {
                <textarea
                  value={html}
                  readOnly
-                 className="w-full h-40 px-6 py-4 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none font-mono text-[10px] text-slate-400 transition-all opacity-50"
+                 className="w-full h-40 px-6 py-4 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none font-mono text-[10px] text-slate-500 dark:text-slate-400 transition-all opacity-50"
                />
             )}
 
@@ -272,7 +272,7 @@ export default function SEOStructureAnalyzerPage() {
                   <div key={i} className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col items-center justify-center text-center group hover:border-blue-200 transition-all">
                     <stat.icon className={`w-6 h-6 ${stat.color} mb-3 group-hover:scale-110 transition-transform`} />
                     <div className="text-3xl font-black text-slate-900 dark:text-white mb-1">{stat.value}</div>
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{stat.label}</div>
+                    <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1">{stat.label}</div>
                     <div className="text-[10px] font-bold text-slate-500 italic">{stat.sub}</div>
                   </div>
                 ))}
@@ -334,14 +334,14 @@ export default function SEOStructureAnalyzerPage() {
                           </span>
                           <span className="font-bold text-slate-900 dark:text-white text-sm">{issue.title}</span>
                         </div>
-                        {expandedSection === `issue-${i}` ? <ChevronUp className="w-4 h-4 text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-400" />}
+                        {expandedSection === `issue-${i}` ? <ChevronUp className="w-4 h-4 text-slate-500 dark:text-slate-400" /> : <ChevronDown className="w-4 h-4 text-slate-500 dark:text-slate-400" />}
                       </button>
                       {expandedSection === `issue-${i}` && (
                         <div className="px-6 pb-6 animate-in slide-in-from-top-2 duration-300 space-y-4">
                           <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
                              <div className="flex items-center gap-2 mb-2">
-                               <HelpCircle className="w-3 h-3 text-slate-400" />
-                               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Why fix this?</span>
+                               <HelpCircle className="w-3 h-3 text-slate-500 dark:text-slate-400" />
+                               <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Why fix this?</span>
                              </div>
                              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
                                {issue.explanation}
@@ -376,7 +376,7 @@ export default function SEOStructureAnalyzerPage() {
                     <div className="space-y-8">
                        <div className="space-y-2">
                          <div className="flex justify-between items-center px-1">
-                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Title Tag</span>
+                           <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Title Tag</span>
                            <span className={`text-[10px] font-bold ${result.summary.title.length > 30 && result.summary.title.length < 65 ? 'text-emerald-500' : 'text-rose-500'}`}>
                              {result.summary.title.length} chars
                            </span>
@@ -388,7 +388,7 @@ export default function SEOStructureAnalyzerPage() {
 
                        <div className="space-y-2">
                          <div className="flex justify-between items-center px-1">
-                           <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Meta Description</span>
+                           <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Meta Description</span>
                            <span className={`text-[10px] font-bold ${result.summary.description.length > 140 && result.summary.description.length < 170 ? 'text-emerald-500' : 'text-rose-500'}`}>
                              {result.summary.description.length} chars
                            </span>
@@ -400,11 +400,11 @@ export default function SEOStructureAnalyzerPage() {
 
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Index Robots</span>
+                            <span className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-1">Index Robots</span>
                             <span className="text-xs font-bold text-slate-900 dark:text-white">{result.summary.robots || "Not Set"}</span>
                           </div>
                           <div className="p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Canonical URL</span>
+                            <span className="text-[9px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-1">Canonical URL</span>
                             <span className="text-[10px] font-mono text-blue-600 truncate block">{result.summary.canonical || "Not Set"}</span>
                           </div>
                        </div>
@@ -442,7 +442,7 @@ export default function SEOStructureAnalyzerPage() {
                        <div className="space-y-6">
                           <div className="space-y-2">
                             <div className="flex justify-between text-xs font-bold">
-                              <span className="text-slate-400 uppercase tracking-widest text-[9px]">Internal Ratio</span>
+                              <span className="text-slate-500 dark:text-slate-400 uppercase tracking-widest text-[9px]">Internal Ratio</span>
                               <span className="text-slate-900 dark:text-white">{Math.round((result.stats.linkStats.internal / Math.max(result.stats.linkStats.total, 1)) * 100)}%</span>
                             </div>
                             <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden flex">
@@ -453,11 +453,11 @@ export default function SEOStructureAnalyzerPage() {
                           <div className="grid grid-cols-2 gap-4">
                              <div className="text-center p-3 rounded-2xl bg-slate-50 dark:bg-slate-800">
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{result.stats.linkStats.internal}</div>
-                                <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Internal</div>
+                                <div className="text-[8px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Internal</div>
                              </div>
                              <div className="text-center p-3 rounded-2xl bg-slate-50 dark:bg-slate-800">
                                 <div className="text-xl font-black text-slate-900 dark:text-white">{result.stats.linkStats.external}</div>
-                                <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest">External</div>
+                                <div className="text-[8px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">External</div>
                              </div>
                           </div>
                        </div>
