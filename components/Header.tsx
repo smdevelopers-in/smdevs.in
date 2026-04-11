@@ -28,7 +28,6 @@ const NAV_LINKS = [
       { name: "Blogs", href: "/resources/blogs" },
     ]
   },
-  { name: "Become a Contributor", href: "#" },
 ];
 
 export default function Header() {
@@ -125,12 +124,12 @@ export default function Header() {
                       key={item.name}
                       href={item.href}
                       className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900 rounded-2xl text-sm font-black text-slate-900 dark:text-white"
-                      onClick={() => item.href !== "#" && setIsOpen(false)}
+                      onClick={() => setIsOpen(false)}
                     >
                       {item.name}
                     </Link>
                   )) : (
-                    <Link href={link.href} className="text-xl font-black text-slate-900 dark:text-white">
+                    <Link href={link.href} className="text-xl font-black text-slate-900 dark:text-white" onClick={() => setIsOpen(false)}>
                       {link.name}
                     </Link>
                   )}
@@ -139,11 +138,11 @@ export default function Header() {
             ))}
             <div className="pt-10 flex flex-col gap-4">
               <Link
-                href="#"
+                href="/tools/seo"
                 className="w-full text-center py-5 rounded-2xl bg-blue-600 text-white font-black shadow-xl shadow-blue-500/20"
                 onClick={() => setIsOpen(false)}
               >
-                Join SM Developers
+                Explore Tools
               </Link>
             </div>
           </div>
@@ -152,3 +151,4 @@ export default function Header() {
     </header>
   );
 }
+

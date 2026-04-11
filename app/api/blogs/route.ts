@@ -38,6 +38,7 @@ export async function GET() {
     const { rows } = await sql`
       SELECT * FROM blog_posts 
       WHERE status = 'published' 
+         OR (status = 'scheduled' AND publish_date <= NOW())
       ORDER BY publish_date DESC
     `;
     
@@ -79,6 +80,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "A blog with this slug already exists." }, { status: 400 });
     }
 
+    // Determine status based on publish date
+    const publishDateStr = newBlog.publishDate || new Date().toISOString();
+    const publishDateObj = new Date(publishDateStr);
+    const status = publishDateObj > new Date() ? 'scheduled' : 'published';
+
     await sql`
       INSERT INTO blog_posts (
         title, slug, content, excerpt, category, author, featured_image, publish_date, created_at, status, tldr, focus_keyphrase, meta_title, meta_description, featured_image_alt, custom_schema
@@ -90,9 +96,9 @@ export async function POST(request: Request) {
         ${newBlog.category}, 
         ${newBlog.author}, 
         ${newBlog.featuredImage}, 
-        ${newBlog.publishDate || new Date().toISOString()}, 
+        ${publishDateStr}, 
         ${new Date().toISOString()}, 
-        'published',
+        ${status},
         ${newBlog.tldr || null},
         ${newBlog.focusKeyphrase || null},
         ${newBlog.metaTitle || null},
@@ -102,7 +108,7 @@ export async function POST(request: Request) {
       )
     `;
 
-    return NextResponse.json({ success: true, blog: newBlog });
+    return NextResponse.json({ success: true, blog: newBlog, status });
   } catch (error) {
     console.error("API POST Error:", error);
     return NextResponse.json({ error: "Failed to save blog post to database." }, { status: 500 });

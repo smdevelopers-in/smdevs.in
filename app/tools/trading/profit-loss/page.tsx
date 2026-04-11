@@ -4,6 +4,26 @@ import { useState, useEffect } from "react";
 import TradingToolLayout from "@/components/tools/TradingToolLayout";
 import { Info, BarChart3, TrendingUp, TrendingDown } from "lucide-react";
 
+
+const PROFITLOSS_FAQS = [
+  {
+    question: "How does the Profit Loss improve my trading?",
+    answer: "The Profit Loss provides mathematical precision for your trade setups. By automating complex risk and sizing calculations, it helps you eliminate emotional errors and maintain strict risk management."
+  },
+  {
+    question: "Is the Profit Loss suitable for day trading and swing trading?",
+    answer: "Yes! Our Profit Loss is designed to be highly versatile, making it the perfect companion for scalpers, day traders, and swing traders across all markets including forex, crypto, and stocks."
+  },
+  {
+    question: "What formulas does the Profit Loss use?",
+    answer: "We use standardized, institutional-grade financial formulas. The Profit Loss guarantees zero latency and exact precision, empowering you to make split-second market decisions with confidence."
+  },
+  {
+    question: "Can I use the Profit Loss for crypto?",
+    answer: "Absolutely. The mathematical principles applied in our Profit Loss work universally across cryptocurrencies, forex pairs, equities, and commodities."
+  }
+];
+
 export default function ProfitLossCalculatorPage() {
   const [entry, setEntry] = useState<string>("");
   const [exit, setExit] = useState<string>("");
@@ -72,7 +92,8 @@ export default function ProfitLossCalculatorPage() {
         "Don't focus on the dollar amount early on; focus on the percentage gain relative to your risk.",
         "Use a trading journal to record your P&L and the 'Why' behind every entry and exit."
       ]}
-      explanation={
+      faqs={PROFITLOSS_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Profit and Loss (P&L) refers to the total gain or loss realized on a trade after closing the position. It is the primary metric for evaluating the success of a trading strategy.

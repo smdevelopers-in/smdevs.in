@@ -4,6 +4,26 @@ import { useState, useEffect } from "react";
 import TradingToolLayout from "@/components/tools/TradingToolLayout";
 import { Info, LayoutGrid, Scale } from "lucide-react";
 
+
+const RISKREWARD_FAQS = [
+  {
+    question: "How does the Risk Reward improve my trading?",
+    answer: "The Risk Reward provides mathematical precision for your trade setups. By automating complex risk and sizing calculations, it helps you eliminate emotional errors and maintain strict risk management."
+  },
+  {
+    question: "Is the Risk Reward suitable for day trading and swing trading?",
+    answer: "Yes! Our Risk Reward is designed to be highly versatile, making it the perfect companion for scalpers, day traders, and swing traders across all markets including forex, crypto, and stocks."
+  },
+  {
+    question: "What formulas does the Risk Reward use?",
+    answer: "We use standardized, institutional-grade financial formulas. The Risk Reward guarantees zero latency and exact precision, empowering you to make split-second market decisions with confidence."
+  },
+  {
+    question: "Can I use the Risk Reward for crypto?",
+    answer: "Absolutely. The mathematical principles applied in our Risk Reward work universally across cryptocurrencies, forex pairs, equities, and commodities."
+  }
+];
+
 export default function RiskRewardCalculatorPage() {
   const [entry, setEntry] = useState<string>("");
   const [stopLoss, setStopLoss] = useState<string>("");
@@ -72,7 +92,8 @@ export default function RiskRewardCalculatorPage() {
         "Precision Note: All calculations are rounded to 2 decimal places.",
         "Professional traders often 'scale out' of positions at R1 and R2 to lock in gains."
       ]}
-      explanation={
+      faqs={RISKREWARD_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Risk/Reward Ratio (R:R) is a measure of the potential profit for every dollar risked. For example, a 1:3 ratio means you are risking $1 to potentially make $3.

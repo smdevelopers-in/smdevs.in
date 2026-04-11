@@ -30,6 +30,26 @@ interface LinkResult {
   links: LinkItem[];
 }
 
+
+const LINKPROFILEANALYZER_FAQS = [
+  {
+    question: "What is the free Link Profile Analyzer used for?",
+    answer: "Our Link Profile Analyzer helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Link Profile Analyzer?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Link Profile Analyzer match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Link Profile Analyzer?",
+    answer: "No installation is required! The Link Profile Analyzer is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Link Profile Analyzer?",
+    answer: "For best results, we recommend using the Link Profile Analyzer whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function LinkProfileAnalyzerPage() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -80,7 +100,8 @@ export default function LinkProfileAnalyzerPage() {
         "Internal links should ideally represent 70-80% of your total link profile for better crawl efficiency.",
         "External links to high-authority, relevant sites act as 'citations' and improve your trustworthiness."
       ]}
-      explanation={
+      faqs={LINKPROFILEANALYZER_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Links are the 'highways' of the internet. A Link Profile Audit reveals how a page distributes its authority (Link Juice) internally and where it references external knowledge.

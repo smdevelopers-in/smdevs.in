@@ -30,6 +30,13 @@ export default function ManageBlogsPage() {
   const router = useRouter();
 
   useEffect(() => {
+    // Check sessionStorage for admin auth
+    if (typeof window !== 'undefined' && sessionStorage.getItem('smdevs_admin') === 'true') {
+      setIsAdmin(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (isAdmin) {
       fetchBlogs();
     }
@@ -84,6 +91,7 @@ export default function ManageBlogsPage() {
             e.preventDefault();
             if (password === "smdevs2026") {
               setIsAdmin(true);
+              sessionStorage.setItem('smdevs_admin', 'true');
             } else {
               setError("Incorrect password. Please try again.");
             }

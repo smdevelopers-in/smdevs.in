@@ -10,6 +10,26 @@ interface KeywordFreq {
   density: number;
 }
 
+
+const KEYWORDDENSITYCHECKER_FAQS = [
+  {
+    question: "What is the free Keyword Density Checker used for?",
+    answer: "Our Keyword Density Checker helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Keyword Density Checker?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Keyword Density Checker match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Keyword Density Checker?",
+    answer: "No installation is required! The Keyword Density Checker is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Keyword Density Checker?",
+    answer: "For best results, we recommend using the Keyword Density Checker whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function KeywordDensityPage() {
   const [text, setText] = useState("");
   const [results, setResults] = useState<KeywordFreq[]>([]);
@@ -64,7 +84,8 @@ export default function KeywordDensityPage() {
         "Use synonyms (LSI keywords) instead of repeating the same word to improve readability and SEO.",
         "Avoid 'Keyword Stuffing' (over 3% density), as it can lead to search engine penalties."
       ]}
-      explanation={
+      faqs={KEYWORDDENSITYCHECKER_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Keyword Density measures how often a specific word or phrase appears within a piece of content compared to the total number of words. It is a fundamental signal used by search engines to determine the <strong>topic and relevance</strong> of a page.

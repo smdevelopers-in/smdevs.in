@@ -1,4 +1,4 @@
-import { Search, TrendingUp, Cpu, Gamepad2, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Search, TrendingUp, ArrowUpRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const CATEGORIES = [
@@ -8,6 +8,7 @@ const CATEGORIES = [
     icon: Search,
     color: "from-blue-500/20 to-blue-600/20",
     iconColor: "text-blue-600",
+    href: "/tools/seo",
   },
   {
     title: "Trading Tools",
@@ -15,20 +16,7 @@ const CATEGORIES = [
     icon: TrendingUp,
     color: "from-emerald-500/20 to-emerald-600/20",
     iconColor: "text-emerald-600",
-  },
-  {
-    title: "Developer Tools",
-    description: "Streamline your coding with JSON formatters, base64 encoders, and API testing utilities.",
-    icon: Cpu,
-    color: "from-indigo-500/20 to-indigo-600/20",
-    iconColor: "text-indigo-600",
-  },
-  {
-    title: "Games",
-    description: "Take a break and enjoy a collection of high-performance web games built with modern tech.",
-    icon: Gamepad2,
-    color: "from-rose-500/20 to-rose-600/20",
-    iconColor: "text-rose-600",
+    href: "/tools/trading",
   },
 ];
 
@@ -42,20 +30,20 @@ export default function Categories() {
               Powerful Tools by Category
             </h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-xl">
-              From SEO to systems architecture, we offer a specialized set of tools designed for precision and speed.
+              From SEO to trading, we offer a specialized set of tools designed for precision and speed.
             </p>
           </div>
-          <Link href="#" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline group">
+          <Link href="/tools/seo" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline group">
             View All Tools
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {CATEGORIES.map((cat, index) => (
             <Link
               key={index}
-              href="#"
+              href={cat.href}
               className={`group p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-transparent transition-all duration-500 relative overflow-hidden`}
             >
               {/* Background Gradient on Hover */}

@@ -4,6 +4,27 @@ import React from "react";
 import { Smartphone, Sparkles, Zap, Shield, Search, ArrowRight } from "lucide-react";
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
 import Link from "next/link";
+import FAQSection from "@/components/tools/FAQSection";
+
+
+const SEOMOBILEAPP_FAQS = [
+  {
+    question: "What features are included in the SEO Mobile App?",
+    answer: "The SEO Mobile App brings all our powerful desktop utilities directly to your mobile device. Enjoy real-time monitoring, instant calculations, and advanced analytics from anywhere in the world."
+  },
+  {
+    question: "Is the SEO Mobile App free to download?",
+    answer: "Yes, you can download and install the SEO Mobile App completely free of charge. We believe in providing premium-grade tools accessible to everyone."
+  },
+  {
+    question: "Does the SEO Mobile App require an internet connection?",
+    answer: "While basic functionalities work offline, you will need an active internet connection to access live market data, real-time SEO audits, and cloud synchronization features."
+  },
+  {
+    question: "Is my data secure on the SEO Mobile App?",
+    answer: "Data privacy is our top priority. The SEO Mobile App processes most of your queries locally on your device, ensuring maximum security and zero unwanted tracking."
+  }
+];
 
 export default function SEOAppPage() {
   return (
@@ -63,6 +84,8 @@ export default function SEOAppPage() {
              Sign up to be the first to know when we launch!
            </p>
         </div>
+
+        <FAQSection faqs={SEOMOBILEAPP_FAQS} />
       </div>
     </div>
   );

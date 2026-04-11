@@ -6,6 +6,26 @@ import ToolLayout from "@/components/tools/ToolLayout";
 import InputField from "@/components/tools/InputField";
 import ResultBox from "@/components/tools/ResultBox";
 
+
+const ROBOTSTXTGENERATOR_FAQS = [
+  {
+    question: "What is the free Robots Txt Generator used for?",
+    answer: "Our Robots Txt Generator helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Robots Txt Generator?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Robots Txt Generator match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Robots Txt Generator?",
+    answer: "No installation is required! The Robots Txt Generator is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Robots Txt Generator?",
+    answer: "For best results, we recommend using the Robots Txt Generator whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function RobotsTxtGeneratorPage() {
   const [userAgent, setUserAgent] = useState("*");
   const [allowAll, setAllowAll] = useState(true);
@@ -75,6 +95,7 @@ export default function RobotsTxtGeneratorPage() {
           </div>
         </div>
       }
+      faqs={ROBOTSTXTGENERATOR_FAQS}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Controls */}

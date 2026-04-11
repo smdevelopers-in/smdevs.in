@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GlobalInteractions from "@/components/ui/GlobalInteractions";
 import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   display: 'swap',
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: 'swap',
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://smdevs.in'),
+  alternates: {
+    canonical: './',
+  },
   title: {
     default: "SM Developers | Professional SaaS Utilities Platform",
     template: "%s | SM Developers"
@@ -75,7 +74,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen flex flex-col bg-background text-foreground`}
+        className={`${poppins.variable} font-sans min-h-screen flex flex-col bg-background text-foreground`}
       >
         <Header />
         <main className="flex-grow pt-18 lg:pt-32 bg-white dark:bg-slate-950 transition-colors duration-300">
@@ -102,3 +101,4 @@ export default function RootLayout({
     </html>
   );
 }
+

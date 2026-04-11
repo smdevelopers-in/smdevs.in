@@ -5,6 +5,26 @@ import { Eye, Monitor, Smartphone, Search, Info } from "lucide-react";
 import ToolLayout from "@/components/tools/ToolLayout";
 import InputField from "@/components/tools/InputField";
 
+
+const SERPPREVIEW_FAQS = [
+  {
+    question: "What is the free Serp Preview used for?",
+    answer: "Our Serp Preview helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Serp Preview?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Serp Preview match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Serp Preview?",
+    answer: "No installation is required! The Serp Preview is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Serp Preview?",
+    answer: "For best results, we recommend using the Serp Preview whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function SerpPreviewPage() {
   const [title, setTitle] = useState("SM Developers - Advanced Engineering Solutions");
   const [description, setDescription] = useState("Empowering developers with production-ready tools, high-performance web applications, and state-of-the-art engineering resources.");
@@ -35,7 +55,8 @@ export default function SerpPreviewPage() {
         "A/B test different titles using this previewer to find the most compelling 'Hook' for your audience.",
         "Mobile search results use slightly different spacing—always check both views."
       ]}
-      explanation={
+      faqs={SERPPREVIEW_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             SERP (Search Engine Results Page) Preview tools simulate how your website's <strong>Title Tag</strong> and <strong>Meta Description</strong> will appear to potential visitors on Google.

@@ -32,6 +32,26 @@ interface AuthorityResult {
   };
 }
 
+
+const AUTHORITYSCORE_FAQS = [
+  {
+    question: "What is the free Authority Score used for?",
+    answer: "Our Authority Score helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Authority Score?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Authority Score match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Authority Score?",
+    answer: "No installation is required! The Authority Score is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Authority Score?",
+    answer: "For best results, we recommend using the Authority Score whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function AuthorityScorePage() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -88,7 +108,8 @@ export default function AuthorityScorePage() {
         "Internal linking density is a major signal of technical authority and crawlability.",
         "Use this tool to audit competitors and see where they might be technically weak."
       ]}
-      explanation={
+      faqs={AUTHORITYSCORE_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Authority Score is a metric that predicts how well a domain will rank on search engine results pages. Unlike traditional metrics that rely solely on backlinks, our model analyzes <strong>on-page trust signals</strong>.

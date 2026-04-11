@@ -20,6 +20,26 @@ interface AnalysisResults {
   links: LinkResult[];
 }
 
+
+const BROKENLINKCHECKER_FAQS = [
+  {
+    question: "What is the free Broken Link Checker used for?",
+    answer: "Our Broken Link Checker helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Broken Link Checker?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Broken Link Checker match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Broken Link Checker?",
+    answer: "No installation is required! The Broken Link Checker is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Broken Link Checker?",
+    answer: "For best results, we recommend using the Broken Link Checker whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function BrokenLinkCheckerPage() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -73,7 +93,8 @@ export default function BrokenLinkCheckerPage() {
         "If an external link is broken, try to find a replacement or use the 'Wayback Machine' to see the original content.",
         "Redirect broken internal links to the most relevant live page using a 301 redirect."
       ]}
-      explanation={
+      faqs={BROKENLINKCHECKER_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             A Broken Link (also known as a Dead Link) is a hyperlink that points to a webpage or server that is no longer available. This usually results in a <strong>404 Not Found</strong> error.

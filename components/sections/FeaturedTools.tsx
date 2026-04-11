@@ -8,6 +8,7 @@ const TOOLS = [
     icon: CheckCircle2,
     tag: "Essential",
     color: "bg-emerald-500",
+    href: "/tools/seo/schema-validator",
   },
   {
     title: "SEO Analyzer",
@@ -15,6 +16,7 @@ const TOOLS = [
     icon: Zap,
     tag: "Premium",
     color: "bg-blue-600",
+    href: "/tools/seo/seo-structure-analyzer",
   },
   {
     title: "Pivot Calculator",
@@ -22,6 +24,7 @@ const TOOLS = [
     icon: LineChart,
     tag: "Trader's Choice",
     color: "bg-indigo-500",
+    href: "/tools/trading/pivot-calculator",
   },
 ];
 
@@ -62,7 +65,7 @@ export default function FeaturedTools() {
                 </p>
               </div>
               <Link
-                href="#"
+                href={tool.href}
                 className="mt-auto w-full py-4 rounded-xl border border-primary/20 text-primary font-bold text-sm text-center flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-all shadow-sm hover:shadow-primary/20"
               >
                 Try Now

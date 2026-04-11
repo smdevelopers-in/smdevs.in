@@ -54,6 +54,10 @@ export default function EditBlogPage() {
 
   useEffect(() => {
     setIsMounted(true);
+    // Check sessionStorage for admin auth
+    if (typeof window !== 'undefined' && sessionStorage.getItem('smdevs_admin') === 'true') {
+      setIsAdmin(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -199,6 +203,7 @@ export default function EditBlogPage() {
             e.preventDefault();
             if (password === "smdevs2026") {
               setIsAdmin(true);
+              sessionStorage.setItem('smdevs_admin', 'true');
             } else {
               setError("Incorrect password. Please try again.");
             }

@@ -1,5 +1,6 @@
 import { ChevronRight, Home, HelpCircle, Lightbulb, Info, MessageSquarePlus } from "lucide-react";
 import Breadcrumbs from "./Breadcrumbs";
+import FAQSection, { FAQ } from "./FAQSection";
 
 interface ToolLayoutProps {
   title: string;
@@ -9,6 +10,7 @@ interface ToolLayoutProps {
   tips?: string[];
   explanation?: React.ReactNode;
   toolType?: "SEO" | "Trading" | "AI" | "Developer";
+  faqs?: FAQ[];
 }
 
 export default function ToolLayout({
@@ -18,7 +20,8 @@ export default function ToolLayout({
   howToUse,
   tips,
   explanation,
-  toolType = "SEO"
+  toolType = "SEO",
+  faqs
 }: ToolLayoutProps) {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
@@ -96,6 +99,9 @@ export default function ToolLayout({
               </div>
             </div>
           )}
+
+          {/* FAQs Section */}
+          {faqs && <FAQSection faqs={faqs} />}
 
           {/* Help Us Improve (New Feedback Section) */}
           <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-sm">

@@ -3,6 +3,7 @@
 import React from "react";
 import { HelpCircle, TrendingUp } from "lucide-react";
 import Breadcrumbs from "./Breadcrumbs";
+import FAQSection, { FAQ } from "./FAQSection";
 
 interface TradingToolLayoutProps {
   title: string;
@@ -12,6 +13,7 @@ interface TradingToolLayoutProps {
   formula?: string;
   tips?: string[];
   explanation?: React.ReactNode;
+  faqs?: FAQ[];
 }
 
 export default function TradingToolLayout({
@@ -21,7 +23,8 @@ export default function TradingToolLayout({
   howToUse,
   formula,
   tips,
-  explanation
+  explanation,
+  faqs
 }: TradingToolLayoutProps) {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
@@ -117,7 +120,11 @@ export default function TradingToolLayout({
                 </div>
              </div>
           </div>
+
         )}
+
+        {/* FAQs Section */}
+        {faqs && <FAQSection faqs={faqs} />}
 
         {/* Internal Feedback Form (Same as ToolLayout) */}
         <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-sm">

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { 
   FileSearch, 
@@ -21,6 +21,7 @@ import {
   Sparkles
 } from "lucide-react";
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
+import FAQSection from "@/components/tools/FAQSection";
 
 const SEO_TOOLS = [
   {
@@ -151,7 +152,33 @@ const SEO_TOOLS = [
   },
 ];
 
+const SEO_INDEX_FAQS = [
+  {
+    question: "What SEO tools do you offer?",
+    answer: "We offer a comprehensive suite of 18+ free SEO tools including Schema Generators, Authority Checkers, Keyword Volume Estimators, AI Content Detectors, and Technical SEO Analyzers."
+  },
+  {
+    question: "Are these tools really free?",
+    answer: "Yes, all our utilities on this platform are 100% free with no hidden paywalls. We believe in providing open-access resources for developers and marketers."
+  },
+  {
+    question: "Do I need to create an account?",
+    answer: "No login or account creation is required to use any of our SEO or Trading tools. You can start optimizing your website immediately."
+  },
+  {
+    question: "How accurate is the data?",
+    answer: "We use live API integrations, heuristic models, and industry-standard algorithms to ensure that the data and validation matches current search engine standards."
+  }
+];
+
 export default function SEOToolsDirectory() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredTools = SEO_TOOLS.filter(tool => 
+    tool.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    tool.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Directory Header */}
@@ -163,6 +190,19 @@ export default function SEOToolsDirectory() {
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
             Boost your website's visibility with our suite of free, production-ready SEO utilities. No login, no tracking, just tools.
           </p>
+          
+          <div className="max-w-xl mx-auto pt-8">
+            <div className="relative flex items-center">
+              <Search className="absolute left-6 w-6 h-6 text-slate-400" />
+              <input 
+                type="text" 
+                placeholder="Search tools (e.g., Schema, Keyword, Meta)" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-16 pr-6 py-5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full font-bold text-slate-900 dark:text-white text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-xl shadow-slate-200/20 dark:shadow-none"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -173,57 +213,76 @@ export default function SEOToolsDirectory() {
       {/* Tools Grid Area */}
       <main className="max-w-7xl mx-auto px-6 py-16 space-y-20">
         
-        {/* Advanced & Unique Tools Section */}
-        <section className="space-y-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
-            <div>
-              <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 underline decoration-blue-600/30 underline-offset-8">Advanced <span className="gradient-text">Utilities</span></h2>
-              <p className="text-sm text-slate-500 font-medium">Heuristic engines for deep SEO analysis and content intelligence.</p>
-            </div>
-            <div className="text-[10px] font-black text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-full uppercase tracking-widest">
-              AI Powered • High Accuracy
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SEO_TOOLS.filter(t => [
-              "SEO Structure Analyzer", 
-              "AI Content Detector", 
-              "Content Humanizer", 
-              "Authority Score", 
-              "Keyword Volume", 
-              "Link Profile"
-            ].includes(t.name)).map((tool) => (
-              <ToolCard key={tool.name} tool={tool} highlighted />
-            ))}
-          </div>
-        </section>
+        {searchQuery ? (
+          <section className="space-y-10">
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white">Search Results</h2>
+            {filteredTools.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredTools.map((tool) => (
+                  <ToolCard key={tool.name} tool={tool} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-slate-500 font-medium">No tools found matching "{searchQuery}"</p>
+            )}
+          </section>
+        ) : (
+          <>
+            {/* Advanced & Unique Tools Section */}
+            <section className="space-y-10">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
+                <div>
+                  <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2 underline decoration-blue-600/30 underline-offset-8">Advanced <span className="gradient-text">Utilities</span></h2>
+                  <p className="text-sm text-slate-500 font-medium">Heuristic engines for deep SEO analysis and content intelligence.</p>
+                </div>
+                <div className="text-[10px] font-black text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-full uppercase tracking-widest">
+                  AI Powered • High Accuracy
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {SEO_TOOLS.filter(t => [
+                  "SEO Structure Analyzer", 
+                  "AI Content Detector", 
+                  "Content Humanizer", 
+                  "Authority Score", 
+                  "Keyword Volume", 
+                  "Link Profile"
+                ].includes(t.name)).map((tool) => (
+                  <ToolCard key={tool.name} tool={tool} highlighted />
+                ))}
+              </div>
+            </section>
 
-        {/* Essential Content Tools Section */}
-        <section className="space-y-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
-            <div>
-              <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">Essential <span className="text-slate-500 dark:text-slate-400">SEO</span></h2>
-              <p className="text-sm text-slate-500 font-medium">Standard utilities for daily optimization and tags generation.</p>
-            </div>
-            <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full uppercase tracking-widest">
-              Core SEO
-            </div>
-          </div>
+            {/* Essential Content Tools Section */}
+            <section className="space-y-10">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
+                <div>
+                  <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">Essential <span className="text-slate-500 dark:text-slate-400">SEO</span></h2>
+                  <p className="text-sm text-slate-500 font-medium">Standard utilities for daily optimization and tags generation.</p>
+                </div>
+                <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full uppercase tracking-widest">
+                  Core SEO
+                </div>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SEO_TOOLS.filter(t => ![
-              "SEO Structure Analyzer", 
-              "AI Content Detector", 
-              "Content Humanizer", 
-              "Authority Score", 
-              "Keyword Volume", 
-              "Link Profile"
-            ].includes(t.name)).map((tool) => (
-              <ToolCard key={tool.name} tool={tool} />
-            ))}
-          </div>
-        </section>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {SEO_TOOLS.filter(t => ![
+                  "SEO Structure Analyzer", 
+                  "AI Content Detector", 
+                  "Content Humanizer", 
+                  "Authority Score", 
+                  "Keyword Volume", 
+                  "Link Profile"
+                ].includes(t.name)).map((tool) => (
+                  <ToolCard key={tool.name} tool={tool} />
+                ))}
+              </div>
+            </section>
+          </>
+        )}
+
+        <FAQSection faqs={SEO_INDEX_FAQS} />
       </main>
     </div>
   );

@@ -6,6 +6,26 @@ import ToolLayout from "@/components/tools/ToolLayout";
 import InputField from "@/components/tools/InputField";
 import ResultBox from "@/components/tools/ResultBox";
 
+
+const JSONFORMATTER_FAQS = [
+  {
+    question: "What is the free Json Formatter used for?",
+    answer: "Our Json Formatter helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Json Formatter?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Json Formatter match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Json Formatter?",
+    answer: "No installation is required! The Json Formatter is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Json Formatter?",
+    answer: "For best results, we recommend using the Json Formatter whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function JsonFormatterPage() {
   const [input, setInput] = useState('{"name":"SM Developers","tool":"JSON Formatter","features":["Fast","Offline","Beautiful"]}');
   const [output, setOutput] = useState("");
@@ -45,7 +65,8 @@ export default function JsonFormatterPage() {
         "A missing comma or bracket is the most common cause of JSON validation failure.",
         "Formatted JSON is much easier to collaborate on and review for structural consistency."
       ]}
-      explanation={
+      faqs={JSONFORMATTER_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             JSON Formatter is a utility that parses raw, minified, or unorganized JSON data and restructures it with proper indentation and spacing (Prettifying). This makes the data human-readable without changing any of the underlying logic.

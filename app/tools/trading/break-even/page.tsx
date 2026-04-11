@@ -4,6 +4,26 @@ import { useState, useEffect } from "react";
 import TradingToolLayout from "@/components/tools/TradingToolLayout";
 import { Info, Calculator, Percent, DollarSign } from "lucide-react";
 
+
+const BREAKEVEN_FAQS = [
+  {
+    question: "How does the Break Even improve my trading?",
+    answer: "The Break Even provides mathematical precision for your trade setups. By automating complex risk and sizing calculations, it helps you eliminate emotional errors and maintain strict risk management."
+  },
+  {
+    question: "Is the Break Even suitable for day trading and swing trading?",
+    answer: "Yes! Our Break Even is designed to be highly versatile, making it the perfect companion for scalpers, day traders, and swing traders across all markets including forex, crypto, and stocks."
+  },
+  {
+    question: "What formulas does the Break Even use?",
+    answer: "We use standardized, institutional-grade financial formulas. The Break Even guarantees zero latency and exact precision, empowering you to make split-second market decisions with confidence."
+  },
+  {
+    question: "Can I use the Break Even for crypto?",
+    answer: "Absolutely. The mathematical principles applied in our Break Even work universally across cryptocurrencies, forex pairs, equities, and commodities."
+  }
+];
+
 export default function BreakEvenCalculatorPage() {
   const [entry, setEntry] = useState<string>("");
   const [fees, setFees] = useState<string>("");
@@ -72,7 +92,8 @@ export default function BreakEvenCalculatorPage() {
         "Once price passes the break-even level, some traders move their stop loss to this point for a 'Free Trade'.",
         "Consider taxes if you are trading in a taxable account, as they further increase your required markup."
       ]}
-      explanation={
+      faqs={BREAKEVEN_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
              The Break-even point is the exact price at which the trade yields zero profit and zero loss after accounting for all execution costs.

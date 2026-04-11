@@ -6,6 +6,26 @@ import { Info, RefreshCw } from "lucide-react";
 
 type PivotMethod = "Standard" | "Fibonacci" | "Camarilla" | "Woodie";
 
+
+const PIVOTCALCULATOR_FAQS = [
+  {
+    question: "How does the Pivot Calculator improve my trading?",
+    answer: "The Pivot Calculator provides mathematical precision for your trade setups. By automating complex risk and sizing calculations, it helps you eliminate emotional errors and maintain strict risk management."
+  },
+  {
+    question: "Is the Pivot Calculator suitable for day trading and swing trading?",
+    answer: "Yes! Our Pivot Calculator is designed to be highly versatile, making it the perfect companion for scalpers, day traders, and swing traders across all markets including forex, crypto, and stocks."
+  },
+  {
+    question: "What formulas does the Pivot Calculator use?",
+    answer: "We use standardized, institutional-grade financial formulas. The Pivot Calculator guarantees zero latency and exact precision, empowering you to make split-second market decisions with confidence."
+  },
+  {
+    question: "Can I use the Pivot Calculator for crypto?",
+    answer: "Absolutely. The mathematical principles applied in our Pivot Calculator work universally across cryptocurrencies, forex pairs, equities, and commodities."
+  }
+];
+
 export default function PivotCalculatorPage() {
   const [high, setHigh] = useState<string>("");
   const [low, setLow] = useState<string>("");
@@ -114,7 +134,8 @@ export default function PivotCalculatorPage() {
         "Precision Note: All calculations are rounded to 2 decimal places for clarity.",
         "A price opening above the Main Pivot (P) is generally considered a bullish signal for the day."
       ]}
-      explanation={
+      faqs={PIVOTCALCULATOR_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Pivot points are technical analysis indicators used to determine the overall trend of the market over different time frames. The pivot point itself is simply the average of the high, low, and closing prices from the previous trading day.

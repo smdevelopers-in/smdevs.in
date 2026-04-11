@@ -4,6 +4,27 @@ import React from "react";
 import { TrendingUp, Sparkles, Zap, Shield, LineChart, ArrowRight, Target, BarChart3 } from "lucide-react";
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
 import Link from "next/link";
+import FAQSection from "@/components/tools/FAQSection";
+
+
+const TRADINGMOBILEAPP_FAQS = [
+  {
+    question: "What features are included in the Trading Mobile App?",
+    answer: "The Trading Mobile App brings all our powerful desktop utilities directly to your mobile device. Enjoy real-time monitoring, instant calculations, and advanced analytics from anywhere in the world."
+  },
+  {
+    question: "Is the Trading Mobile App free to download?",
+    answer: "Yes, you can download and install the Trading Mobile App completely free of charge. We believe in providing premium-grade tools accessible to everyone."
+  },
+  {
+    question: "Does the Trading Mobile App require an internet connection?",
+    answer: "While basic functionalities work offline, you will need an active internet connection to access live market data, real-time SEO audits, and cloud synchronization features."
+  },
+  {
+    question: "Is my data secure on the Trading Mobile App?",
+    answer: "Data privacy is our top priority. The Trading Mobile App processes most of your queries locally on your device, ensuring maximum security and zero unwanted tracking."
+  }
+];
 
 export default function TradingAppPage() {
   return (
@@ -108,6 +129,8 @@ export default function TradingAppPage() {
             ))}
           </div>
         </section>
+
+        <FAQSection faqs={TRADINGMOBILEAPP_FAQS} />
       </div>
     </div>
   );

@@ -52,6 +52,10 @@ export default function CreateBlogPage() {
 
   useEffect(() => {
     setIsMounted(true);
+    // Check sessionStorage for admin auth
+    if (typeof window !== 'undefined' && sessionStorage.getItem('smdevs_admin') === 'true') {
+      setIsAdmin(true);
+    }
   }, []);
 
   const generateSummary = () => {
@@ -106,7 +110,12 @@ export default function CreateBlogPage() {
       const data = await res.json();
 
       if (data.success) {
-        router.push(`/resources/blogs/\${slug}`);
+        if (data.status === 'scheduled') {
+          alert('Blog scheduled successfully! It will go live on the selected date.');
+          router.push('/admin/manage-blogs');
+        } else {
+          router.push(`/resources/blogs/${slug}`);
+        }
         router.refresh();
       } else {
         alert(data.error || "Failed to publish blog.");
@@ -170,8 +179,9 @@ export default function CreateBlogPage() {
           </div>
           <form className="space-y-4" onSubmit={(e) => {
             e.preventDefault();
-            if (password === "smdevs2026") { // Standard placeholder password
+            if (password === "smdevs2026") {
               setIsAdmin(true);
+              sessionStorage.setItem('smdevs_admin', 'true');
             } else {
               setError("Incorrect password. Please try again.");
             }

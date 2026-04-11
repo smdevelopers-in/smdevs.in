@@ -26,6 +26,25 @@ const SCHEMA_TYPE_MAP: Record<string, string> = {
   BreadcrumbList: "Breadcrumb Schema",
 };
 
+const VALIDATOR_FAQS = [
+  {
+    question: "What is Schema Markup?",
+    answer: "Schema markup (or structured data) is code that you place on your website to help search engines return more informative results for users. It translates your content into a format that Google specifically understands."
+  },
+  {
+    question: "Why does my schema fail validation?",
+    answer: "Common reasons include missing required properties (like an image for articles, or price for products), syntax errors like missing commas or brackets, or using the wrong data types."
+  },
+  {
+    question: "How long does it take for Google to show rich snippets?",
+    answer: "Once you implement valid schema and Google crawls your page, it can take anywhere from a few days to a few weeks. However, Google does not guarantee rich snippets will show even with valid schema."
+  },
+  {
+    question: "Is JSON-LD the only format supported?",
+    answer: "While Google supports Microdata and RDFa, they strongly recommend JSON-LD. It is much easier to implement and maintain as it lives within a script tag rather than wrapping your HTML elements."
+  }
+];
+
 export default function SchemaValidatorPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputSchema, setInputSchema] = useState("");
@@ -85,6 +104,7 @@ export default function SchemaValidatorPage() {
           </div>
         </div>
       }
+      faqs={VALIDATOR_FAQS}
     >
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
         <div className="flex items-center gap-4">

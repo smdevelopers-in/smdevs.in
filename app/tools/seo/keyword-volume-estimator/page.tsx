@@ -15,6 +15,26 @@ import {
 } from "lucide-react";
 import ToolLayout from "@/components/tools/ToolLayout";
 
+
+const KEYWORDVOLUMEESTIMATOR_FAQS = [
+  {
+    question: "What is the free Keyword Volume Estimator used for?",
+    answer: "Our Keyword Volume Estimator helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Keyword Volume Estimator?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Keyword Volume Estimator match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Keyword Volume Estimator?",
+    answer: "No installation is required! The Keyword Volume Estimator is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Keyword Volume Estimator?",
+    answer: "For best results, we recommend using the Keyword Volume Estimator whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function KeywordVolumeEstimatorPage() {
   const [keyword, setKeyword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -90,7 +110,8 @@ export default function KeywordVolumeEstimatorPage() {
         "Volume is relative—a 'Low' volume keyword in a high-ticket niche (like Solar) is better than 'High' volume elsewhere.",
         "Difficulty accounts for 'Commercial Intent' markers like 'buy', 'best', and 'review'."
       ]}
-      explanation={
+      faqs={KEYWORDVOLUMEESTIMATOR_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Traditional volume estimation requires expensive, locked-down APIs from Google or Bing. This tool uses a <strong>Linguistic Heuristic Engine</strong> to estimate popularity based on keyword length, word count, and intent signals.

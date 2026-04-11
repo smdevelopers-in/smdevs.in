@@ -4,6 +4,26 @@ import { useState, useEffect } from "react";
 import TradingToolLayout from "@/components/tools/TradingToolLayout";
 import { Info, Target, ShieldAlert } from "lucide-react";
 
+
+const POSITIONSIZE_FAQS = [
+  {
+    question: "How does the Position Size improve my trading?",
+    answer: "The Position Size provides mathematical precision for your trade setups. By automating complex risk and sizing calculations, it helps you eliminate emotional errors and maintain strict risk management."
+  },
+  {
+    question: "Is the Position Size suitable for day trading and swing trading?",
+    answer: "Yes! Our Position Size is designed to be highly versatile, making it the perfect companion for scalpers, day traders, and swing traders across all markets including forex, crypto, and stocks."
+  },
+  {
+    question: "What formulas does the Position Size use?",
+    answer: "We use standardized, institutional-grade financial formulas. The Position Size guarantees zero latency and exact precision, empowering you to make split-second market decisions with confidence."
+  },
+  {
+    question: "Can I use the Position Size for crypto?",
+    answer: "Absolutely. The mathematical principles applied in our Position Size work universally across cryptocurrencies, forex pairs, equities, and commodities."
+  }
+];
+
 export default function PositionSizeCalculatorPage() {
   const [capital, setCapital] = useState<string>("");
   const [riskPercent, setRiskPercent] = useState<string>("1");
@@ -87,7 +107,8 @@ export default function PositionSizeCalculatorPage() {
         "Precision Note: All calculations are rounded to 2 decimal places.",
         "Risking too much on a single trade (Over-leveraging) is the #1 reason why retail traders fail."
       ]}
-      explanation={
+      faqs={POSITIONSIZE_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Position Sizing is the most critical component of risk management. It determines how many units of an asset you should buy or sell based on your account size and the distance to your stop loss.

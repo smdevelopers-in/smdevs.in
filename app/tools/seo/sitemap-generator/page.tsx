@@ -6,6 +6,26 @@ import ToolLayout from "@/components/tools/ToolLayout";
 import InputField from "@/components/tools/InputField";
 import ResultBox from "@/components/tools/ResultBox";
 
+
+const SITEMAPGENERATOR_FAQS = [
+  {
+    question: "What is the free Sitemap Generator used for?",
+    answer: "Our Sitemap Generator helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Sitemap Generator?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Sitemap Generator match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Sitemap Generator?",
+    answer: "No installation is required! The Sitemap Generator is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Sitemap Generator?",
+    answer: "For best results, we recommend using the Sitemap Generator whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function SitemapGeneratorPage() {
   const [urls, setUrls] = useState("https://example.com/\nhttps://example.com/about\nhttps://example.com/contact");
   const [sitemapXml, setSitemapXml] = useState("");
@@ -48,7 +68,8 @@ export default function SitemapGeneratorPage() {
         "Update your sitemap whenever you add a new blog post or service page to speed up indexing.",
         "Submit your sitemap URL directly to Google Search Console for real-time tracking."
       ]}
-      explanation={
+      faqs={SITEMAPGENERATOR_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             An XML Sitemap is a list of your website's URLs. It serves as a roadmap that tells search engines what content is available and how to reach it. It can also provide valuable metadata, such as when the page was last updated.

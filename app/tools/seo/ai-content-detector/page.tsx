@@ -31,6 +31,26 @@ interface DetectionResult {
   highlightedSentences: Array<{ text: string; type: "ai" | "human" | "neutral" }>;
 }
 
+
+const AICONTENTDETECTOR_FAQS = [
+  {
+    question: "What is the free Ai Content Detector used for?",
+    answer: "Our Ai Content Detector helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Ai Content Detector?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Ai Content Detector match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Ai Content Detector?",
+    answer: "No installation is required! The Ai Content Detector is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Ai Content Detector?",
+    answer: "For best results, we recommend using the Ai Content Detector whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function AIContentDetectorPage() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
@@ -119,7 +139,8 @@ export default function AIContentDetectorPage() {
         "Higher word counts provide more data points and lead to more accurate detection results.",
         "Content that is 100% human-written should aim for high 'Vocabulary Diversity' and low 'Uniformity'."
       ]}
-      explanation={
+      faqs={AICONTENTDETECTOR_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             AI detection works by quantifying the 'randomness' and 'complexity' of text. Machines are mathematically designed to be predictable, whereas humans are naturally inconsistent in their writing rhythm.

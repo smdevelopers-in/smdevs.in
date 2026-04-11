@@ -4,6 +4,26 @@ import React, { useState } from "react";
 import { Share2, Copy, Trash2, Layout, Info, Globe, Type, Image as ImageIcon } from "lucide-react";
 import ToolLayout from "@/components/tools/ToolLayout";
 
+
+const OPENGRAPHGENERATOR_FAQS = [
+  {
+    question: "What is the free Open Graph Generator used for?",
+    answer: "Our Open Graph Generator helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Open Graph Generator?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Open Graph Generator match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Open Graph Generator?",
+    answer: "No installation is required! The Open Graph Generator is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Open Graph Generator?",
+    answer: "For best results, we recommend using the Open Graph Generator whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function OpenGraphGeneratorPage() {
   const [formData, setFormData] = useState({
     title: "",
@@ -49,6 +69,7 @@ export default function OpenGraphGeneratorPage() {
         "Use a high-quality, relevant image that encourages clicks; this is your 'Social Ad'.",
         "The 'og:type' should be 'website' for homepages and 'article' for blog posts."
       ]}
+      faqs={OPENGRAPHGENERATOR_FAQS}
       explanation={
         <div className="space-y-4">
           <p>

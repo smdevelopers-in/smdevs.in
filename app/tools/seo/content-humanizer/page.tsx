@@ -68,6 +68,26 @@ const CONNECTORS = [
   "Believe it or not, "
 ];
 
+
+const CONTENTHUMANIZER_FAQS = [
+  {
+    question: "What is the free Content Humanizer used for?",
+    answer: "Our Content Humanizer helps you optimize your website's performance and search engine rankings. It provides deep insights and actionable data to improve your on-page and technical SEO without any hidden costs."
+  },
+  {
+    question: "How accurate is the Content Humanizer?",
+    answer: "Extremely accurate. We use live heuristics and industry-standard algorithms to ensure that the results from our Content Humanizer match what search engines like Google look for when crawling your site."
+  },
+  {
+    question: "Do I need to install anything to use the Content Humanizer?",
+    answer: "No installation is required! The Content Humanizer is a 100% web-based utility. You can access it directly from your browser on any device, completely free of charge."
+  },
+  {
+    question: "How often should I use the Content Humanizer?",
+    answer: "For best results, we recommend using the Content Humanizer whenever you publish new content, update site architecture, or conduct your monthly SEO audits to ensure maximum visibility."
+  }
+];
+
 export default function ContentHumanizerPage() {
   const [inputText, setInputText] = useState("");
   const [tone, setTone] = useState<"casual" | "professional" | "friendly">("friendly");
@@ -148,7 +168,8 @@ export default function ContentHumanizerPage() {
         "Avoid over-humanizing technical documentation; sometimes 'robotic' precision is clearer.",
         "Always read the output aloud to ensure the 'flow' matches your brand voice."
       ]}
-      explanation={
+      faqs={CONTENTHUMANIZER_FAQS}
+      explanation={ 
         <div className="space-y-4">
           <p>
             Content Humanization is the process of adjusting the syntax, vocabulary, and rhythm of text to sound more natural to human readers. This tool uses <strong>Linguistic Sentiment Mapping</strong> to replace sterile terms with contextually rich alternatives.

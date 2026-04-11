@@ -15,7 +15,7 @@ export default function MissionVision() {
           <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
             To provide developers, learners, and creators with free, high-performance tools that simplify complex tasks and accelerate growth. We aim to break down the barriers of entry to professional instruments.
           </p>
-          <Link href="#" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline group">
+          <Link href="/tools/seo" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline group">
             Read More <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -30,7 +30,7 @@ export default function MissionVision() {
           <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
             To become the world's leading open-access platform for specialized utilities, fostering a community where innovation is limited only by imagination, not by the cost of the tools needed to create.
           </p>
-          <Link href="#" className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold hover:underline group">
+          <Link href="/tools/trading" className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold hover:underline group">
             Our Journey <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
