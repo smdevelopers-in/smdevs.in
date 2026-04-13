@@ -7,6 +7,7 @@ export default function FeedbackModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,23 +33,37 @@ export default function FeedbackModal() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Store in local storage as fallback for "API"
-    const existingFeedback = JSON.parse(localStorage.getItem("user_feedback") || "[]");
-    existingFeedback.push({ ...formData, date: new Date().toISOString() });
-    localStorage.setItem("user_feedback", JSON.stringify(existingFeedback));
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "feedback",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          metadata: { tool: window.location.pathname }
+        })
+      });
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    
-    setTimeout(() => {
-      setIsSuccess(false);
-      setIsOpen(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 2000);
+      const data = await res.json();
+      if (data.success) {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+          setIsOpen(false);
+          setFormData({ name: "", email: "", message: "" });
+        }, 3000);
+      } else {
+        setError(data.error || "Failed to send feedback.");
+      }
+    } catch (err) {
+      setError("A network error occurred.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -128,6 +143,8 @@ export default function FeedbackModal() {
                   className="w-full px-5 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 font-medium transition-all text-slate-900 dark:text-white resize-none"
                 />
               </div>
+
+              {error && <p className="text-red-500 text-xs font-bold px-1">{error}</p>}
 
               <button 
                 type="submit"

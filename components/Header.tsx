@@ -28,6 +28,10 @@ const NAV_LINKS = [
       { name: "Blogs", href: "/resources/blogs" },
     ]
   },
+  {
+    name: "Contact Us",
+    href: "/contact",
+  },
 ];
 
 export default function Header() {

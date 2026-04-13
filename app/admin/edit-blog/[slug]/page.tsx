@@ -313,6 +313,10 @@ export default function EditBlogPage() {
                      paste_data_images: true,
                      paste_as_text: false,
                      paste_retain_style_properties: "all",
+                     convert_urls: false,
+                     relative_urls: false,
+                     remove_script_host: true,
+                     table_header_type: 'sectionCells',
                    }}
                  />
               </div>

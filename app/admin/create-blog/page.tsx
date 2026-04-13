@@ -284,10 +284,14 @@ export default function CreateBlogPage() {
                        'bold italic forecolor | accordion | alignleft aligncenter ' +
                        'alignright alignjustify | bullist numlist outdent indent | ' +
                        'removeformat | table | help',
-                     content_style: 'body { font-family:Inter,Helvetica,Arial,sans-serif; font-size:16px }',
                      paste_data_images: true,
+                     content_style: 'body { font-family:Inter,Helvetica,Arial,sans-serif; font-size:16px }',
                      paste_as_text: false,
                      paste_retain_style_properties: "all",
+                     convert_urls: false,
+                     relative_urls: false,
+                     remove_script_host: true,
+                     table_header_type: 'sectionCells',
                    }}
                  />
               </div>
