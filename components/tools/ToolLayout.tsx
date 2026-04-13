@@ -1,4 +1,4 @@
-import { ChevronRight, Home, HelpCircle, Lightbulb, Info, MessageSquarePlus } from "lucide-react";
+import { ChevronRight, Home, HelpCircle, Lightbulb, Info, MessageSquarePlus, Sparkles } from "lucide-react";
 import Breadcrumbs from "./Breadcrumbs";
 import FAQSection, { FAQ } from "./FAQSection";
 
@@ -103,49 +103,27 @@ export default function ToolLayout({
           {/* FAQs Section */}
           {faqs && <FAQSection faqs={faqs} />}
 
-          {/* Help Us Improve (New Feedback Section) */}
-          <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-200 dark:border-slate-800 shadow-sm">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-500">
-                <MessageSquarePlus className="w-6 h-6" />
+          {/* Premium Share Your Experience CTA */}
+          <div className="bg-gradient-to-br from-slate-900 to-[#020617] dark:from-[#020617] dark:to-slate-950 rounded-[2.5rem] p-8 md:p-12 border border-slate-800 shadow-2xl text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2" />
+            <div className="relative z-10 flex items-center gap-6">
+              <div className="w-16 h-16 rounded-3xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 backdrop-blur-md shadow-xl shadow-black/10 group-hover:scale-110 transition-transform hidden sm:flex">
+                <Sparkles className="w-8 h-8" />
               </div>
-              <div>
-                <h2 className="text-2xl font-black text-slate-900 dark:text-white">Help Us Improve This Tool</h2>
-                <p className="text-slate-500 dark:text-slate-400 font-medium text-sm">Your feedback helps us improve accuracy and usability.</p>
+              <div className="text-center sm:text-left">
+                <h2 className="text-3xl font-black text-white mb-2">Love our tools?</h2>
+                <p className="text-slate-400 font-medium text-lg">Your feedback helps us continuously improve.</p>
               </div>
             </div>
-
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Name</label>
-                <input 
-                  type="text"
-                  placeholder="John Doe"
-                  className="w-full px-5 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 font-medium transition-all text-slate-900 dark:text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Email</label>
-                <input 
-                  type="email"
-                  placeholder="john@example.com"
-                  className="w-full px-5 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 font-medium transition-all text-slate-900 dark:text-white"
-                />
-              </div>
-              <div className="md:col-span-2 space-y-2">
-                <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Feedback Message</label>
-                <textarea 
-                  rows={4}
-                  placeholder="Tell us what's on your mind..."
-                  className="w-full px-5 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 font-medium transition-all text-slate-900 dark:text-white resize-none"
-                />
-              </div>
-              <div className="md:col-span-2">
-                <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98]">
-                  Submit Feedback
-                </button>
-              </div>
-            </form>
+            
+            <button 
+              onClick={() => {
+                if(typeof window !== 'undefined') window.dispatchEvent(new Event('trigger-review-popup'))
+              }}
+              className="relative z-10 w-full md:w-auto shrink-0 px-10 py-5 bg-blue-600 text-white border border-blue-500/50 font-black rounded-full hover:bg-blue-500 hover:-translate-y-1 active:scale-95 transition-all shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3"
+            >
+              Share Your Experience
+            </button>
           </div>
         </div>
       </main>

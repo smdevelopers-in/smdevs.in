@@ -5,6 +5,7 @@ import FeaturedTools from "@/components/sections/FeaturedTools";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import HowItHelps from "@/components/sections/HowItHelps";
 import SEOContentSection from "@/components/sections/SEOContentSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTA from "@/components/sections/CTA";
 
@@ -66,6 +67,7 @@ export default function Home() {
       <WhyChooseUs />
       <HowItHelps />
       <SEOContentSection />
+      <TestimonialsSection />
       <FAQSection />
       <CTA />
     </div>

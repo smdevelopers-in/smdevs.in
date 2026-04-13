@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     const { data, error } = await resend.emails.send({
       from: 'SM Developers <support@smdevs.in>',
       to: ['smdevelopers016@gmail.com'],
-      reply_to: email || undefined,
+      replyTo: email || undefined,
       subject: subject,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
