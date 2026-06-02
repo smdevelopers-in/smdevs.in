@@ -18,7 +18,9 @@ import {
   LayoutDashboard,
   ShieldCheck,
   Brain,
-  Sparkles
+  Sparkles,
+  Target,
+  ListChecks
 } from "lucide-react";
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
 import FAQSection from "@/components/tools/FAQSection";
@@ -150,6 +152,20 @@ const SEO_TOOLS = [
     href: "/tools/seo/content-humanizer",
     color: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-500",
   },
+  {
+    name: "Keyword Intent Analyzer",
+    description: "Instantly uncover the search intent (Informational, Transactional etc.) of any keyword.",
+    icon: Target,
+    href: "/tools/seo/keyword-intent-analyzer",
+    color: "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-500",
+  },
+  {
+    name: "SEO Checklist Generator",
+    description: "An interactive, client-side SEO completion tracker to ensure proper optimization.",
+    icon: ListChecks,
+    href: "/tools/seo/seo-checklist-generator",
+    color: "bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-500",
+  },
 ];
 
 const SEO_INDEX_FAQS = [
@@ -247,7 +263,8 @@ export default function SEOToolsDirectory() {
                   "Content Humanizer", 
                   "Authority Score", 
                   "Keyword Volume", 
-                  "Link Profile"
+                  "Link Profile",
+                  "Keyword Intent Analyzer"
                 ].includes(t.name)).map((tool) => (
                   <ToolCard key={tool.name} tool={tool} highlighted />
                 ))}
@@ -273,7 +290,8 @@ export default function SEOToolsDirectory() {
                   "Content Humanizer", 
                   "Authority Score", 
                   "Keyword Volume", 
-                  "Link Profile"
+                  "Link Profile",
+                  "Keyword Intent Analyzer"
                 ].includes(t.name)).map((tool) => (
                   <ToolCard key={tool.name} tool={tool} />
                 ))}
@@ -313,7 +331,7 @@ function ToolCard({ tool, highlighted = false }: { tool: any, highlighted?: bool
         highlighted ? "border-blue-100 dark:border-blue-900/50 text-blue-600" : "border-slate-100 dark:border-slate-800 text-slate-500 dark:text-slate-400 group-hover:text-blue-600"
       }`}>
         <span>Open Tool</span>
-        {highlighted && <span className="text-[10px] px-2 py-0.5 bg-blue-600 text-white rounded-md">Pro</span>}
+        {highlighted && <span className="text-[10px] px-2 py-0.5 bg-blue-600 text-white rounded-md">Popular</span>}
       </div>
     </Link>
   );

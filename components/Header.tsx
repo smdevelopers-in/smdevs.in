@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown, Smartphone, Wrench, BookOpen, Users, Sparkles, TrendingUp, Search } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   {
@@ -44,7 +45,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group" aria-label="SM Developers Home">
           <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
             SM
           </div>
@@ -64,7 +65,7 @@ export default function Header() {
             >
               <Link
                 href={link.href}
-                className="flex items-center gap-1.5 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="flex items-center gap-1.5 text-sm font-bold text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={(e) => link.dropdown && e.preventDefault()}
               >
                 {link.name}
@@ -95,6 +96,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <Link
             href="/"
             className="hidden md:block px-8 py-3 rounded-2xl bg-blue-600 text-white text-sm font-black hover:scale-105 active:scale-95 transition-all shadow-xl shadow-blue-500/20"

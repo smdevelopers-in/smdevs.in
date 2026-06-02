@@ -13,16 +13,17 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "SM Developers",
-  "url": "https://smdevelopers.io",
-  "logo": "https://smdevelopers.io/logo.png",
+  "url": "https://smdevs.in",
+  "logo": "https://smdevs.in/icon.png",
+  "description": "SM Developers is a free, professional-grade SaaS utilities platform offering 18+ SEO tools and trading calculators — no signup required.",
   "sameAs": [
     "https://twitter.com/smdevelopers",
     "https://github.com/smdevelopers"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+1-000-000-0000",
-    "contactType": "customer service"
+    "contactType": "customer service",
+    "url": "https://smdevs.in/contact"
   }
 };
 

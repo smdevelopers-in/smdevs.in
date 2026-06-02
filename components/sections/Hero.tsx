@@ -30,7 +30,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtext */}
-        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
+        <p className="text-lg md:text-xl text-slate-700 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium">
           Access a growing suite of 18+ professional-grade utilities designed to simplify your workflow. From advanced SEO audits to precise trading calculators—completely free, always.
         </p>
 

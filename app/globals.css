@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -239,52 +242,3 @@
   border-right: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-    color: #f8fafc !important;
-  }
-  .prose details {
-    background-color: #0f172a;
-    border-color: #1e293b;
-  }
-  .prose summary {
-    background-color: #0f172a;
-    color: #f8fafc !important;
-  }
-  .prose summary::before {
-    color: #f8fafc;
-  }
-  .prose details[open] summary {
-    border-color: #1e293b;
-  }
-  .prose table {
-    border-color: #1e293b;
-  }
-  .prose th, .prose td {
-    border-color: #1e293b;
-  }
-  .prose th, .prose tr:first-child td {
-    background-color: #0f172a;
-  }
-  :root {
-    --background: #020617;
-    --foreground: #f8fafc;
-    --card: #020617;
-    --card-foreground: #f8fafc;
-    --popover: #020617;
-    --popover-foreground: #f8fafc;
-    --primary: #f8fafc;
-    --primary-foreground: #0f172a;
-    --secondary: #1e293b;
-    --secondary-foreground: #f8fafc;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --accent: #1e293b;
-    --accent-foreground: #f8fafc;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #f8fafc;
-    --border: #1e293b;
-    --input: #1e293b;
-    --ring: #cbd5e1;
-  }
-}

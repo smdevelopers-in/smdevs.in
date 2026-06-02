@@ -15,7 +15,6 @@
     "@vercel/edge-config": "^1.4.3",
     "@vercel/postgres": "^0.10.0",
     "cheerio": "^1.2.0",
-    "cloudinary": "^2.9.0",
     "clsx": "^2.1.1",
     "lowlight": "^3.3.0",
     "lucide-react": "^0.470.0",
@@ -30,8 +29,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cloudinary": "^2.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "pg": "^8.21.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

@@ -59,6 +59,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: blog.metaTitle || `${blog.title} | SM Developers`,
     description: blog.metaDescription || blog.excerpt || blog.tldr?.slice(0, 150),
     keywords: blog.focusKeyphrase ? [blog.focusKeyphrase] : [],
+    alternates: {
+      canonical: `https://smdevs.in/resources/blogs/${blog.slug}`,
+    },
     openGraph: {
       title: blog.metaTitle || blog.title,
       description: blog.metaDescription || blog.excerpt,

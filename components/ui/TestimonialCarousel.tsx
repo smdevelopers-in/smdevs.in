@@ -79,9 +79,10 @@ export default function TestimonialCarousel({ testimonials }: { testimonials: an
                         href={t.linkedin_id.includes('http') ? t.linkedin_id : `https://linkedin.com/in/${t.linkedin_id}`} 
                         target="_blank" 
                         rel="noreferrer" 
-                        className="w-10 h-10 rounded-full bg-[#0A66C2]/10 flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors shrink-0"
+                        className="w-12 h-12 rounded-full bg-[#0A66C2]/10 flex items-center justify-center text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors shrink-0"
+                        aria-label={`${t.name}'s LinkedIn Profile`}
                       >
-                         <Linkedin className="w-4 h-4" fill="currentColor" />
+                         <Linkedin className="w-5 h-5" fill="currentColor" />
                       </a>
                    )}
                 </div>
@@ -90,17 +91,20 @@ export default function TestimonialCarousel({ testimonials }: { testimonials: an
        </div>
        
        {/* Indicators */}
-       <div className="flex justify-center gap-2 mt-10">
+        <div className="flex justify-center gap-2 mt-10">
           {testimonials.map((_, dotIdx) => (
              <button
                 key={dotIdx}
                 onClick={() => setIndex(dotIdx)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                className="p-3"
+                aria-label={`Go to slide ${dotIdx + 1}`}
+             >
+                <div className={`w-2 h-2 rounded-full transition-all ${
                    index % testimonials.length === dotIdx 
                      ? "w-8 bg-blue-600" 
                      : "bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                }`}
-             />
+                }`} />
+             </button>
           ))}
        </div>
     </div>

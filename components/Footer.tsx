@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-8">
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group" aria-label="Visit SM Developers Homepage">
               <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
                 SM
               </div>
@@ -72,7 +72,7 @@ export default function Footer() {
                       <Link 
                         href={link.href} 
                         id={link.id}
-                        className="text-sm font-bold hover:text-blue-500 transition-colors flex items-center gap-1 group"
+                        className="text-sm font-bold hover:text-blue-500 transition-colors flex items-center gap-1 group py-2"
                       >
                         {link.name}
                         <ExternalLink className="w-3 h-3 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all px-0.5" />

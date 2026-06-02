@@ -10,14 +10,11 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   display: 'swap',
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://smdevs.in'),
-  alternates: {
-    canonical: './',
-  },
   title: {
     default: "SM Developers | Professional SaaS Utilities Platform",
     template: "%s | SM Developers"
@@ -75,7 +72,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <Script id="theme-loader" strategy="beforeInteractive">
+          {`
+            try {
+              if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+              } else {
+                document.documentElement.classList.remove('dark')
+              }
+            } catch (_) {}
+          `}
+        </Script>
+      </head>
       <body
         className={`${poppins.variable} font-sans min-h-screen flex flex-col bg-background text-foreground`}
       >
@@ -86,12 +96,12 @@ export default function RootLayout({
         <Footer />
         <GlobalInteractions />
         
-        {/* Google Analytics */}
+        {/* Google Analytics - Deferred to not block main thread CWV */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-SBE50TJMJT"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
