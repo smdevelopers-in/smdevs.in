@@ -74,9 +74,16 @@ export default async function InfographicDetailPage({
     contentUrl: item.image,
     url: `https://smdevs.in/resources/infographics/${item.slug}`,
     keywords: item.tags.join(", "),
+    // Required fields
     author: { "@type": "Organization", name: "SM Developers", url: "https://smdevs.in" },
-    copyrightHolder: { "@type": "Organization", name: "SM Developers" },
+    copyrightHolder: { "@type": "Organization", name: "SM Developers", url: "https://smdevs.in" },
+    copyrightYear: new Date().getFullYear(),
     license: "https://smdevs.in/resources/infographics",
+    // Optional fields (previously missing)
+    creditText: `${item.title} by SM Developers — smdevs.in`,
+    creator: { "@type": "Organization", name: "SM Developers", url: "https://smdevs.in" },
+    copyrightNotice: `© ${new Date().getFullYear()} SM Developers. Free to share with attribution. Source: smdevs.in/resources/infographics`,
+    acquireLicensePage: "https://smdevs.in/resources/infographics",
   };
 
   const embedCode = `<a href="https://smdevs.in/resources/infographics/${item.slug}" title="${item.title} by SM Developers">
