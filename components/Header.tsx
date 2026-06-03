@@ -27,6 +27,7 @@ const NAV_LINKS = [
     href: "#",
     dropdown: [
       { name: "Blogs", href: "/resources/blogs" },
+      { name: "Infographics", href: "/resources/infographics" },
     ]
   },
   {
