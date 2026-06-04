@@ -158,11 +158,25 @@ export const INFOGRAPHICS: Infographic[] = [
     aspectClass: "aspect-[3/4]",
     relatedSlugs: [],
   },
+  {
+    id: 11,
+    slug: "trading-risk-management-rules",
+    title: "5 Golden Rules of Trading Risk Management",
+    category: "Trading",
+    description: "The 5 non-negotiable rules every trader must follow to protect capital and stay in the game long-term.",
+    longDescription: "Risk management is the difference between traders who survive long-term and those who don't. These 5 golden rules cover the core principles every active trader must follow — from limiting risk per trade and always using a stop-loss to maintaining a minimum reward-to-risk ratio and controlling total portfolio exposure. Clean, simple, and reference-worthy.",
+    tags: ["trading risk management", "position sizing", "stop loss", "risk reward", "capital protection"],
+    image: "https://res.cloudinary.com/dkfj0zehx/image/upload/v1780557419/smdevs/infographics/trading-risk-management-rules.jpg",
+    alt: "5 Golden Rules of Trading Risk Management infographic — never risk more than 2% per trade, always set a stop-loss, maintain 2:1 risk-reward, calculate break-even, limit total exposure to 10%",
+    downloadName: "smdevs-trading-risk-management-rules",
+    aspectClass: "aspect-[3/4]",
+    relatedSlugs: [],
+  },
 ];
 
 export const CATEGORIES = [
   "All", "SEO", "Technical SEO", "Local SEO", "AI SEO",
-  "Content Marketing", "Lead Generation",
+  "Content Marketing", "Lead Generation", "Trading",
 ];
 
 export function getInfographicBySlug(slug: string): Infographic | undefined {
