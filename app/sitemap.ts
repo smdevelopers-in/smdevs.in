@@ -11,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '',
     '/tools/seo',
     '/tools/trading',
+    '/tools/others',
     '/resources/blogs',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
@@ -57,7 +58,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Error reading trading tools for sitemap:", e);
   }
 
-  // 4. Dynamic Blog Routes from Postgres
+  // 4. Other Tool Routes
+  const otherRoutes: any[] = [];
+  try {
+    const othersToolsDir = path.join(process.cwd(), 'app/tools/others');
+    if (fs.existsSync(othersToolsDir)) {
+      const othersToolFolders = fs.readdirSync(othersToolsDir).filter(f => fs.statSync(path.join(othersToolsDir, f)).isDirectory());
+      othersToolFolders.forEach((tool) => {
+        otherRoutes.push({
+          url: `${baseUrl}/tools/others/${tool}`,
+          lastModified: new Date(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.8,
+        });
+      });
+    }
+  } catch (e) {
+    console.error("Error reading other tools for sitemap:", e);
+  }
+
+  // 5. Dynamic Blog Routes from Postgres
   let blogRoutes: any[] = [];
   try {
     const { rows } = await sql`SELECT slug, publish_date, created_at FROM blog_posts WHERE status = 'published'`;
@@ -75,6 +95,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...seoRoutes,
     ...tradingRoutes,
+    ...otherRoutes,
     ...blogRoutes,
   ];
 }

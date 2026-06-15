@@ -12,6 +12,7 @@ const NAV_LINKS = [
     dropdown: [
       { name: "SEO Tools", href: "/tools/seo" },
       { name: "Trading Tools", href: "/tools/trading" },
+      { name: "Other Tools", href: "/tools/others" },
     ]
   },
   {
