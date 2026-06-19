@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Keyword Volume Estimator',
-  description: 'Get heuristic estimates of search volume and ranking difficulty using our automated pattern-matching engine.',
+  title: 'Free Keyword Volume Estimator — Estimate Search Volume',
+  description: 'Get estimated monthly search volume and keyword difficulty for any keyword, free. Prioritize keywords with the best SEO potential for your content strategy.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/keyword-volume-estimator'
+  },
+  openGraph: {
+    title: 'Free Keyword Volume Estimator — Estimate Search Volume',
+    description: 'Get estimated monthly search volume and keyword difficulty for any keyword, free. Prioritize keywords with the best SEO potential for your content strategy.',
+    url: 'https://smdevs.in/tools/seo/keyword-volume-estimator',
   }
 };
 

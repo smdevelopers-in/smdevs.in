@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Keyword Density Checker',
-  description: 'Analyze your content to find the most frequent words and their density percentage. Avoid keyword stuffing and optimize for SEO.',
+  title: 'Free Keyword Density Checker — Analyze Content SEO',
+  description: 'Check keyword density in your content for free. Find over-used or missing keywords, avoid stuffing, and improve your on-page SEO score. Instant analysis.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/keyword-density-checker'
+  },
+  openGraph: {
+    title: 'Free Keyword Density Checker — Analyze Content SEO',
+    description: 'Check keyword density in your content for free. Find over-used or missing keywords, avoid stuffing, and improve your on-page SEO score. Instant analysis.',
+    url: 'https://smdevs.in/tools/seo/keyword-density-checker',
   }
 };
 

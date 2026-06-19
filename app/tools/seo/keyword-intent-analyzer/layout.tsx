@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Keyword Intent Analyzer Free Tool',
-  description: 'Instantly uncover the underlying search intent of any keyword with our advanced heuristic scoring engine. Drive higher conversions by matching intent.',
+  title: 'Free Keyword Intent Analyzer — Detect Search Intent',
+  description: 'Instantly classify any keyword as informational, navigational, commercial or transactional. Free keyword intent analyzer to match content to user search intent.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/keyword-intent-analyzer'
+  },
+  openGraph: {
+    title: 'Free Keyword Intent Analyzer — Detect Search Intent',
+    description: 'Instantly classify any keyword as informational, navigational, commercial or transactional. Free keyword intent analyzer to match content to user search intent.',
+    url: 'https://smdevs.in/tools/seo/keyword-intent-analyzer',
   }
 };
 

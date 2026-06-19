@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Schema Generator',
-  description: 'Easily generate JSON-LD structured data for your website. Select a type, fill in the details, and get your schema instantly.',
+  title: 'Free Schema Generator — Generate JSON-LD Structured Data',
+  description: 'Create JSON-LD schema markup for articles, products, FAQs, local businesses and more. Free schema generator to unlock Google rich results. Copy and paste ready.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/schema-generator'
+  },
+  openGraph: {
+    title: 'Free Schema Generator — Generate JSON-LD Structured Data',
+    description: 'Create JSON-LD schema markup for articles, products, FAQs, local businesses and more. Free schema generator to unlock Google rich results. Copy and paste ready.',
+    url: 'https://smdevs.in/tools/seo/schema-generator',
   }
 };
 

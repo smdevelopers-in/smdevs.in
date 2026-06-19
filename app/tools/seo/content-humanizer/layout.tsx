@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Content Humanizer',
-  description: 'Transform dry or robotic text into engaging, human-like content using linguistic variation and tone-specific synonym mapping.',
+  title: 'Free Content Humanizer — Make AI Text Sound Human',
+  description: 'Transform robotic AI-generated text into natural, human-sounding content for free. Improve readability, tone and engagement. Paste content and humanize instantly.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/content-humanizer'
+  },
+  openGraph: {
+    title: 'Free Content Humanizer — Make AI Text Sound Human',
+    description: 'Transform robotic AI-generated text into natural, human-sounding content for free. Improve readability, tone and engagement. Paste content and humanize instantly.',
+    url: 'https://smdevs.in/tools/seo/content-humanizer',
   }
 };
 

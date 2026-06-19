@@ -16,11 +16,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://smdevs.in'),
   title: {
-    default: "SM Developers | Professional SaaS Utilities Platform",
+    default: "SM Developers — Free SEO & Trading Tools Online",
     template: "%s | SM Developers"
   },
-  description: "Accelerate your workflow with SM Developers. A high-performance suite of SEO, Trading, and Content intelligence tools designed for modern professionals.",
-  keywords: ["SEO tools", "Trading calculators", "AI content detector", "SM Developers", "SaaS utilities"],
+  description: "SM Developers offers 20+ free professional tools: SEO analyzers, keyword checkers, schema validators, trading calculators & more. No signup. Instant results.",
+  keywords: ["free SEO tools", "trading calculators", "AI content detector", "keyword density checker", "meta tag generator", "SM Developers"],
   authors: [{ name: "SM Developers Team" }],
   creator: "SM Developers",
   publisher: "SM Developers",

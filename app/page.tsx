@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Hero from "@/components/sections/Hero";
 import WhatWeDo from "@/components/sections/WhatWeDo";
 import Categories from "@/components/sections/Categories";
@@ -8,6 +9,19 @@ import SEOContentSection from "@/components/sections/SEOContentSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTA from "@/components/sections/CTA";
+
+export const metadata: Metadata = {
+  title: 'SM Developers — Free SEO & Trading Tools Online',
+  description: 'SM Developers offers 20+ free professional tools: SEO analyzers, keyword checkers, schema validators, trading calculators & more. No signup. Instant results.',
+  alternates: {
+    canonical: 'https://smdevs.in'
+  },
+  openGraph: {
+    title: 'SM Developers — Free SEO & Trading Tools Online',
+    description: 'SM Developers offers 20+ free professional tools: SEO analyzers, keyword checkers, schema validators, trading calculators & more. No signup. Instant results.',
+    url: 'https://smdevs.in',
+  }
+};
 
 const jsonLd = {
   "@context": "https://schema.org",

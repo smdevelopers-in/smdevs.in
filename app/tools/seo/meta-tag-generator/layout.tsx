@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Meta Tag Generator',
-  description: 'Create SEO-optimized meta tags for your website. Preview how your site will look on Google and ensure your titles and descriptions are the perfect length.',
+  title: 'Free Meta Tag Generator — Create SEO-Optimized Tags',
+  description: 'Generate perfect title tags and meta descriptions for SEO instantly. Preview how your page looks in Google SERP. Free, no login, character limits enforced.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/meta-tag-generator'
+  },
+  openGraph: {
+    title: 'Free Meta Tag Generator — Create SEO-Optimized Tags',
+    description: 'Generate perfect title tags and meta descriptions for SEO instantly. Preview how your page looks in Google SERP. Free, no login, character limits enforced.',
+    url: 'https://smdevs.in/tools/seo/meta-tag-generator',
   }
 };
 

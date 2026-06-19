@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Break-even Calculator',
-  description: 'Identify the exact price point where your trade covers all costs, including spreads and commissions, before it becomes profitable.',
+  title: 'Free Break-Even Calculator for Traders — Find Your Price',
+  description: 'Calculate your break-even price for any trade after spreads, commissions and fees. Free trading break-even calculator for forex, stocks and crypto. Instant results.',
   alternates: {
     canonical: 'https://smdevs.in/tools/trading/break-even'
+  },
+  openGraph: {
+    title: 'Free Break-Even Calculator for Traders — Find Your Price',
+    description: 'Calculate your break-even price for any trade after spreads, commissions and fees. Free trading break-even calculator for forex, stocks and crypto. Instant results.',
+    url: 'https://smdevs.in/tools/trading/break-even',
   }
 };
 

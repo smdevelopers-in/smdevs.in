@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Profit/Loss Calculator',
-  description: 'Calculate your net gains or losses instantly. Account for quantity and price movement to track your P&L accurately.',
+  title: 'Free Profit & Loss Calculator — Calculate P&L Instantly',
+  description: 'Calculate your exact profit or loss on any trade instantly. Enter buy price, sell price and quantity to get net P&L. Free for stocks, forex and crypto traders.',
   alternates: {
     canonical: 'https://smdevs.in/tools/trading/profit-loss'
+  },
+  openGraph: {
+    title: 'Free Profit & Loss Calculator — Calculate P&L Instantly',
+    description: 'Calculate your exact profit or loss on any trade instantly. Enter buy price, sell price and quantity to get net P&L. Free for stocks, forex and crypto traders.',
+    url: 'https://smdevs.in/tools/trading/profit-loss',
   }
 };
 

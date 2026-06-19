@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Broken Link Checker',
-  description: 'Scan your webpage for broken links (404s). Improve your site\'s SEO and user experience by identifying and fixing dead ends.',
+  title: 'Free Broken Link Checker — Find 404 Errors on Any Page',
+  description: 'Scan any webpage for broken links and 404 errors for free. Fix dead links to improve user experience and SEO rankings. Instant broken link detection tool.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/broken-link-checker'
+  },
+  openGraph: {
+    title: 'Free Broken Link Checker — Find 404 Errors on Any Page',
+    description: 'Scan any webpage for broken links and 404 errors for free. Fix dead links to improve user experience and SEO rankings. Instant broken link detection tool.',
+    url: 'https://smdevs.in/tools/seo/broken-link-checker',
   }
 };
 

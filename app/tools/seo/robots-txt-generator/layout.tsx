@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Robots.txt Generator',
-  description: 'Create a custom robots.txt file to guide search engine crawlers. Control which parts of your site should be indexed and provide a link to your sitemap.',
+  title: 'Free Robots.txt Generator — Create & Test in Seconds',
+  description: 'Generate a custom robots.txt file to control search engine crawlers. Block or allow specific bots and folders. Preview and download instantly. 100% free.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/robots-txt-generator'
+  },
+  openGraph: {
+    title: 'Free Robots.txt Generator — Create & Test in Seconds',
+    description: 'Generate a custom robots.txt file to control search engine crawlers. Block or allow specific bots and folders. Preview and download instantly. 100% free.',
+    url: 'https://smdevs.in/tools/seo/robots-txt-generator',
   }
 };
 
