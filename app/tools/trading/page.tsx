@@ -5,17 +5,14 @@ import Link from "next/link";
 import { 
   TrendingUp, 
   BarChart3, 
-  PieChart, 
   ShieldCheck, 
   ArrowRight, 
-  ChevronRight,
-  HelpCircle,
-  Plus,
-  Minus,
   Calculator,
-  ArrowUpRight,
   Target,
-  Zap
+  Zap,
+  LineChart,
+  Scale,
+  BookOpen
 } from "lucide-react";
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
 import FAQSection from "@/components/tools/FAQSection";
@@ -24,11 +21,11 @@ import { Search } from "lucide-react";
 const TRADING_INDEX_FAQS = [
   {
     question: "Do I need to connect my broker to use these tools?",
-    answer: "No, all our trading tools are fully standalone. You simply input your entry, stop-loss, and capital parameters. We never require broker connections or API keys, ensuring 100% security for your capital."
+    answer: "No, all our trading tools are fully standalone. You simply input your parameters manually. We never require broker connections or API keys, ensuring 100% security for your account details."
   },
   {
     question: "Are these calculators suited for crypto or stock trading?",
-    answer: "Both! The mathematical logic behind Risk-Reward, Position Sizing, and Pivot Points applies universally to Crypto, Forex, Options, and Equities."
+    answer: "Both! The mathematical logic behind Risk-Reward, Position Sizing, and Pivot Points applies universally to Crypto, Forex, Options, and Equities. The Stock Analyzer works specifically with stock symbols from Yahoo Finance."
   },
   {
     question: "Is my financial data stored?",
@@ -36,18 +33,55 @@ const TRADING_INDEX_FAQS = [
   },
   {
     question: "Are these tools free?",
-    answer: "Yes, our entire suite of Trading Utilities is completely free. Our goal is to empower traders with institutional-grade risk management tools without premium subscriptions."
+    answer: "Yes, our entire suite of Trading Tools is completely free. Our goal is to empower traders with professional-grade tools without premium subscriptions."
+  },
+  {
+    question: "How does the Stock Analyzer fetch data?",
+    answer: "The Stock Analyzer uses Yahoo Finance's public API to fetch delayed market data on demand. Simply enter a ticker symbol (e.g., AAPL, RELIANCE.NS) and click Analyze. No API key or account required."
+  },
+  {
+    question: "What is the Intrinsic Value Calculator based on?",
+    answer: "Our Intrinsic Value Calculator uses a simplified Discounted Cash Flow (DCF) model. You input the current EPS, expected growth rate, discount rate, and projection years to estimate a stock's fair value and margin of safety."
+  },
+  {
+    question: "Can I use the Option Profit Calculator for Indian markets?",
+    answer: "Yes. Enter the strike price in rupees, your lot size (e.g., 75 for Nifty), and the premium paid. The calculator will show your total net payoff, breakeven price, and ROI% based on the expected expiry price."
   }
 ];
 
+
 const TRADING_TOOLS = [
+  {
+    title: "Stock Analyzer",
+    description: "Analyze any stock instantly with live price data, P/E ratio, EPS, technical indicators (SMA, RSI, MACD), support & resistance levels, and plain-English explanations.",
+    icon: BarChart3,
+    href: "/tools/trading/stock-analyzer",
+    isFeatured: true,
+    tag: "New"
+  },
+  {
+    title: "Intrinsic Value Calculator",
+    description: "Estimate a stock's fair value using a DCF-based model. Input EPS, growth rate, and discount rate to see if a stock is undervalued, fairly valued, or overvalued.",
+    icon: BookOpen,
+    href: "/tools/trading/intrinsic-value",
+    isFeatured: true,
+    tag: "New"
+  },
+  {
+    title: "Option Profit Calculator",
+    description: "Calculate profit, loss, breakeven, ROI%, and net payoff for call and put options. Includes an interactive payoff diagram to visualise your risk before entering.",
+    icon: LineChart,
+    href: "/tools/trading/option-profit",
+    isFeatured: false,
+    tag: "New"
+  },
   {
     title: "Pivot Calculator",
     description: "Generate accurate support and resistance levels for intraday and swing trading strategies using Standard, Woodie, and Camarilla methods.",
     icon: BarChart3,
     href: "/tools/trading/pivot-calculator",
-    isFeatured: true,
-    tag: "Most Popular"
+    isFeatured: false,
+    tag: "Popular"
   },
   {
     title: "Position Size Calculator",
@@ -59,7 +93,7 @@ const TRADING_TOOLS = [
   {
     title: "Risk Reward Calculator",
     description: "Determine your potential profit against your potential loss to maintain a positive expectancy in your trading plan.",
-    icon: ShieldCheck,
+    icon: Scale,
     href: "/tools/trading/risk-reward",
     isFeatured: false
   },
@@ -174,12 +208,12 @@ export default function TradingToolsPage() {
           </section>
         )}
 
-        {/* Why Use These Section (Professional Cleanup) */}
+        {/* Why Use These Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-slate-200 dark:border-slate-800">
            {[
-             { title: "Risk Management", desc: "Protect your capital with scientific position sizing and risk/reward ratios.", icon: ShieldCheck },
-             { title: "Technical Precision", desc: "Identify key supply and demand zones using multiple pivot calculation methods.", icon: Target },
-             { title: "Efficiency", desc: "Instant outputs to help you keep up with fast-moving market opportunities.", icon: Zap }
+             { title: "Risk Management", desc: "Protect your capital with scientific position sizing, risk/reward ratios, and break-even analysis before every trade.", icon: ShieldCheck },
+             { title: "Stock Intelligence", desc: "Analyze stocks with live data, technical indicators, valuation metrics, and support/resistance levels — all in one place.", icon: BarChart3 },
+             { title: "Instant Results", desc: "All calculations happen in your browser — no login, no lag, no data sharing. Professional tools at zero cost.", icon: Zap }
            ].map((benefit, i) => (
              <div key={i} className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600">

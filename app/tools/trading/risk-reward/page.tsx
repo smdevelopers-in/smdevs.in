@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import TradingToolLayout from "@/components/tools/TradingToolLayout";
+import RelatedTradingTools from "@/components/tools/RelatedTradingTools";
 import { Info, LayoutGrid, Scale } from "lucide-react";
 
 
@@ -203,6 +204,10 @@ export default function RiskRewardCalculatorPage() {
               </div>
            </div>
         </div>
+      </div>
+
+      <div className="mt-8">
+        <RelatedTradingTools exclude={["/tools/trading/risk-reward"]} limit={4} />
       </div>
     </TradingToolLayout>
   );

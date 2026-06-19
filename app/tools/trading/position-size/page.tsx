@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import TradingToolLayout from "@/components/tools/TradingToolLayout";
+import RelatedTradingTools from "@/components/tools/RelatedTradingTools";
 import { Info, Target, ShieldAlert } from "lucide-react";
 
 
@@ -240,6 +241,10 @@ export default function PositionSizeCalculatorPage() {
               </div>
            </div>
         </div>
+      </div>
+
+      <div className="mt-8">
+        <RelatedTradingTools exclude={["/tools/trading/position-size"]} limit={4} />
       </div>
     </TradingToolLayout>
   );
