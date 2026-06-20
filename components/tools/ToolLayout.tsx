@@ -1,6 +1,7 @@
 import { ChevronRight, Home, HelpCircle, Lightbulb, Info, MessageSquarePlus, Sparkles } from "lucide-react";
 import Breadcrumbs from "./Breadcrumbs";
 import FAQSection, { FAQ } from "./FAQSection";
+import RelatedSEOTools from "./RelatedSEOTools";
 
 interface ToolLayoutProps {
   title: string;
@@ -11,6 +12,8 @@ interface ToolLayoutProps {
   explanation?: React.ReactNode;
   toolType?: "SEO" | "Trading" | "AI" | "Developer";
   faqs?: FAQ[];
+  /** Optional: pass current tool href to exclude it from the Related section */
+  currentHref?: string;
 }
 
 export default function ToolLayout({
@@ -21,7 +24,8 @@ export default function ToolLayout({
   tips,
   explanation,
   toolType = "SEO",
-  faqs
+  faqs,
+  currentHref,
 }: ToolLayoutProps) {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
@@ -102,6 +106,14 @@ export default function ToolLayout({
 
           {/* FAQs Section */}
           {faqs && <FAQSection faqs={faqs} />}
+
+          {/* Related SEO Tools — internal linking */}
+          {toolType === "SEO" && (
+            <RelatedSEOTools
+              exclude={currentHref ? [currentHref] : []}
+              limit={4}
+            />
+          )}
 
           {/* Premium Share Your Experience CTA */}
           <div className="bg-gradient-to-br from-slate-900 to-[#020617] dark:from-[#020617] dark:to-slate-950 rounded-[2.5rem] p-8 md:p-12 border border-slate-800 shadow-2xl text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">

@@ -8,12 +8,21 @@ import {
   Globe, 
   UserCheck 
 } from "lucide-react";
+import { Metadata } from 'next';
 
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
 
-export const metadata = {
-  title: "Privacy & Terms | SM Developers",
-  description: "Our commitment to your privacy and rules for using our platform. Learn how SM Developers protects your data.",
+export const metadata: Metadata = {
+  title: 'Privacy Policy & Terms of Service — SM Developers',
+  description: 'Read our privacy policy and terms of service. SM Developers does not track users, sell data, or require registration to use our free SEO and trading tools.',
+  alternates: {
+    canonical: 'https://smdevs.in/privacy'
+  },
+  openGraph: {
+    title: 'Privacy Policy & Terms of Service — SM Developers',
+    description: 'SM Developers does not track users, sell data, or require registration. Read our full privacy policy and terms of service.',
+    url: 'https://smdevs.in/privacy',
+  }
 };
 
 export default function PrivacyPolicyPage() {

@@ -13,11 +13,20 @@ import {
   Heart
 } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from 'next';
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
 
-export const metadata = {
-  title: "Documentation | SM Developers",
-  description: "Learn how to use SM Developers' suite of free SEO, trading, and development tools. Detailed guides and 'how it works' section.",
+export const metadata: Metadata = {
+  title: 'Documentation — How to Use Free SEO & Trading Tools',
+  description: "Step-by-step guides for every SM Developers tool. Learn how to use our free SEO analyzers, trading calculators, schema generators, and more. No account needed.",
+  alternates: {
+    canonical: 'https://smdevs.in/docs'
+  },
+  openGraph: {
+    title: 'Documentation — How to Use Free SEO & Trading Tools',
+    description: "Step-by-step guides for SM Developers' free SEO and trading tools.",
+    url: 'https://smdevs.in/docs',
+  }
 };
 
 const DOC_SECTIONS = [

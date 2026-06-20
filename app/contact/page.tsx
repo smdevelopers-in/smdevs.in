@@ -195,6 +195,56 @@ export default function ContactPage() {
 
         </div>
       </div>
+
+      {/* SEO Content Section — fixes low word count */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-24 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-16 border-t border-slate-200 dark:border-slate-800">
+          {[
+            {
+              title: "Tool Support",
+              body: "For questions about any of our SEO tools or trading calculators, visit the specific tool page first. Each tool includes a detailed FAQ section and step-by-step usage guide that resolves the majority of common questions.",
+              link: { label: "Browse SEO Tools", href: "/tools/seo" }
+            },
+            {
+              title: "Partnerships & Integrations",
+              body: "We welcome collaboration proposals from agencies, content creators, and developers. If you're interested in white-labeling our tools, building integrations, or co-creating content, reach out with partnership details in your message.",
+              link: { label: "Browse Trading Tools", href: "/tools/trading" }
+            },
+            {
+              title: "Bug Reports & Feedback",
+              body: "Help us improve by reporting bugs, unexpected results, or UX issues. Include the tool name, your browser, and a description of the issue. We prioritize verified bug reports and typically ship fixes within 24–48 hours.",
+              link: { label: "Read Documentation", href: "/docs" }
+            }
+          ].map((item, i) => (
+            <div key={i} className="bg-white dark:bg-slate-900 p-8 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm space-y-4">
+              <h3 className="text-lg font-black text-slate-900 dark:text-white">{item.title}</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{item.body}</p>
+              <a href={item.link.href} className="inline-flex items-center gap-1 text-sm font-black text-blue-600 hover:text-blue-700 transition-colors">
+                {item.link.label} →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 p-8 bg-slate-50 dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 space-y-4">
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white">About SM Developers</h2>
+          <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-4xl">
+            SM Developers is a free, professional-grade toolkit for SEO professionals, content marketers, and active traders. We offer 20+ SEO tools including schema validators, meta tag generators, keyword analyzers, and SERP preview tools — alongside a suite of trading calculators covering position sizing, risk/reward ratios, pivot points, and options profit analysis. All tools are 100% free to use, require no registration, and run entirely in your browser. Our team is dedicated to making institutional-grade analytics accessible to everyone.
+          </p>
+          <div className="flex flex-wrap gap-3 pt-2">
+            {[
+              { label: "SEO Tools", href: "/tools/seo" },
+              { label: "Trading Tools", href: "/tools/trading" },
+              { label: "Documentation", href: "/docs" },
+              { label: "Privacy Policy", href: "/privacy" },
+            ].map((link) => (
+              <a key={link.href} href={link.href} className="text-xs font-black text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-3 py-1.5 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

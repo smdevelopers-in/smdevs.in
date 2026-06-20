@@ -227,6 +227,42 @@ export default function TradingToolsPage() {
            ))}
         </section>
 
+
+        {/* From Our Blog — links to orphaned blog pages */}
+        <section className="space-y-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">From Our <span className="text-blue-600">Blog</span></h2>
+              <p className="text-sm text-slate-500 font-medium">Trading guides written by professionals to sharpen your edge in the market.</p>
+            </div>
+            <Link href="/resources/blogs" className="text-sm font-black text-blue-600 hover:text-blue-700 flex items-center gap-1">
+              All Articles <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "How to Calculate Risk/Reward Ratio in Trading", href: "/resources/blogs/how-to-calculate-risk-reward-ratio-in-trading", tag: "Risk/Reward" },
+              { title: "Pivot Point Calculator: Intraday Trading Guide", href: "/resources/blogs/pivot-point-calculator-intraday-trading-guide", tag: "Pivot Points" },
+              { title: "Position Sizing in Trading: Complete Risk Guide", href: "/resources/blogs/position-sizing-in-trading", tag: "Position Sizing" },
+              { title: "Break-Even Trading Guide: Find Your Break-Even Price", href: "/resources/blogs/break-even-trading-guide", tag: "Break-Even" },
+              { title: "Risk of Ruin: Why Traders Blow Up Accounts", href: "/resources/blogs/risk-of-ruin-trading-guide", tag: "Risk Management" },
+              { title: "Free Trading Calculators: Risk Management Guide", href: "/resources/blogs/free-trading-calculators-risk-management-guide", tag: "Calculators" },
+            ].map((post) => (
+              <Link
+                key={post.href}
+                href={post.href}
+                className="group flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-800 hover:shadow-lg hover:shadow-blue-500/5 hover:-translate-y-0.5 transition-all"
+              >
+                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md w-fit">{post.tag}</span>
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm leading-snug group-hover:text-blue-600 transition-colors flex items-start justify-between gap-2">
+                  {post.title}
+                  <ArrowRight className="w-4 h-4 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-blue-600 mt-0.5" />
+                </h3>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <FAQSection faqs={TRADING_INDEX_FAQS} />
       </main>
     </div>

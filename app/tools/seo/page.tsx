@@ -300,7 +300,44 @@ export default function SEOToolsDirectory() {
           </>
         )}
 
+
+        {/* From Our Blog — reduces orphaned pages, increases text/HTML ratio */}
+        <section className="space-y-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">From Our <span className="text-blue-600">Blog</span></h2>
+              <p className="text-sm text-slate-500 font-medium">In-depth guides to help you master SEO and grow organic traffic.</p>
+            </div>
+            <Link href="/resources/blogs" className="text-sm font-black text-blue-600 hover:text-blue-700 flex items-center gap-1">
+              All Articles <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "What Is Schema Markup? Complete Structured Data Guide", href: "/resources/blogs/what-is-schema-markup-structured-data-guide", tag: "Schema" },
+              { title: "How to Write the Perfect Meta Title & Meta Description", href: "/resources/blogs/how-to-write-perfect-meta-title-meta-description", tag: "Meta Tags" },
+              { title: "On-Page SEO Checklist: 23 Things to Audit Before Publishing", href: "/resources/blogs/on-page-seo-checklist-23-things-audit-before-publish", tag: "On-Page SEO" },
+              { title: "Keyword Intent Analysis: Complete Guide to Search Intent", href: "/resources/blogs/keyword-intent-analysis-complete-guide", tag: "Keywords" },
+              { title: "How to Create an XML Sitemap: SEO Guide", href: "/resources/blogs/how-to-create-xml-sitemap-seo-guide", tag: "Sitemap" },
+              { title: "How to Use Free SEO Tools to Rank Higher in Google", href: "/resources/blogs/how-to-use-free-seo-tools-rank-higher", tag: "SEO Tools" },
+            ].map((post) => (
+              <Link
+                key={post.href}
+                href={post.href}
+                className="group flex flex-col gap-3 p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-800 hover:shadow-lg hover:shadow-blue-500/5 hover:-translate-y-0.5 transition-all"
+              >
+                <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-md w-fit">{post.tag}</span>
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm leading-snug group-hover:text-blue-600 transition-colors flex items-start justify-between gap-2">
+                  {post.title}
+                  <ArrowRight className="w-4 h-4 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-blue-600 mt-0.5" />
+                </h3>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <FAQSection faqs={SEO_INDEX_FAQS} />
+
       </main>
     </div>
   );
