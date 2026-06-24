@@ -278,11 +278,32 @@ export default function KeywordIntentAnalyzerPage() {
         "The longer the keyword, the more specific the intent becomes."
       ]}
       faqs={INTENT_FAQS}
-      explanation={ 
-        <div className="space-y-4">
-          <p>
-            The Keyword Intent Analyzer dissects the psychological driver behind a user's search query. Search algorithms like Google prioritize content that perfectly aligns to what the user wants to achieve. By breaking down your keywords into Informational, Commercial, Transactional, or Navigational intent, you dramatically improve ranking chances.
-          </p>
+      explanation={
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">What Is Keyword Intent?</h2>
+            <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">Keyword intent (also called search intent) is the underlying goal a user has when typing a query into Google. Google&apos;s algorithm is designed to match results to intent — which means matching your content to the right intent type is one of the most impactful on-page SEO optimizations you can make. Mismatching intent is why pages rank at position 15+ even with strong content.</p>
+          </div>
+          <div className="space-y-3">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">The 4 Types of Search Intent</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { type: 'Informational', color: 'text-blue-600', desc: 'User wants to learn. Example: "what is keyword density", "how to do SEO". Best matched with blog posts, guides, definitions.' },
+                { type: 'Navigational', color: 'text-violet-600', desc: 'User wants a specific site. Example: "Google Search Console", "Ahrefs login". Match with branded landing pages.' },
+                { type: 'Commercial', color: 'text-amber-600', desc: 'User is researching before buying. Example: "best SEO tools", "keyword tool comparison". Match with comparison content.' },
+                { type: 'Transactional', color: 'text-emerald-600', desc: 'User is ready to act. Example: "free keyword checker", "buy SEO audit". Match with tool pages and CTAs.' },
+              ].map((item, i) => (
+                <div key={i} className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                  <h4 className={`font-black text-xs uppercase tracking-widest mb-2 ${item.color}`}>{item.type}</h4>
+                  <p className="text-xs text-slate-500 font-medium leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-3">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">How to Use Keyword Intent in Your SEO Strategy</h2>
+            <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">Match your page type to the dominant intent of your target keyword. Informational keywords should lead to educational content with definitions and how-tos. Transactional keywords should lead to tool pages or product pages with clear CTAs. Creating the wrong type of content for a keyword is one of the most common reasons pages fail to rank despite good writing.</p>
+          </div>
         </div>
       }
     >

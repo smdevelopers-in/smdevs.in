@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free XML Sitemap Generator — Create & Download Instantly',
-  description: 'Generate a valid XML sitemap from your URLs for free. Boost search engine crawling and indexation. Paste URLs and download a production-ready sitemap.xml.',
+  title: 'XML Sitemap Generator — Create & Download Free Sitemap',
+  description: 'Generate an XML sitemap for any website in seconds. Download, copy, or submit directly to Google Search Console. Free, no signup, works on any site.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/sitemap-generator'
   },
   openGraph: {
-    title: 'Free XML Sitemap Generator — Create & Download Instantly',
-    description: 'Generate a valid XML sitemap from your URLs for free. Boost search engine crawling and indexation. Paste URLs and download a production-ready sitemap.xml.',
+    title: 'XML Sitemap Generator — Create & Download Free Sitemap',
+    description: 'Generate an XML sitemap for any website in seconds. Download, copy, or submit directly to Google Search Console. Free, no signup, works on any site.',
     url: 'https://smdevs.in/tools/seo/sitemap-generator',
   }
 };

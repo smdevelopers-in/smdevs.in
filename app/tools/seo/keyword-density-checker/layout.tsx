@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Keyword Density Checker — Analyze Content SEO',
-  description: 'Check keyword density in your content for free. Find over-used or missing keywords, avoid stuffing, and improve your on-page SEO score. Instant analysis.',
+  title: 'Keyword Density Checker — Analyze Content SEO Instantly',
+  description: 'Check keyword density and frequency in any text. Identify keyword stuffing, optimize content balance, and improve on-page SEO scores. Free, no signup.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/keyword-density-checker'
   },
   openGraph: {
-    title: 'Free Keyword Density Checker — Analyze Content SEO',
-    description: 'Check keyword density in your content for free. Find over-used or missing keywords, avoid stuffing, and improve your on-page SEO score. Instant analysis.',
+    title: 'Keyword Density Checker — Analyze Content SEO Instantly',
+    description: 'Check keyword density and frequency in any text. Identify keyword stuffing, optimize content balance, and improve on-page SEO scores. Free, no signup.',
     url: 'https://smdevs.in/tools/seo/keyword-density-checker',
   }
 };

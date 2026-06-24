@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Open Graph Generator — Optimize Social Media Previews',
-  description: 'Generate Open Graph meta tags for Facebook, Twitter & LinkedIn. Control your page preview title, image and description when shared on social media. Free.',
+  title: 'Open Graph Tag Generator — Optimize Social Previews',
+  description: 'Generate Open Graph tags for Facebook, Twitter & LinkedIn. Control how your page looks when shared on social media. Free OG tag generator, no signup.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/open-graph-generator'
   },
   openGraph: {
-    title: 'Free Open Graph Generator — Optimize Social Media Previews',
-    description: 'Generate Open Graph meta tags for Facebook, Twitter & LinkedIn. Control your page preview title, image and description when shared on social media. Free.',
+    title: 'Open Graph Tag Generator — Optimize Social Previews',
+    description: 'Generate Open Graph tags for Facebook, Twitter & LinkedIn. Control how your page looks when shared on social media. Free OG tag generator, no signup.',
     url: 'https://smdevs.in/tools/seo/open-graph-generator',
   }
 };

@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Free Schema Validator — Validate JSON-LD Structured Data',
-  description: 'Validate your JSON-LD structured data and schema markup instantly for free. Check for errors that prevent rich results in Google search. No signup required.',
+  title: 'Schema Markup Checker — Validate JSON-LD & Rich Results',
+  description: 'Free schema markup checker. Instantly validate JSON-LD structured data, fix errors, and test if your schema qualifies for Google rich results. No signup.',
   alternates: {
     canonical: 'https://smdevs.in/tools/seo/schema-validator'
   },
   openGraph: {
-    title: 'Free Schema Validator — Validate JSON-LD Structured Data',
-    description: 'Validate your JSON-LD structured data and schema markup instantly for free. Check for errors that prevent rich results in Google search. No signup required.',
+    title: 'Schema Markup Checker — Validate JSON-LD & Rich Results',
+    description: 'Free schema markup checker. Instantly validate JSON-LD structured data, fix errors, and test if your schema qualifies for Google rich results. No signup.',
     url: 'https://smdevs.in/tools/seo/schema-validator',
   }
 };

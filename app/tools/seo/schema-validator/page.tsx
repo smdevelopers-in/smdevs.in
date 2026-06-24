@@ -92,15 +92,34 @@ export default function SchemaValidatorPage() {
         "Use the 'LocalBusiness' schema if you have a physical office to improve your ranking in local map results."
       ]}
       explanation={
-        <div className="space-y-4">
-          <p>
-            Schema markup (Structured Data) is a standardized vocabulary used to help search engines understand the content on your site. When you add schema to your HTML, it helps search engines provide better results (Rich Snippets).
-          </p>
-           <div className="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-[2rem] border border-blue-100 dark:border-blue-800 mt-6">
-             <h4 className="text-sm font-black text-blue-600 uppercase tracking-widest mb-2">The 'Rich Snippet' Advantage</h4>
-             <p className="text-xs text-blue-900 dark:text-blue-300 font-medium leading-relaxed">
-               Pages with valid schema are eligible for enhanced search features like star ratings, product prices, event dates, and FAQ toggles. These visual enhancements can increase your <strong>Organic CTR by up to 30%</strong>.
-             </p>
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">What Is Schema Markup?</h2>
+            <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">Schema markup (also called structured data) is a standardized vocabulary of code — based on Schema.org — that you add to your website&apos;s HTML. It tells search engines exactly what your content means, not just what it says. Google uses this information to generate <strong>rich results</strong> (star ratings, FAQs, breadcrumbs, product prices) in search listings, which dramatically increases click-through rates.</p>
+          </div>
+          <div className="space-y-3">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">What Is a Schema Validator?</h2>
+            <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">A schema validator (also called a schema checker or schema tester) checks your JSON-LD, Microdata, or RDFa markup against the Schema.org specification. It identifies syntax errors, missing required fields, and deprecated properties that would prevent Google from generating rich results for your pages.</p>
+          </div>
+          <div className="space-y-3">
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white">How to Validate Schema Markup</h2>
+            <ol className="space-y-2 text-slate-600 dark:text-slate-400 font-medium list-decimal pl-5">
+              <li>Paste your JSON-LD structured data into the validator above.</li>
+              <li>Click &ldquo;Validate Schema&rdquo; to run the check.</li>
+              <li>Review any errors or warnings flagged by the tool.</li>
+              <li>Fix the issues and re-validate until you get a clean pass.</li>
+              <li>Add the validated code inside a <code>&lt;script type=&ldquo;application/ld+json&rdquo;&gt;</code> tag in your page &lt;head&gt;.</li>
+            </ol>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <h4 className="font-black text-xs uppercase tracking-widest text-blue-600 mb-2">JSON-LD</h4>
+              <p className="text-xs text-slate-500 font-medium">The recommended format. Written as a &lt;script&gt; block — easy to add and update without touching your HTML content.</p>
+            </div>
+            <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <h4 className="font-black text-xs uppercase tracking-widest text-indigo-600 mb-2">Rich Results</h4>
+              <p className="text-xs text-slate-500 font-medium">Valid schema markup can unlock star ratings, FAQs, How-Tos, and Sitelinks in Google search — increasing organic CTR by up to 30%.</p>
+            </div>
           </div>
         </div>
       }
