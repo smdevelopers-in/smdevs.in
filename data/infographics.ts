@@ -326,6 +326,51 @@ export const INFOGRAPHICS: Infographic[] = [
     aspectClass: "aspect-[3/4]",
     relatedSlugs: ["chart-pattern-ascending-triangle", "chart-pattern-descending-triangle"],
   },
+  // ── NEW: RSI Indicator Guide ───────────────────────────────────────────────
+  {
+    id: 23,
+    slug: "rsi-indicator-guide",
+    title: "RSI Indicator Guide — Overbought, Oversold & Divergence Explained",
+    category: "Trading",
+    description: "How to read the RSI indicator, identify overbought and oversold zones, spot bullish and bearish divergence, and trade all three signals correctly.",
+    longDescription: "The Relative Strength Index (RSI) is one of the most widely used momentum oscillators in technical analysis — yet most traders misuse it by treating every overbought or oversold reading as an automatic buy or sell signal. This infographic breaks down the RSI into three actionable trading signals. The Overbought signal (RSI > 70) warns that buying momentum is exhausted and a reversal may be near — but the key is waiting for RSI to cross back below 70, not shorting into strength. The Oversold signal (RSI < 30) identifies potential bounce zones — wait for RSI to cross back above 30 before entering long. Divergence is the most powerful signal: Bullish Divergence occurs when price makes a lower low but RSI makes a higher low, indicating hidden buying pressure; Bearish Divergence occurs when price makes a higher high but RSI makes a lower high, warning of weakening momentum. A quick-reference table at the bottom maps RSI levels (>70, <30, =50) to directional bias. Default period is 14 on all timeframes.",
+    tags: ["RSI indicator", "RSI divergence", "overbought oversold", "momentum trading", "technical analysis", "RSI trading strategy", "relative strength index"],
+    image: "https://res.cloudinary.com/dkfj0zehx/image/upload/v1783064857/smdevs/infographics/rsi-indicator-guide.jpg",
+    alt: "RSI indicator guide infographic showing overbought above 70 in red, oversold below 30 in green, neutral zone 30-70 in gray, and bullish and bearish divergence signals with a quick reference table",
+    downloadName: "smdevs-rsi-indicator-guide",
+    aspectClass: "aspect-[3/4]",
+    relatedSlugs: ["trading-risk-management-rules", "position-sizing-formula", "chart-pattern-bull-flag"],
+  },
+  // ── NEW: E-E-A-T Checklist 2026 ───────────────────────────────────────────
+  {
+    id: 24,
+    slug: "eeat-checklist-2026",
+    title: "E-E-A-T Checklist 2026 — Build Google-Trusted Content",
+    category: "AI SEO",
+    description: "The complete E-E-A-T implementation checklist for 2026 — 12 actionable signals across Experience, Expertise, Authoritativeness, and Trustworthiness.",
+    longDescription: "Google's E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) framework is the quality benchmark used by Google's Search Quality Raters to evaluate content — and in 2026, it's more important than ever after multiple Helpful Content updates. This infographic provides the complete E-E-A-T implementation checklist broken into four color-coded pillars. Experience: Add first-hand experience signals through case studies and real results, include author bylines with verifiable credentials, and use personal stories and real-world examples that demonstrate you've actually done what you're writing about. Expertise: Write in-depth, accurate content (1500+ words for competitive topics), cite authoritative sources (.gov, .edu, peer-reviewed studies), and demonstrate subject matter depth through technical accuracy. Authoritativeness: Earn backlinks from trusted sites in your niche, secure brand mentions on authoritative platforms, and publish consistently to build topical authority. Trustworthiness: Ensure HTTPS with accurate contact info and a privacy policy, fact-check every claim with citations, and display authentic reviews, testimonials, and credentials. A pro tip box highlights YMYL (Your Money or Your Life) topics — health, finance, and legal content — which require the highest possible E-E-A-T standards.",
+    tags: ["E-E-A-T 2026", "Google E-E-A-T", "helpful content", "content quality", "YMYL", "SEO content strategy", "author credibility", "trustworthiness signals"],
+    image: "https://res.cloudinary.com/dkfj0zehx/image/upload/v1783064858/smdevs/infographics/eeat-checklist-2026.jpg",
+    alt: "E-E-A-T checklist 2026 infographic showing four color-coded pillars: Experience in blue, Expertise in purple, Authoritativeness in orange, and Trustworthiness in green, with 3 checklist items each and a YMYL pro tip",
+    downloadName: "smdevs-eeat-checklist-2026",
+    aspectClass: "aspect-[3/4]",
+    relatedSlugs: ["google-ranking-signals", "ai-seo-workflow", "on-page-seo-elements"],
+  },
+  // ── NEW: Google Crawl & Index Guide ───────────────────────────────────────
+  {
+    id: 25,
+    slug: "google-crawl-index-guide",
+    title: "How Google Crawls & Indexes Your Website — 6-Step Pipeline",
+    category: "Technical SEO",
+    description: "The complete step-by-step pipeline showing how Googlebot discovers, crawls, renders, and indexes your pages — plus the 4 common blockers that keep pages out of the index.",
+    longDescription: "Understanding how Google actually crawls and indexes your website is the foundation of all technical SEO. Most site owners fix surface-level issues without understanding the full pipeline — which means they're often solving the wrong problem. This infographic maps Google's complete 6-step crawl and index pipeline: Step 1 — Discovery, where Googlebot finds new URLs through XML sitemaps, internal links, backlinks, and direct URL submission in Google Search Console; Step 2 — Crawl Queue, where discovered URLs are prioritized based on PageRank, crawl budget allocation, and freshness signals (new and frequently updated pages get priority); Step 3 — Crawling, where Googlebot fetches your page's raw HTML and reads content, links, status codes, and robots.txt instructions; Step 4 — Rendering, where Google's headless Chrome renders JavaScript — note that JS-heavy pages may face delayed rendering, making server-side rendering (SSR) important for critical content; Step 5 — Indexing, where the rendered page is analyzed and added to Google's index only if content is unique, not blocked by noindex tags, and passes quality thresholds; Step 6 — Ranking, where indexed pages are ranked using 200+ signals including E-E-A-T, backlinks, Core Web Vitals, and query relevance. A Common Crawl Blockers section highlights the 4 most frequent indexing issues: robots.txt blocking, noindex meta tags, orphan pages with no internal links, and slow server response times.",
+    tags: ["Google crawl index", "Googlebot", "how Google indexes pages", "crawl budget", "technical SEO", "XML sitemap", "robots.txt", "JavaScript rendering SEO"],
+    image: "https://res.cloudinary.com/dkfj0zehx/image/upload/v1783064861/smdevs/infographics/google-crawl-index-guide.jpg",
+    alt: "Google crawl and index guide infographic showing 6 steps: Discovery, Crawl Queue, Crawling, Rendering, Indexing, and Ranking with connecting arrows, plus a Common Crawl Blockers section",
+    downloadName: "smdevs-google-crawl-index-guide",
+    aspectClass: "aspect-[3/4]",
+    relatedSlugs: ["seo-audit-checklist", "core-web-vitals-guide", "google-ranking-signals"],
+  },
 ];
 
 export const CATEGORIES = [
