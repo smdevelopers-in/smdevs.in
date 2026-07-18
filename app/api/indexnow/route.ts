@@ -4,7 +4,7 @@ import path from 'path';
 import { sql } from '@vercel/postgres';
 
 const BASE_URL = 'https://smdevs.in';
-const INDEXNOW_KEY = '3bd900c2cb394958b35402f8bf4cc5ca';
+const INDEXNOW_KEY = 'e0eafedbf1a1451dabadd36b747778c5';
 const KEY_LOCATION = `${BASE_URL}/${INDEXNOW_KEY}.txt`;
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/IndexNow';
 
