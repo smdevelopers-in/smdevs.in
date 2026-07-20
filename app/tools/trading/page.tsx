@@ -12,7 +12,8 @@ import {
   Zap,
   LineChart,
   Scale,
-  BookOpen
+  BookOpen,
+  PiggyBank
 } from "lucide-react";
 import Breadcrumbs from "@/components/tools/Breadcrumbs";
 import FAQSection from "@/components/tools/FAQSection";
@@ -110,6 +111,14 @@ const TRADING_TOOLS = [
     icon: Calculator,
     href: "/tools/trading/break-even",
     isFeatured: false
+  },
+  {
+    title: "SIP Calculator",
+    description: "Calculate SIP returns with step-up (top-up) SIP option. See year-by-year corpus growth, total invested, and maturity value.",
+    icon: PiggyBank,
+    href: "/tools/trading/sip-calculator",
+    isFeatured: false,
+    tag: "New"
   }
 ];
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, TrendingUp, Shield, Calculator, Scale, Target, Zap, LineChart } from "lucide-react";
+import { ArrowRight, BarChart3, TrendingUp, Shield, Calculator, Scale, Target, Zap, LineChart, PiggyBank } from "lucide-react";
 
 const ALL_TRADING_TOOLS = [
   {
@@ -57,6 +57,13 @@ const ALL_TRADING_TOOLS = [
     href: "/tools/trading/profit-loss",
     icon: Shield,
     color: "slate",
+  },
+  {
+    title: "SIP Calculator",
+    description: "Calculate SIP returns with optional annual step-up. See year-by-year corpus growth and maturity value.",
+    href: "/tools/trading/sip-calculator",
+    icon: PiggyBank,
+    color: "indigo",
   },
 ];
 
