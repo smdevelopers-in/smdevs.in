@@ -371,6 +371,51 @@ export const INFOGRAPHICS: Infographic[] = [
     aspectClass: "aspect-[3/4]",
     relatedSlugs: ["seo-audit-checklist", "core-web-vitals-guide", "google-ranking-signals"],
   },
+  // ── NEW BATCH 2: MACD Indicator Guide ─────────────────────────────────────
+  {
+    id: 26,
+    slug: "macd-indicator-guide",
+    title: "MACD Indicator Guide — Crossovers, Histogram & Divergence Explained",
+    category: "Trading",
+    description: "How to read the MACD indicator, identify bullish and bearish crossovers, read histogram momentum, and spot divergence signals for high-probability trades.",
+    longDescription: "The MACD (Moving Average Convergence Divergence) is one of the most powerful and widely used momentum indicators in technical analysis — combining trend-following with momentum in a single oscillator. This infographic breaks it down into three components: the MACD Line (12 EMA minus 26 EMA), the Signal Line (9-period EMA of the MACD line), and the Histogram (MACD minus Signal Line) which visually shows the distance between the two lines. Three key trading signals are covered: Bullish Crossover — when the MACD line crosses above the Signal line, indicating rising momentum and a potential buy entry, especially when it occurs below the zero line; Bearish Crossover — when the MACD line crosses below the Signal line, signaling weakening momentum and a potential short entry, especially above the zero line; and Divergence — the most powerful signal, where Bullish Divergence occurs when price makes a lower low but MACD makes a higher low (hidden buying pressure), and Bearish Divergence occurs when price makes a higher high but MACD makes a lower high (weakening momentum). A quick-reference table covers zero-line crossings and histogram interpretation. Pro tip: use the daily chart to confirm trend direction, then execute on the 4H or 1H for precise timing.",
+    tags: ["MACD indicator", "MACD crossover", "MACD divergence", "momentum trading", "technical analysis", "MACD histogram", "moving average convergence divergence"],
+    image: "https://res.cloudinary.com/dkfj0zehx/image/upload/v1784566586/smdevs/infographics/macd-indicator-guide.jpg",
+    alt: "MACD indicator guide infographic showing MACD line, signal line, and histogram with bullish crossover, bearish crossover, and divergence signals plus a quick reference table",
+    downloadName: "smdevs-macd-indicator-guide",
+    aspectClass: "aspect-[3/4]",
+    relatedSlugs: ["rsi-indicator-guide", "trading-risk-management-rules", "chart-pattern-bull-flag"],
+  },
+  // ── NEW BATCH 2: Candlestick Patterns Cheat Sheet ─────────────────────────
+  {
+    id: 27,
+    slug: "candlestick-patterns-cheatsheet",
+    title: "Candlestick Patterns Cheat Sheet — 12 Essential Patterns Every Trader Must Know",
+    category: "Chart Patterns",
+    description: "A complete visual cheat sheet of the 12 most important candlestick patterns — 6 bullish reversals and 6 bearish reversals — with diagrams and one-line trading rules.",
+    longDescription: "Candlestick patterns are the language of price action — and mastering the 12 most important ones gives traders an immediate edge in reading market sentiment before an indicator can signal a move. This infographic presents a two-column visual cheat sheet organized by bias. Bullish Reversal Patterns: Hammer (small body, long lower wick — buyers rejected sellers at lows), Morning Star (3-candle bottom reversal from bears to bulls), Bullish Engulfing (large green candle fully engulfs the prior red candle), Piercing Line (green candle closes above 50% of prior red candle), Doji Star (doji at market lows signals indecision and potential reversal up), and Dragonfly Doji (open equals close equals high with a long lower wick — strong bullish signal). Bearish Reversal Patterns: Shooting Star (small body, long upper wick — buyers failed at highs), Evening Star (3-candle top reversal from bulls to bears), Bearish Engulfing (large red candle fully engulfs prior green candle), Dark Cloud Cover (red candle closes below 50% of prior green candle), Gravestone Doji (open equals close equals low with long upper wick — strong bearish signal), and Hanging Man (identical to Hammer but appearing in an uptrend — a warning signal for bulls). The bottom section includes a candlestick anatomy diagram showing upper wick, body (open/close), and lower wick with green for bullish and red for bearish.",
+    tags: ["candlestick patterns", "candlestick cheat sheet", "bullish candlestick patterns", "bearish candlestick patterns", "price action trading", "hammer candlestick", "engulfing pattern", "morning star", "evening star"],
+    image: "https://res.cloudinary.com/dkfj0zehx/image/upload/v1784566587/smdevs/infographics/candlestick-patterns-cheatsheet.jpg",
+    alt: "Candlestick patterns cheat sheet infographic showing 12 patterns in two columns: 6 bullish reversals including hammer, morning star, and bullish engulfing, and 6 bearish reversals including shooting star, evening star, and bearish engulfing, with candlestick anatomy diagram",
+    downloadName: "smdevs-candlestick-patterns-cheatsheet",
+    aspectClass: "aspect-[3/4]",
+    relatedSlugs: ["chart-pattern-head-and-shoulders", "chart-pattern-double-top", "rsi-indicator-guide"],
+  },
+  // ── NEW BATCH 2: Topic Cluster Strategy ───────────────────────────────────
+  {
+    id: 28,
+    slug: "topic-cluster-strategy",
+    title: "Topic Cluster & Pillar Page Strategy — Build Topical Authority That Ranks",
+    category: "SEO",
+    description: "How to build a topic cluster using pillar pages and cluster content — the content architecture strategy Google and AI platforms use to measure topical authority.",
+    longDescription: "Topic clusters are the most important content architecture strategy in modern SEO — replacing the outdated approach of targeting isolated keywords with a systematic framework that builds deep topical authority. Google and AI platforms like ChatGPT, Perplexity, and Gemini consistently cite and rank sites that demonstrate comprehensive expertise on a subject over those with scattered, disconnected content. This infographic explains the complete topic cluster model: a single Pillar Page covers a broad topic comprehensively (targeting keywords with 1,000–10,000 monthly searches), while 8–15 Cluster Pages each cover a specific subtopic in depth, with every cluster page linking back to the pillar and the pillar linking out to every cluster. The hub-and-spoke diagram visualizes exactly how this internal link structure signals topical authority to search engines. The 4-step implementation guide walks through: Step 1 — Choose a Pillar Topic (pick a broad keyword you want to own completely); Step 2 — Identify Cluster Subtopics (use Google's People Also Ask, related searches, and keyword research tools to find 8–15 supporting subtopics); Step 3 — Create and Interlink (write each piece and implement bidirectional internal links between pillar and clusters); Step 4 — Measure Topical Authority (track pillar page ranking improvements, cluster page impressions growth, and domain authority lift over 3–6 months). The why-it-works section highlights that structured clusters generate 3× more organic traffic than siloed content and that AI platforms preferentially cite topically authoritative sources.",
+    tags: ["topic cluster", "pillar page strategy", "topical authority", "internal linking SEO", "content architecture", "SEO content strategy", "hub and spoke model", "content silo SEO"],
+    image: "https://res.cloudinary.com/dkfj0zehx/image/upload/v1784566589/smdevs/infographics/topic-cluster-strategy.jpg",
+    alt: "Topic cluster and pillar page strategy infographic showing a hub and spoke diagram with pillar page at center connected to 6 cluster pages via internal links, plus a 4-step implementation guide and why it works statistics",
+    downloadName: "smdevs-topic-cluster-strategy",
+    aspectClass: "aspect-[3/4]",
+    relatedSlugs: ["keyword-research-process", "content-marketing-funnel", "backlink-building-strategy"],
+  },
 ];
 
 export const CATEGORIES = [
