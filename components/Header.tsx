@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Smartphone, Wrench, BookOpen, Users, Sparkles, TrendingUp, Search } from "lucide-react";
+import { Menu, X, ChevronDown, Smartphone, Wrench, BookOpen, Users, Sparkles, TrendingUp, Search, Activity } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
@@ -30,6 +30,11 @@ const NAV_LINKS = [
       { name: "Blogs", href: "/resources/blogs" },
       { name: "Infographics", href: "/resources/infographics" },
     ]
+  },
+  {
+    name: "Live Indices",
+    href: "/tools/trading/market-dashboard",
+    isLive: true,
   },
   {
     name: "Contact Us",
@@ -65,16 +70,30 @@ export default function Header() {
               onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <Link
-                href={link.href}
-                className="flex items-center gap-1.5 text-sm font-bold text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                onClick={(e) => link.dropdown && e.preventDefault()}
-              >
-                {link.name}
-                {link.dropdown && (
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${activeDropdown === link.name ? "rotate-180" : ""}`} />
-                )}
-              </Link>
+              {'isLive' in link && link.isLive ? (
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-sm font-black text-emerald-700 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all group/live"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                  </span>
+                  <Activity className="w-3.5 h-3.5" />
+                  {link.name}
+                </Link>
+              ) : (
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1.5 text-sm font-bold text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  onClick={(e) => link.dropdown && e.preventDefault()}
+                >
+                  {link.name}
+                  {link.dropdown && (
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${activeDropdown === link.name ? "rotate-180" : ""}`} />
+                  )}
+                </Link>
+              )}
 
               {/* Simple Dropdown */}
               {link.dropdown && activeDropdown === link.name && (
@@ -127,7 +146,20 @@ export default function Header() {
                    {link.name}
                 </div>
                 <div className="grid grid-cols-1 gap-2">
-                  {link.dropdown ? link.dropdown.map((item) => (
+                  {'isLive' in link && link.isLive ? (
+                    <Link
+                      href={link.href}
+                      className="flex items-center gap-3 p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-2xl text-sm font-black text-emerald-700 dark:text-emerald-400"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                      </span>
+                      <Activity className="w-4 h-4" />
+                      {link.name}
+                    </Link>
+                  ) : link.dropdown ? link.dropdown.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
