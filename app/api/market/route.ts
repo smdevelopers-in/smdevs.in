@@ -62,18 +62,24 @@ export async function POST(req: NextRequest) {
     const markets = await getAllMarkets();
     const upstoxSymbols: string[] = [];
     const yahooSymbols: string[] = [];
-    const marketIdByYahooSymbol = new Map<string, number>();
+    const marketIdsByYahooSymbol = new Map<string, number[]>();
 
     const hasUpstox = isUpstoxConfigured();
 
     markets.forEach(m => {
       if (m.yahoo_symbol) {
-        marketIdByYahooSymbol.set(m.yahoo_symbol, m.id);
+        if (!marketIdsByYahooSymbol.has(m.yahoo_symbol)) {
+          marketIdsByYahooSymbol.set(m.yahoo_symbol, []);
+        }
+        marketIdsByYahooSymbol.get(m.yahoo_symbol)!.push(m.id);
         
-        if (hasUpstox && (m.category === 'Indian Index' || m.category === 'Volatility')) {
-          upstoxSymbols.push(m.yahoo_symbol);
-        } else {
-          yahooSymbols.push(m.yahoo_symbol);
+        // Only push to upstoxSymbols/yahooSymbols if it's the first time seeing this symbol
+        if (marketIdsByYahooSymbol.get(m.yahoo_symbol)!.length === 1) {
+          if (hasUpstox && (m.category === 'Indian Index' || m.category === 'Volatility')) {
+            upstoxSymbols.push(m.yahoo_symbol);
+          } else {
+            yahooSymbols.push(m.yahoo_symbol);
+          }
         }
       }
     });
@@ -85,10 +91,10 @@ export async function POST(req: NextRequest) {
     if (upstoxSymbols.length > 0) {
       const upstoxResults = await fetchUpstoxQuotes(upstoxSymbols);
       for (const [sym, quote] of Array.from(upstoxResults.entries())) {
-        const mId = marketIdByYahooSymbol.get(sym);
-        if (mId) {
+        const mIds = marketIdsByYahooSymbol.get(sym);
+        if (mIds) {
           if (quote) {
-            quotesToUpsert.set(mId, quote);
+            mIds.forEach(mId => quotesToUpsert.set(mId, quote));
           } else {
             // Fallback to Yahoo if Upstox fails
             yahooSymbols.push(sym);
@@ -101,10 +107,10 @@ export async function POST(req: NextRequest) {
     if (yahooSymbols.length > 0) {
       const yahooResults = await fetchMultipleYahooQuotes(yahooSymbols);
       for (const [sym, quote] of Array.from(yahooResults.entries())) {
-        const mId = marketIdByYahooSymbol.get(sym);
-        if (mId) {
+        const mIds = marketIdsByYahooSymbol.get(sym);
+        if (mIds) {
           if (quote) {
-            quotesToUpsert.set(mId, quote);
+            mIds.forEach(mId => quotesToUpsert.set(mId, quote));
           } else {
             errors.push(`Failed to fetch quote for ${sym}`);
           }
