@@ -33,7 +33,7 @@ export function HistoricalTable({ initialMarketId, markets }: HistoricalTablePro
         if (res.ok) {
           const json = await res.json();
           if (mounted) {
-            setData(json.data || []);
+            setData(json.snapshots || []);
             setTotalPages(json.totalPages || 1);
           }
         }
