@@ -28,7 +28,7 @@ const SOFTWARE_SCHEMA = {
   "@type": "SoftwareApplication",
   "name": "Option Profit Calculator",
   "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
+  "operatingSystem": "Web Browser",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "description": "Free calculator for call and put option profit, loss, breakeven price, ROI%, and net payoff with interactive payoff diagram.",
   "url": "https://smdevs.in/tools/trading/option-profit"

@@ -31,7 +31,7 @@ const SOFTWARE_SCHEMA = {
   "@type": "SoftwareApplication",
   "name": "Stock Analyzer",
   "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
+  "operatingSystem": "Web Browser",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "description": "Free stock analyzer with live data, technical indicators (SMA, RSI, MACD), valuation metrics, and beginner-friendly explanations.",
   "url": "https://smdevs.in/tools/trading/stock-analyzer"

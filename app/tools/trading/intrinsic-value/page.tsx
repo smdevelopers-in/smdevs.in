@@ -28,7 +28,7 @@ const SOFTWARE_SCHEMA = {
   "@type": "SoftwareApplication",
   "name": "Intrinsic Value Calculator",
   "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
+  "operatingSystem": "Web Browser",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "description": "Estimate fair value using earnings growth and margin of safety. Free, client-side, no login.",
   "url": "https://smdevs.in/tools/trading/intrinsic-value"

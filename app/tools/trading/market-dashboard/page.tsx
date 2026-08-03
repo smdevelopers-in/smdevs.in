@@ -47,7 +47,7 @@ const SOFTWARE_SCHEMA = {
   "@type": "SoftwareApplication",
   "name": "Market Dashboard",
   "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Web",
+  "operatingSystem": "Web Browser",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
   "description": "Free market dashboard tracking Indian Markets, Global Markets, Commodities, Currencies and Market Sentiment. Updated every 5 minutes.",
   "url": "https://smdevs.in/tools/trading/market-dashboard"

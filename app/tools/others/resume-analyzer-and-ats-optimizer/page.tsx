@@ -479,7 +479,7 @@ const SCHEMA_PRODUCT = {
   "@type": "SoftwareApplication",
   "name": "Resume Analyzer & ATS Optimizer",
   "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
+  "operatingSystem": "Web Browser",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "description": "Free Resume Analyzer that checks ATS compatibility, keyword match, readability, recruiter visibility, and generates an improvement roadmap.",
   "url": "https://smdevs.in/tools/others/resume-analyzer-and-ats-optimizer",
