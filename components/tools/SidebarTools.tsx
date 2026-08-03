@@ -8,11 +8,11 @@ interface SidebarToolsProps {
 const TOOLS_BY_CATEGORY: Record<string, any[]> = {
   "SEO": [
     { title: "Schema Generator", desc: "Build exact JSON-LD schemas.", href: "/tools/seo/schema-generator", icon: Search, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-500/10" },
-    { title: "SEO Analyzer", desc: "Audit your on-page SEO health.", href: "/tools/seo/analyze-seo", icon: Zap, color: "text-blue-500", bg: "bg-blue-50 dark:bg-blue-500/10" },
+    { title: "SEO Analyzer", desc: "Audit your on-page SEO health.", href: "/tools/seo/seo-structure-analyzer", icon: Zap, color: "text-blue-500", bg: "bg-blue-50 dark:bg-blue-500/10" },
   ],
   "Trading": [
     { title: "Position Size Calculator", desc: "Calculate exact units to trade.", href: "/tools/trading/position-size", icon: Target, color: "text-rose-500", bg: "bg-rose-50 dark:bg-rose-500/10" },
-    { title: "Pivot Points", desc: "Intraday support/resistance.", href: "/tools/trading/pivot-points", icon: LineChart, color: "text-indigo-500", bg: "bg-indigo-50 dark:bg-indigo-500/10" },
+    { title: "Pivot Points", desc: "Intraday support/resistance.", href: "/tools/trading/pivot-calculator", icon: LineChart, color: "text-indigo-500", bg: "bg-indigo-50 dark:bg-indigo-500/10" },
   ],
   "Development": [
     { title: "JSON Formatter", desc: "Format and validate JSON.", href: "/tools/dev/json-formatter", icon: Code, color: "text-orange-500", bg: "bg-orange-50 dark:bg-orange-500/10" },
