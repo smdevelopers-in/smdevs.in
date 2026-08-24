@@ -121,6 +121,38 @@ export default function SchemaValidatorPage() {
               <p className="text-xs text-slate-500 font-medium">Valid schema markup can unlock star ratings, FAQs, How-Tos, and Sitelinks in Google search — increasing organic CTR by up to 30%.</p>
             </div>
           </div>
+
+          {/* Internal links to schema blog cluster */}
+          <div className="mt-6 space-y-2">
+            <h3 className="text-lg font-black text-slate-900 dark:text-white">Schema Markup Guides</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 font-medium mb-3">New to schema markup? Read our step-by-step guides to implement and test structured data correctly.</p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="/resources/blogs/how-to-add-schema-markup-website-step-by-step"
+                className="flex-1 flex items-start gap-3 p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors group"
+              >
+                <span className="text-2xl">📋</span>
+                <div>
+                  <p className="text-sm font-black text-blue-700 dark:text-blue-400 group-hover:underline leading-snug">
+                    How to Add Schema Markup to Your Website
+                  </p>
+                  <p className="text-xs text-slate-500 mt-0.5">Step-by-step guide for all platforms</p>
+                </div>
+              </a>
+              <a
+                href="/resources/blogs/json-ld-schema-examples-article-faq-product-breadcrumb"
+                className="flex-1 flex items-start gap-3 p-4 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 rounded-2xl hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors group"
+              >
+                <span className="text-2xl">💻</span>
+                <div>
+                  <p className="text-sm font-black text-indigo-700 dark:text-indigo-400 group-hover:underline leading-snug">
+                    JSON-LD Schema Examples: Article, FAQ, Product & More
+                  </p>
+                  <p className="text-xs text-slate-500 mt-0.5">Copy-paste code for every schema type</p>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       }
       faqs={VALIDATOR_FAQS}
